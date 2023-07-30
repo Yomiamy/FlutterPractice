@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/draggable_scrollable_sheet/BottomDragWidget.dart';
 import 'package:flutter_practice/draggable_scrollable_sheet/DraggableScrollableSheetPage.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DraggableScrollableSheetPage(),
+      home: const BottomDragWidget(),
     );
   }
 }
