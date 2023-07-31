@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/draggable_scrollable_sheet/BottomDragWidget.dart';
 import 'package:flutter_practice/draggable_scrollable_sheet/DraggableScrollableSheetPage.dart';
+import 'package:flutter_practice/gesture/ImageDoubleTapScaleWidget.dart';
 import 'package:flutter_practice/gesture/ImageTapWidget.dart';
 
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ImageTapWidget(),
+      home: const ImageDoubleTapScaleWidget(),
     );
   }
 }
