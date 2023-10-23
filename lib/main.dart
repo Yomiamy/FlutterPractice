@@ -16,6 +16,7 @@ import 'package:flutter_practice/gesture/TapTextWidget.dart';
 import 'bloc/increment_count/bloc.dart';
 import 'bloc/increment_count/view.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
+import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
 
 void main() {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const BottomNavigationBarSample1()
+      home: const BottomNavigationBarWithPageSample1()
     );
   }
 }
