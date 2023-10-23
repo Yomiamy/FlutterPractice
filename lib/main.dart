@@ -6,6 +6,7 @@ import 'package:flutter_practice/bloc/login/bloc/login_bloc.dart';
 import 'package:flutter_practice/bloc/login/repository/authentication_repository.dart';
 import 'package:flutter_practice/bloc/login/repository/user_repository.dart';
 import 'package:flutter_practice/bloc/login/view/app_view.dart';
+import 'package:flutter_practice/bottom_navigation_bar/bottom_navigation_bar_sample1.dart';
 import 'package:flutter_practice/draggable_scrollable_sheet/BottomDragWidget.dart';
 import 'package:flutter_practice/draggable_scrollable_sheet/DraggableScrollableSheetPage.dart';
 import 'package:flutter_practice/gesture/ImageDoubleTapScaleWidget.dart';
@@ -28,30 +29,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    var authenticationRepository = AuthenticationRepository();
-    var userRepository = UserRepository();
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: RepositoryProvider.value(
-        value: authenticationRepository,
-        child: MultiBlocProvider(
-            providers: [
-              BlocProvider(create: (_) => AuthenticationBloc(
-                  authenticationRepository: authenticationRepository,
-                  userRepository: userRepository
-              )),
-              BlocProvider(create: (_) => LoginBloc(
-                  authenticationRepository: authenticationRepository
-              ))
-            ],
-            child:const AppView()
-        )
-      )
+      home: const BottomNavigationBarSample1()
     );
   }
 }
