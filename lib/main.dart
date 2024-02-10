@@ -12,6 +12,7 @@ import 'package:flutter_practice/draggable_scrollable_sheet/DraggableScrollableS
 import 'package:flutter_practice/gesture/ImageDoubleTapScaleWidget.dart';
 import 'package:flutter_practice/gesture/ImageTapWidget.dart';
 import 'package:flutter_practice/gesture/TapTextWidget.dart';
+import 'package:flutter_practice/text_field/FocusNodeTextField.dart';
 
 import 'bloc/increment_count/bloc.dart';
 import 'bloc/increment_count/view.dart';
@@ -42,6 +43,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const TimerPage());
+        home: const FocusNodeTextField());
   }
 }
