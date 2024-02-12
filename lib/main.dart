@@ -15,6 +15,7 @@ import 'package:flutter_practice/gesture/TapTextWidget.dart';
 import 'package:flutter_practice/text_field/FocusNodeTextField.dart';
 import 'package:flutter_practice/text_field/InputDecorationTextFeild.dart';
 import 'package:flutter_practice/text_field/InputDecorationTextFeild2.dart';
+import 'package:flutter_practice/text_field/LabelTextTextField.dart';
 import 'package:flutter_practice/text_field/LengthLineLimitTextField.dart';
 
 import 'bloc/increment_count/bloc.dart';
@@ -46,6 +47,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const InputDecorationTextFeild2());
+        home: const LabelTextTextField());
   }
 }
