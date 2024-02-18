@@ -12,6 +12,7 @@ import 'package:flutter_practice/draggable_scrollable_sheet/DraggableScrollableS
 import 'package:flutter_practice/gesture/ImageDoubleTapScaleWidget.dart';
 import 'package:flutter_practice/gesture/ImageTapWidget.dart';
 import 'package:flutter_practice/gesture/TapTextWidget.dart';
+import 'package:flutter_practice/text_field/CursotTextField.dart';
 import 'package:flutter_practice/text_field/FocusNodeTextField.dart';
 import 'package:flutter_practice/text_field/InputDecorationTextFeild.dart';
 import 'package:flutter_practice/text_field/InputDecorationTextFeild2.dart';
@@ -47,6 +48,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const LabelTextTextField());
+        home: const CursorTextField());
   }
 }
