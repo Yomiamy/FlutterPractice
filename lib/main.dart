@@ -18,6 +18,7 @@ import 'package:flutter_practice/text_field/InputDecorationTextFeild.dart';
 import 'package:flutter_practice/text_field/InputDecorationTextFeild2.dart';
 import 'package:flutter_practice/text_field/LabelTextTextField.dart';
 import 'package:flutter_practice/text_field/LengthLineLimitTextField.dart';
+import 'package:flutter_practice/text_field/SearchStaticBarTextField.dart';
 
 import 'bloc/increment_count/bloc.dart';
 import 'bloc/increment_count/view.dart';
@@ -48,6 +49,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const CursorTextField());
+        home: const SearchStaticBarTextField());
   }
 }
