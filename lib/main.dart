@@ -27,6 +27,7 @@ import 'bloc/timer/bloc/timer_view.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
 import 'ink/ClickInkWell.dart';
+import 'ink/MaterialBgInkWell.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
@@ -50,6 +51,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const ClickInkWell());
+        home: const MaterialBgInkWell());
   }
 }
