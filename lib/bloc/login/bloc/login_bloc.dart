@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/bloc/login/model/password.dart';
 import 'package:flutter_practice/bloc/login/model/username.dart';
@@ -62,5 +63,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(state.copyWith(status: FormzSubmissionStatus.failure));
       }
     }
+  }
+
+  @override
+  void onChange(Change<LoginState> change) {
+    super.onChange(change);
+
+    debugPrint("onChange: $change");
   }
 }

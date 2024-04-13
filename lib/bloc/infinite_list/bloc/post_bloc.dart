@@ -61,4 +61,11 @@ class InfiniteListBloc extends Bloc<PostFetched, PostState> {
     }
     throw Exception('error fetching posts');
   }
+
+  @override
+  void onChange(Change<PostState> change) {
+    super.onChange(change);
+
+    debugPrint("onChange: $change");
+  }
 }
