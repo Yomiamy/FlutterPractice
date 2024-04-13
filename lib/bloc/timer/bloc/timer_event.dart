@@ -6,7 +6,6 @@ part of 'timer_bloc.dart';
 // TimerReset：通知TimerBloc重置计时器到原来的状态。
 // _TimerTicked：通知TimerBloc一个tick已经发生，需要更新它对应的状态。
 
-// TODO: 到此
 sealed class TimerEvent {
   const TimerEvent();
 }
@@ -28,11 +27,11 @@ final class TimerResumed extends TimerEvent {
   const TimerResumed();
 }
 
-class TimerReset extends TimerEvent {
+final class TimerReset extends TimerEvent {
   const TimerReset();
 }
 
-class _TimerTicked extends TimerEvent {
+final class _TimerTicked extends TimerEvent {
   const _TimerTicked({required this.duration});
   final int duration;
 }

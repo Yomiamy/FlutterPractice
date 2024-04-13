@@ -1,5 +1,5 @@
-abstract class BaseEvent {}
+sealed class BaseEvent {}
 
-class InitCountEvent extends BaseEvent {}
+final class InitCountEvent extends BaseEvent {}
 
-class IncrementCountEvent extends BaseEvent {}
+final class IncrementCountEvent extends BaseEvent {}

@@ -1,6 +1,6 @@
 part of 'timer_bloc.dart';
 
-class TimerState extends Equatable {
+sealed class TimerState extends Equatable {
 
   final int duration;
 

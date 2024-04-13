@@ -1,6 +1,6 @@
 import 'package:flutter_practice/bloc/login/repository/authentication_repository.dart';
 
-abstract class AuthenticationEvent {
+sealed class AuthenticationEvent {
   const AuthenticationEvent();
 }
 

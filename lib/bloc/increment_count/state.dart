@@ -1,4 +1,4 @@
-abstract class BaseState {
+sealed class BaseState {
   static int _count = 0;
 
   int get count => _count;
@@ -13,13 +13,13 @@ abstract class BaseState {
   }
 }
 
-class InitState extends BaseState {
+final class InitState extends BaseState {
   InitState() {
     reset();
   }
 }
 
-class IncrementCountState extends BaseState {
+final class IncrementCountState extends BaseState {
   IncrementCountState() {
     increment();
   }
