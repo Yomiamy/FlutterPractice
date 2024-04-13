@@ -22,6 +22,7 @@ import 'package:flutter_practice/text_field/LengthLineLimitTextField.dart';
 import 'package:flutter_practice/text_field/SearchStaticBarTextField.dart';
 
 import 'bloc/increment_count/bloc.dart';
+import 'bloc/increment_count/observer.dart';
 import 'bloc/increment_count/view.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
 import 'bloc/timer/bloc/timer_view.dart';
@@ -32,7 +33,7 @@ import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
 
 void main() {
-  Bloc.observer = SimpleBlocObserver();
+  // Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
 
@@ -42,6 +43,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Bloc.observer = IncrementObserver();
+
     return MaterialApp(
         title: 'Flutter Demo',
         // theme: ThemeData(
@@ -53,6 +56,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const MaterialRoundInk());
+        home: const IncrementCountPage());
   }
 }
