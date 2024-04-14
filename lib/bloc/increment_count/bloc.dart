@@ -1,11 +1,20 @@
 import 'package:bloc/bloc.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:stream_transform/stream_transform.dart';
 import 'event.dart';
 import 'state.dart';
 import 'package:flutter/material.dart';
 
 class IncrementCountBloc extends Bloc<BaseEvent, BaseState> {
   IncrementCountBloc() : super(InitState()) {
-    on<BaseEvent>(_eventHandler);
+    on<BaseEvent>(
+        _eventHandler,
+      transformer: debounce(const Duration(milliseconds: 300))
+    );
+  }
+
+  EventTransformer<T> debounce<T>(Duration duration) {
+    return (events, mapper) => events.debounceTime(duration).flatMap(mapper);
   }
 
   void _eventHandler(BaseEvent event, Emitter<BaseState> emit) async {
