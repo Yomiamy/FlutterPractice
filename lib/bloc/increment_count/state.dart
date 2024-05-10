@@ -1,5 +1,7 @@
-sealed class BaseState {
-  static int _count = 0;
+import 'package:equatable/equatable.dart';
+
+sealed class BaseState extends Equatable {
+  int _count = 0;
 
   int get count => _count;
   set count(int value) {
@@ -11,6 +13,9 @@ sealed class BaseState {
   void reset() {
     count = 0;
   }
+
+  @override
+  List<Object> get props => [count];
 }
 
 final class InitState extends BaseState {

@@ -35,4 +35,11 @@ class IncrementCountBloc extends Bloc<BaseEvent, BaseState> {
 
     debugPrint("onChange: $change");
   }
+
+  @override
+  void onTransition(Transition<BaseEvent, BaseState> transition) {
+    super.onTransition(transition);
+
+    debugPrint("onTransition: $transition");
+  }
 }
