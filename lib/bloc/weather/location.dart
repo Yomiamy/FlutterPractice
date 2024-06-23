@@ -8,7 +8,7 @@ class Location {
     required this.id,
     required this.name,
     required this.latitude,
-    required this.longitude,
+    required this.longitude
   });
 
   final int id;

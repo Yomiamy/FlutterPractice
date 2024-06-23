@@ -47,6 +47,8 @@ dependencies:
   json_annotation: ^4.6.0
   http: ^0.13.0
 
+  freezed_annotation: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -62,6 +64,8 @@ dev_dependencies:
   build_runner: ^2.0.0
   json_serializable: ^6.3.1
 
+  freezed: ^2.0.0
+
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -72,8 +76,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/image.jpg
-    - images/search_icon.png
+    - images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

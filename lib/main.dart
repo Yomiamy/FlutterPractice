@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_practice/bloc/increment_count_with_test/bloc/increment_count_bloc.dart';
 import 'package:flutter_practice/bloc/infinite_list/simple_bloc_observer.dart';
 import 'package:flutter_practice/bloc/login/bloc/authentication_bloc.dart';
 import 'package:flutter_practice/bloc/login/bloc/login_bloc.dart';
@@ -21,9 +22,7 @@ import 'package:flutter_practice/text_field/LabelTextTextField.dart';
 import 'package:flutter_practice/text_field/LengthLineLimitTextField.dart';
 import 'package:flutter_practice/text_field/SearchStaticBarTextField.dart';
 
-import 'bloc/increment_count/bloc.dart';
-import 'bloc/increment_count/observer.dart';
-import 'bloc/increment_count/view.dart';
+import 'bloc/increment_count_with_test/view/increment_count_page.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
 import 'bloc/timer/bloc/timer_view.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
@@ -54,6 +53,9 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const IncrementCountPage());
+        home: BlocProvider(
+          create: (_) => IncrementCountBloc(),
+          child: const IncrementCountPage()
+        ));
   }
 }
