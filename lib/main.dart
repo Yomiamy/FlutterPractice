@@ -21,6 +21,7 @@ import 'package:flutter_practice/text_field/InputDecorationTextFeild2.dart';
 import 'package:flutter_practice/text_field/LabelTextTextField.dart';
 import 'package:flutter_practice/text_field/LengthLineLimitTextField.dart';
 import 'package:flutter_practice/text_field/SearchStaticBarTextField.dart';
+import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
 import 'bloc/increment_count_with_test/view/increment_count_page.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
@@ -31,8 +32,16 @@ import 'ink/ClickInkWell.dart';
 import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
 
-void main() {
+Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // final todosApi = LocalStorageTodosApi(
+  //     plugin: await SharedPreferences.getInstance(),
+  // );
+  //
+  // bootstrap(todosApi: todosApi);
+
   runApp(const MyApp());
 }
 
@@ -55,7 +64,7 @@ class MyApp extends StatelessWidget {
         ),
         home: BlocProvider(
           create: (_) => IncrementCountBloc(),
-          child: const IncrementCountPage()
+          child: const BottomNavigationBarWithPageSample1()
         ));
   }
 }
