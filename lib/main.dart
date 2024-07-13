@@ -26,6 +26,7 @@ import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 import 'bloc/increment_count_with_test/view/increment_count_page.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
 import 'bloc/timer/bloc/timer_view.dart';
+import 'bottom_app_bar/bottom_app_bar_sample1.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
 import 'ink/ClickInkWell.dart';
@@ -62,9 +63,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: BlocProvider(
-          create: (_) => IncrementCountBloc(),
-          child: const BottomNavigationBarWithPageSample1()
-        ));
+        home: const BottomAppBarSample1());
   }
 }
