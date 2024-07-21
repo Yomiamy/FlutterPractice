@@ -18,6 +18,7 @@ class _PopmenuButtonTest1State extends State<PopmenuButtonTest1> {
                 shape: const ContinuousRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(16)),
                 ),
+                initialValue: "MenuItem1",
                 icon: const Icon(Icons.more_vert_rounded),
                 tooltip: "PopupMenuButton Test",
                 onSelected: (value) {
