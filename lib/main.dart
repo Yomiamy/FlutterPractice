@@ -35,6 +35,7 @@ import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
 import 'ink/ClickInkWell.dart';
 import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
+import 'lifecycle/LifecycleMonitor.dart';
 
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -66,6 +67,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const PopmenuButtonTest1());
+        home: const LifecycleMonitor());
   }
 }
