@@ -33,6 +33,7 @@ import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
 import 'inherited_widget/CounterWidget.dart';
+import 'inherited_widget/MediaQueryWdiget.dart';
 import 'ink/ClickInkWell.dart';
 import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
@@ -68,6 +69,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const CounterWidget());
+        home: const MediaQueryWdiget());
   }
 }
