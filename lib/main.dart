@@ -32,6 +32,7 @@ import 'bottom_app_bar/bottom_app_bar_sample1.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
+import 'inherited_widget/CounterWidget.dart';
 import 'ink/ClickInkWell.dart';
 import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
@@ -67,6 +68,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const LifecycleMonitor());
+        home: const CounterWidget());
   }
 }
