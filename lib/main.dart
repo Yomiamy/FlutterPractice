@@ -38,6 +38,7 @@ import 'ink/ClickInkWell.dart';
 import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
 import 'lifecycle/LifecycleMonitor.dart';
+import 'overlay/OverlayTest1.dart';
 
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -69,6 +70,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const MediaQueryWdiget());
+        home: const OverlayTest1());
   }
 }
