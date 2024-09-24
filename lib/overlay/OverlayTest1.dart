@@ -12,6 +12,11 @@ class OverlayTest1State extends State<OverlayTest1> {
 
   OverlayEntry? _overlayEntry;
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   // 創建 OverlayEntry，這裡是我們希望疊加顯示的 widget
   OverlayEntry _createOverlayEntry() {
     return OverlayEntry(
@@ -58,6 +63,9 @@ class OverlayTest1State extends State<OverlayTest1> {
           children: [
             ElevatedButton(
               onPressed: () {
+                ((context.findRenderObject() as RenderBox).size).width;
+                ((context.findRenderObject() as RenderBox).size).height;
+
                 if (_overlayEntry == null) {
                   _showOverlay();
                 }
