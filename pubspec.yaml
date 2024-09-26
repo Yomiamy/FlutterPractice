@@ -37,17 +37,22 @@ dependencies:
   bloc_concurrency: ^0.2.5
   rxdart: ^0.27.7
 
+  # Input Form
   equatable: ^2.0.5
   uuid: ^4.4.0
   formz: ^0.7.0
 
+   # Network
   dio: ^5.4.3+1
   stream_transform: ^2.1.0
-
   json_annotation: ^4.6.0
   http: ^0.13.0
-
   freezed_annotation: ^2.0.0
+
+  # Image & Camera
+  camera: ^0.11.0+2
+  path_provider: ^2.1.4
+  path: ^1.9.0
 
   local_storage_todos_api:
     path: packages/local_storage_todos_api
