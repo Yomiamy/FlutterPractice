@@ -26,6 +26,7 @@ import 'package:flutter_practice/text_field/LengthLineLimitTextField.dart';
 import 'package:flutter_practice/text_field/SearchStaticBarTextField.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
+import 'animation/AnimatedWidget.dart';
 import 'animation/AnimationTest1.dart';
 import 'bloc/increment_count_with_test/view/increment_count_page.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
@@ -72,6 +73,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const Animationtest1());
+        home: const AnimationTest2());
   }
 }
