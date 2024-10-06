@@ -28,6 +28,7 @@ import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
 import 'animation/AnimatedWidget.dart';
 import 'animation/AnimationTest1.dart';
+import 'animation/TweenAnimationBuilder.dart';
 import 'bloc/increment_count_with_test/view/increment_count_page.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
 import 'bloc/timer/bloc/timer_view.dart';
@@ -73,6 +74,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const AnimationTest2());
+        home: const AnimationTest3());
   }
 }
