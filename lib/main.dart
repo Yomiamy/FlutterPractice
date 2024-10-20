@@ -25,6 +25,7 @@ import 'package:flutter_practice/text_field/LabelTextTextField.dart';
 import 'package:flutter_practice/text_field/LengthLineLimitTextField.dart';
 import 'package:flutter_practice/text_field/SearchStaticBarTextField.dart';
 import 'package:flutter_practice/widget/const_widget_test.dart';
+import 'package:flutter_practice/widget/dialog/AlertDialogTest.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
 import 'animation/AnimatedWidget.dart';
@@ -75,6 +76,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const ConstWidgetTest());
+        home: const AlertDialogTest());
   }
 }
