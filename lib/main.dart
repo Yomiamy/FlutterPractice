@@ -32,6 +32,8 @@ import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
 import 'animation/AnimatedWidget.dart';
 import 'animation/AnimationTest1.dart';
+import 'animation/FadeTrasitionTest1.dart';
+import 'animation/OpacityAnimationTest1.dart';
 import 'animation/TweenAnimationBuilder.dart';
 import 'bloc/increment_count_with_test/view/increment_count_page.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
