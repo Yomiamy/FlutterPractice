@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class OpacityAnimationTest1 extends StatefulWidget {
-  const OpacityAnimationTest1({super.key});
+class FadeTrasitionTest1 extends StatefulWidget {
+  const FadeTrasitionTest1({super.key});
 
   @override
-  State<OpacityAnimationTest1> createState() => _OpacityAnimationTest1State();
+  State<FadeTrasitionTest1> createState() => _FadeTrasitionTest1State();
 }
 
-class _OpacityAnimationTest1State extends State<OpacityAnimationTest1> with SingleTickerProviderStateMixin {
+class _FadeTrasitionTest1State extends State<FadeTrasitionTest1> with SingleTickerProviderStateMixin {
 
   late AnimationController _animationController;
 
