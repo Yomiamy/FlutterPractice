@@ -25,6 +25,7 @@ import 'package:flutter_practice/text_field/LabelTextTextField.dart';
 import 'package:flutter_practice/text_field/LengthLineLimitTextField.dart';
 import 'package:flutter_practice/text_field/SearchStaticBarTextField.dart';
 import 'package:flutter_practice/widget/BlurTest1.dart';
+import 'package:flutter_practice/widget/BlurTest2.dart';
 import 'package:flutter_practice/widget/const_widget_test.dart';
 import 'package:flutter_practice/widget/dialog/AlertDialogTest.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
@@ -77,6 +78,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const BlurTest1());
+        home: const BlurTest2());
   }
 }
