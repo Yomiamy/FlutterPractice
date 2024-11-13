@@ -3,6 +3,8 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/gen/assets.gen.dart';
+import 'package:flutter_practice/gen/colors.gen.dart';
 
 class BlurTest2 extends StatefulWidget {
   const BlurTest2({super.key});
@@ -20,7 +22,7 @@ class _BlurTest2State extends State<BlurTest2> {
         ),
         body: ImageFiltered(
             imageFilter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-            child: Image.asset("images/image.jpg")
+            child: Assets.images.image.image()
         ));
   }
 }

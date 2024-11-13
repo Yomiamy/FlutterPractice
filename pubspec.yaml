@@ -75,6 +75,7 @@ dev_dependencies:
 
   # JSON model builder
   build_runner: ^2.0.0
+  flutter_gen_runner: any
   json_serializable: ^6.3.1
 
   freezed: ^2.0.0
@@ -86,6 +87,22 @@ dev_dependencies:
   todos_repository:
     path: packages/todos_repository
 
+
+flutter_gen:
+  output: lib/gen/ # Optional (default: lib/gen/)
+  line_length: 80 # Optional (default: 80)
+
+  # Optional
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+    rive: true
+    lottie: true
+
+  colors:
+    inputs:
+      - assets/color/colors.xml
+
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -96,7 +113,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/
+    - assets/images/
+
+#  fonts:
+#    - family: Raleway
+#      fonts:
+#        - asset: assets/fonts/Raleway-Regular.ttf
+#        - asset: assets/fonts/Raleway-Italic.ttf
+#          style: italic
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
