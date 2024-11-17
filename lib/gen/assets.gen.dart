@@ -19,8 +19,61 @@ class $AssetsImagesGen {
   AssetGenImage get searchIcon =>
       const AssetGenImage('assets/images/search_icon.png');
 
+  /// File path: assets/images/three_pig_page1.jpg
+  AssetGenImage get threePigPage1 =>
+      const AssetGenImage('assets/images/three_pig_page1.jpg');
+
+  /// File path: assets/images/three_pig_page10.jpg
+  AssetGenImage get threePigPage10 =>
+      const AssetGenImage('assets/images/three_pig_page10.jpg');
+
+  /// File path: assets/images/three_pig_page2.jpg
+  AssetGenImage get threePigPage2 =>
+      const AssetGenImage('assets/images/three_pig_page2.jpg');
+
+  /// File path: assets/images/three_pig_page3.jpg
+  AssetGenImage get threePigPage3 =>
+      const AssetGenImage('assets/images/three_pig_page3.jpg');
+
+  /// File path: assets/images/three_pig_page4.jpg
+  AssetGenImage get threePigPage4 =>
+      const AssetGenImage('assets/images/three_pig_page4.jpg');
+
+  /// File path: assets/images/three_pig_page5.jpg
+  AssetGenImage get threePigPage5 =>
+      const AssetGenImage('assets/images/three_pig_page5.jpg');
+
+  /// File path: assets/images/three_pig_page6.jpg
+  AssetGenImage get threePigPage6 =>
+      const AssetGenImage('assets/images/three_pig_page6.jpg');
+
+  /// File path: assets/images/three_pig_page7.jpg
+  AssetGenImage get threePigPage7 =>
+      const AssetGenImage('assets/images/three_pig_page7.jpg');
+
+  /// File path: assets/images/three_pig_page8.jpg
+  AssetGenImage get threePigPage8 =>
+      const AssetGenImage('assets/images/three_pig_page8.jpg');
+
+  /// File path: assets/images/three_pig_page9.jpg
+  AssetGenImage get threePigPage9 =>
+      const AssetGenImage('assets/images/three_pig_page9.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [image, searchIcon];
+  List<AssetGenImage> get values => [
+        image,
+        searchIcon,
+        threePigPage1,
+        threePigPage10,
+        threePigPage2,
+        threePigPage3,
+        threePigPage4,
+        threePigPage5,
+        threePigPage6,
+        threePigPage7,
+        threePigPage8,
+        threePigPage9
+      ];
 }
 
 class Assets {

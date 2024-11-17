@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/gen/assets.gen.dart';
 import 'package:flutter_practice/gen/colors.gen.dart';
 
+import '../gen/assets_config.dart';
+
 class BlurTest2 extends StatefulWidget {
   const BlurTest2({super.key});
 
@@ -16,13 +18,15 @@ class BlurTest2 extends StatefulWidget {
 class _BlurTest2State extends State<BlurTest2> {
   @override
   Widget build(BuildContext context) {
+    // AssetColorRes.black;
+    // AssetImageRes.image.image();
     return Scaffold(
         appBar: AppBar(
           title: const Text('BlurTest1'),
         ),
         body: ImageFiltered(
             imageFilter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-            child: Assets.images.image.image()
+            child: AssetImageRes.image.image()
         ));
   }
 }
