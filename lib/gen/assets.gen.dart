@@ -19,8 +19,21 @@ class $AssetsImagesGen {
   AssetGenImage get searchIcon =>
       const AssetGenImage('assets/images/search_icon.png');
 
+  /// File path: assets/images/three_pig_page1.jpg
+  AssetGenImage get threePigPage1 =>
+      const AssetGenImage('assets/images/three_pig_page1.jpg');
+
+  /// File path: assets/images/three_pig_page2.jpg
+  AssetGenImage get threePigPage2 =>
+      const AssetGenImage('assets/images/three_pig_page2.jpg');
+
+  /// File path: assets/images/three_pig_page3.jpg
+  AssetGenImage get threePigPage3 =>
+      const AssetGenImage('assets/images/three_pig_page3.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [image, searchIcon];
+  List<AssetGenImage> get values =>
+      [image, searchIcon, threePigPage1, threePigPage2, threePigPage3];
 }
 
 class Assets {
