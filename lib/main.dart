@@ -14,9 +14,9 @@ import 'package:flutter_practice/gesture/ImageTapWidget.dart';
 import 'package:flutter_practice/gesture/TapTextWidget.dart';
 import 'package:flutter_practice/image/image_camera_test.dart';
 import 'package:flutter_practice/ink/MaterialRoundInk.dart';
-import 'package:flutter_practice/json/DisplayJsonTest1.dart';
 import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
 import 'package:flutter_practice/scaffold_messenger/ScaffoldMessengerTrigger.dart';
+import 'package:flutter_practice/shadow/ShadowTextTest1.dart';
 import 'package:flutter_practice/text_field/CursotTextField.dart';
 import 'package:flutter_practice/text_field/FocusNodeTextField.dart';
 import 'package:flutter_practice/text_field/InputDecorationTextFeild.dart';
@@ -32,8 +32,6 @@ import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
 import 'animation/AnimatedWidget.dart';
 import 'animation/AnimationTest1.dart';
-import 'animation/OpacityAnimationTest1.dart';
-import 'animation/FadeTrasitionTest1.dart';
 import 'animation/TweenAnimationBuilder.dart';
 import 'bloc/infinite_list/view/posts_page.dart';
 import 'bloc/timer/bloc/timer_view.dart';
@@ -41,7 +39,6 @@ import 'bottom_app_bar/bottom_app_bar_sample1.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
-import 'homework/Practice_239.dart';
 import 'inherited_widget/CounterWidget.dart';
 import 'inherited_widget/MediaQueryWdiget.dart';
 import 'ink/ClickInkWell.dart';
@@ -70,8 +67,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        checkerboardOffscreenLayers: true,
-        checkerboardRasterCacheImages: true,
         title: 'Flutter Demo',
         // theme: ThemeData(
         //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -82,6 +77,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const DisplayJsonTest1());
+        home: const Shadowtexttest1());
   }
 }
