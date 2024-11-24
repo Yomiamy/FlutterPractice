@@ -12,6 +12,7 @@ import 'package:flutter_practice/draggable_scrollable_sheet/DraggableScrollableS
 import 'package:flutter_practice/gesture/ImageDoubleTapScaleWidget.dart';
 import 'package:flutter_practice/gesture/ImageTapWidget.dart';
 import 'package:flutter_practice/gesture/TapTextWidget.dart';
+import 'package:flutter_practice/homework/Practice_218.dart';
 import 'package:flutter_practice/image/image_camera_test.dart';
 import 'package:flutter_practice/ink/MaterialRoundInk.dart';
 import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
@@ -77,6 +78,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const Shadowtexttest1());
+        home: const Practice218());
   }
 }
