@@ -37,6 +37,9 @@ build_runner:
 build_watch: 
 	@dart run build_runner watch -d
 
+build_clean: 
+	@dart run build_runner clean
+
 ## Analyze the code and find issues.
 analyze_lint: 
 	@dart analyze . || (echo "Error in analyzing, some code need to optimize."; exit 99)
