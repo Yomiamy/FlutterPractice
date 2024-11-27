@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/gen/assets_config.dart';
 
 class Practice218 extends StatefulWidget {
   const Practice218({super.key});
@@ -47,46 +48,74 @@ class _Practice218State extends State<Practice218> {
                 bottom: TabBar(
                     tabs: _seasonInfoList
                         .map((seasonInfo) => Tab(
-                        icon: const Icon(Icons.access_time),
-                        text: seasonInfo.type)
-                    ).toList()
-                )
-            ),
-            body: TabBarView(children: _seasonInfoList
-                .map((seasonInfo) =>
-                _buildTabContent(seasonInfo))
-                .toList()
-            )
-            )
-        );
+                            icon: const Icon(Icons.access_time),
+                            text: seasonInfo.type))
+                        .toList())),
+            body: TabBarView(
+                children: _seasonInfoList
+                    .map((seasonInfo) => _buildTabContent(seasonInfo))
+                    .toList())));
   }
 
   Widget _buildTabContent(SeasonInfo seasonInfo) {
     return GridView.builder(
         itemBuilder: (context, index) {
           SeasonDetailInfo detailInfo = seasonInfo.detailInfos[index];
-          return Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-                children: [
-                  Image.network(detailInfo.imgUrl),
-                  Padding(
-                      padding: EdgeInsets.all(5),
-                      child:Text(detailInfo.description, maxLines: 2,
-                          overflow: TextOverflow.ellipsis)
-                  )
-                ]
-            )
-          );
+          return GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Practice218Detail(seasonDetailInfo: detailInfo)
+                ));
+              },
+              child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Image.network(detailInfo.imgUrl,
+                      loadingBuilder: (context, child, progress) {
+                    return Column(
+                      children: [
+                        (progress == null) ? child : AssetImageRes.image.imageFile,
+                        Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Text(detailInfo.description,
+                                maxLines: 2, overflow: TextOverflow.ellipsis))
+                      ],
+                    );
+                  })));
         },
         itemCount: seasonInfo.detailInfos.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10)
-    );
+            crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10));
   }
 }
+
+class Practice218Detail extends StatelessWidget {
+  final SeasonDetailInfo _seasonDetailInfo;
+
+  const Practice218Detail({super.key, required seasonDetailInfo}): _seasonDetailInfo = seasonDetailInfo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Practice218Detail"),
+        ),
+        body: Image.network(_seasonDetailInfo.imgUrl,
+            loadingBuilder: (context, child, progress) {
+              return Column(
+                children: [
+                  (progress == null) ? child : AssetImageRes.image.imageFile,
+                  Padding(
+                      padding: const EdgeInsets.all(17),
+                      child: Text(
+                          _seasonDetailInfo.description,
+                        style: const TextStyle(fontSize: 16.0),
+                      ))
+                ],
+              );
+            }));
+  }
+}
+
 
 class SeasonInfo {
   final String type;
