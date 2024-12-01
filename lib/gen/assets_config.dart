@@ -10,5 +10,6 @@ typedef AssetColorRes = ColorName;
 $AssetsImagesGen AssetImageRes = Assets.images;
 
 extension AssetGenImageExtension on AssetGenImage {
-  Image get imageFile => image();
+  Image get imageFile => image(fit: BoxFit.cover);
+  ImageProvider get fileProvider => provider();
 }
