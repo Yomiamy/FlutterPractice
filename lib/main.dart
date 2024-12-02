@@ -42,6 +42,7 @@ import 'bottom_app_bar/bottom_app_bar_sample1.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
+import 'homework/Practice_220.dart';
 import 'inherited_widget/CounterWidget.dart';
 import 'inherited_widget/MediaQueryWdiget.dart';
 import 'ink/ClickInkWell.dart';
@@ -80,6 +81,6 @@ class MyApp extends StatelessWidget {
                 primary: Color.fromRGBO(72, 74, 126, 1)
             )
         ),
-        home: const CircleImageTest1());
+        home: const Practice220());
   }
 }
