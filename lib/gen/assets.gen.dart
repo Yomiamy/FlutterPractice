@@ -12,6 +12,28 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/bg_dice_game.png
+  AssetGenImage get bgDiceGame =>
+      const AssetGenImage('assets/images/bg_dice_game.png');
+
+  /// File path: assets/images/dice_1.png
+  AssetGenImage get dice1 => const AssetGenImage('assets/images/dice_1.png');
+
+  /// File path: assets/images/dice_2.png
+  AssetGenImage get dice2 => const AssetGenImage('assets/images/dice_2.png');
+
+  /// File path: assets/images/dice_3.png
+  AssetGenImage get dice3 => const AssetGenImage('assets/images/dice_3.png');
+
+  /// File path: assets/images/dice_4.png
+  AssetGenImage get dice4 => const AssetGenImage('assets/images/dice_4.png');
+
+  /// File path: assets/images/dice_5.png
+  AssetGenImage get dice5 => const AssetGenImage('assets/images/dice_5.png');
+
+  /// File path: assets/images/dice_6.png
+  AssetGenImage get dice6 => const AssetGenImage('assets/images/dice_6.png');
+
   /// File path: assets/images/image.jpg
   AssetGenImage get image => const AssetGenImage('assets/images/image.jpg');
 
@@ -61,6 +83,13 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        bgDiceGame,
+        dice1,
+        dice2,
+        dice3,
+        dice4,
+        dice5,
+        dice6,
         image,
         searchIcon,
         threePigPage1,
