@@ -34,6 +34,22 @@ class $AssetsImagesGen {
   /// File path: assets/images/dice_6.png
   AssetGenImage get dice6 => const AssetGenImage('assets/images/dice_6.png');
 
+  /// File path: assets/images/ic_radio_1.png
+  AssetGenImage get icRadio1 =>
+      const AssetGenImage('assets/images/ic_radio_1.png');
+
+  /// File path: assets/images/ic_radio_2.png
+  AssetGenImage get icRadio2 =>
+      const AssetGenImage('assets/images/ic_radio_2.png');
+
+  /// File path: assets/images/ic_radio_3.png
+  AssetGenImage get icRadio3 =>
+      const AssetGenImage('assets/images/ic_radio_3.png');
+
+  /// File path: assets/images/ic_radio_4.png
+  AssetGenImage get icRadio4 =>
+      const AssetGenImage('assets/images/ic_radio_4.png');
+
   /// File path: assets/images/image.jpg
   AssetGenImage get image => const AssetGenImage('assets/images/image.jpg');
 
@@ -90,6 +106,10 @@ class $AssetsImagesGen {
         dice4,
         dice5,
         dice6,
+        icRadio1,
+        icRadio2,
+        icRadio3,
+        icRadio4,
         image,
         searchIcon,
         threePigPage1,
