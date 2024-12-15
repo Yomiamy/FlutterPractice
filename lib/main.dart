@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/bloc/infinite_list/simple_bloc_observer.dart';
@@ -13,6 +14,7 @@ import 'package:flutter_practice/gesture/ImageDoubleTapScaleWidget.dart';
 import 'package:flutter_practice/gesture/ImageTapWidget.dart';
 import 'package:flutter_practice/gesture/TapTextWidget.dart';
 import 'package:flutter_practice/homework/Practice_218.dart';
+import 'package:flutter_practice/homework/Practice_227.dart';
 import 'package:flutter_practice/image/image_camera_test.dart';
 import 'package:flutter_practice/ink/MaterialRoundInk.dart';
 import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
@@ -71,17 +73,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const CupertinoApp(
         title: 'Flutter Demo',
         // theme: ThemeData(
         //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         //   useMaterial3: true,
         // ),
-        theme: ThemeData(
-            colorScheme: const ColorScheme.light(
-                primary: Color.fromRGBO(72, 74, 126, 1)
-            )
-        ),
-        home: const Practice168());
+        // theme: ThemeData(
+        //     colorScheme: const ColorScheme.light(
+        //         primary: Color.fromRGBO(72, 74, 126, 1)
+        //     )
+        // ),
+        home: Practice227());
   }
 }
