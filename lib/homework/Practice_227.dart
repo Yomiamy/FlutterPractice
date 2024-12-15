@@ -53,9 +53,13 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   int _quizIndex = 0;
+
+  int _answerState = -1;
+
   set index(int newIndex) {
     _quizIndex = newIndex;
   }
+
   int get index {
     return _quizIndex;
   }
@@ -90,8 +94,7 @@ class _QuizPageState extends State<QuizPage> {
                                 color: CupertinoColors.white,
                                 fontSize: 26)),
                         const SizedBox(height: 40),
-                        Text(
-                            "${_quiz.results?[_quizIndex].question}",
+                        Text("${_quiz.results?[_quizIndex].question}",
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: CupertinoColors.white,
@@ -105,12 +108,19 @@ class _QuizPageState extends State<QuizPage> {
                                 height: 50,
                                 child: GestureDetector(
                                     onTap: () {
-                                      setState(() {
-                                        _quizIndex = (_quizIndex <
-                                                _quiz.results!.length - 1)
-                                            ? ++_quizIndex
-                                            : _quizIndex;
-                                      });
+                                      if (_quiz.results?[_quizIndex].correctAnswer != "True") {
+                                        setState(() {
+                                          _answerState = 1;
+                                        });
+                                      } else {
+                                        _answerState = -1;
+                                        setState(() {
+                                          _quizIndex = (_quizIndex <
+                                                  _quiz.results!.length - 1)
+                                              ? ++_quizIndex
+                                              : _quizIndex;
+                                        });
+                                      }
                                     },
                                     child: AssetImageRes.o.imageFile)),
                             const SizedBox(width: 20),
@@ -119,14 +129,30 @@ class _QuizPageState extends State<QuizPage> {
                                 height: 50,
                                 child: GestureDetector(
                                     onTap: () {
-                                      setState(() {
-                                        _quizIndex = (_quizIndex <
-                                                _quiz.results!.length - 1)
-                                            ? ++_quizIndex
-                                            : _quizIndex;
-                                      });
+                                      if (_quiz.results?[_quizIndex].correctAnswer != "False") {
+                                        setState(() {
+                                          _answerState = 1;
+                                        });
+                                      } else {
+                                        setState(() {
+                                          _answerState = -1;
+                                          _quizIndex = (_quizIndex <
+                                                  _quiz.results!.length - 1)
+                                              ? ++_quizIndex
+                                              : _quizIndex;
+                                        });
+                                      }
                                     },
-                                    child: AssetImageRes.x.imageFile))
+                                    child: AssetImageRes.x.imageFile)),
+                            const SizedBox(width: 20),
+                            SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: Visibility(
+                                  visible: _answerState != -1,
+                                  child: (_answerState == 0) ? AssetImageRes.happylight.imageFile : AssetImageRes.wrong.imageFile
+                              ),
+                            )
                           ],
                         )
                       ]));
