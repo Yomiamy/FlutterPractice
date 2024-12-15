@@ -45,7 +45,7 @@ dependencies:
    # Network
   dio: ^5.4.3+1
   stream_transform: ^2.1.0
-  json_annotation: ^4.6.0
+  json_annotation: ^4.9.0
   http: ^0.13.0
   freezed_annotation: ^2.0.0
 
@@ -55,6 +55,10 @@ dependencies:
   path: ^1.9.0
 
   audioplayers: ^6.1.0
+
+  # retrofit
+  retrofit: ^4.4.1
+  logger: ^2.5.0  # for logging purpose
 
   local_storage_todos_api:
     path: packages/local_storage_todos_api
@@ -76,9 +80,12 @@ dev_dependencies:
   mockingjay: ^0.5.0
 
   # JSON model builder
-  build_runner: ^2.0.0
+  build_runner: ^2.4.13
   flutter_gen_runner: any
-  json_serializable: ^6.3.1
+  json_serializable: ^6.9.0
+
+  # retrofit
+  retrofit_generator: ^9.1.5
 
   freezed: ^2.0.0
 
