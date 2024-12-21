@@ -1,0 +1,92 @@
+{
+    // 使用 IntelliSense 以得知可用的屬性。
+    // 暫留以檢視現有屬性的描述。
+    // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FlutterPractice",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "FlutterPractice (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "FlutterPractice (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "local_storage_todos_api",
+            "cwd": "packages/local_storage_todos_api",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "local_storage_todos_api (profile mode)",
+            "cwd": "packages/local_storage_todos_api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "local_storage_todos_api (release mode)",
+            "cwd": "packages/local_storage_todos_api",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "todos_api",
+            "cwd": "packages/todos_api",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "todos_repository",
+            "cwd": "packages/todos_repository",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "todos_repository (profile mode)",
+            "cwd": "packages/todos_repository",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "todos_repository (release mode)",
+            "cwd": "packages/todos_repository",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "iPhone",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "F8EBF3C9-D6B4-479E-9407-1AC67AF4B493"
+        },
+        {
+            "name": "Android",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+    ],
+    "compounds": [
+        {
+            "name": "All Devices",
+            "configurations": [
+                "Android",
+                "iPhone"
+            ]
+        }
+    ]
+}
