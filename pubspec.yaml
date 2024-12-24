@@ -46,7 +46,7 @@ dependencies:
   dio: ^5.4.3+1
   stream_transform: ^2.1.0
   json_annotation: ^4.9.0
-  http: ^0.13.0
+  http: ^1.0.0
   freezed_annotation: ^2.0.0
 
   # Image & Camera
@@ -86,8 +86,13 @@ dev_dependencies:
 
   # retrofit
   retrofit_generator: ^9.1.5
-
   freezed: ^2.0.0
+
+  # url
+  url_launcher: ^6.2.5
+
+  # google font
+  google_fonts: ^6.2.1
 
   local_storage_todos_api:
     path: packages/local_storage_todos_api

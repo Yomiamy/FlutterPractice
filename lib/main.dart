@@ -34,6 +34,7 @@ import 'package:flutter_practice/widget/CircleImageTest1.dart';
 import 'package:flutter_practice/widget/const_widget_test.dart';
 import 'package:flutter_practice/widget/dialog/AlertDialogTest.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'animation/AnimatedWidget.dart';
 import 'animation/AnimationTest1.dart';
@@ -44,8 +45,10 @@ import 'bottom_app_bar/bottom_app_bar_sample1.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
+import 'gen/assets.gen.dart';
 import 'homework/Practice_168.dart';
 import 'homework/Practice_220.dart';
+import 'homework/Practice_4.dart';
 import 'inherited_widget/CounterWidget.dart';
 import 'inherited_widget/MediaQueryWdiget.dart';
 import 'ink/ClickInkWell.dart';
@@ -73,8 +76,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
+    return MaterialApp(
         title: 'Flutter Demo',
+        theme: ThemeData(
+            textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.transparent),
+            useMaterial3: true),
         // theme: ThemeData(
         //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         //   useMaterial3: true,
@@ -84,6 +91,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: Practice227());
+        home: const Practice4());
   }
 }
