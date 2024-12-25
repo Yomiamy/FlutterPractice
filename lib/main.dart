@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/bloc/infinite_list/simple_bloc_observer.dart';
 import 'package:flutter_practice/bloc/login/bloc/authentication_bloc.dart';
@@ -34,7 +35,6 @@ import 'package:flutter_practice/widget/CircleImageTest1.dart';
 import 'package:flutter_practice/widget/const_widget_test.dart';
 import 'package:flutter_practice/widget/dialog/AlertDialogTest.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'animation/AnimatedWidget.dart';
 import 'animation/AnimationTest1.dart';
@@ -45,10 +45,9 @@ import 'bottom_app_bar/bottom_app_bar_sample1.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
-import 'gen/assets.gen.dart';
 import 'homework/Practice_168.dart';
 import 'homework/Practice_220.dart';
-import 'homework/Practice_4.dart';
+import 'image/ImageScaleTest.dart';
 import 'inherited_widget/CounterWidget.dart';
 import 'inherited_widget/MediaQueryWdiget.dart';
 import 'ink/ClickInkWell.dart';
@@ -77,20 +76,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
         theme: ThemeData(
-            textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.transparent),
-            useMaterial3: true),
-        // theme: ThemeData(
-        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        //   useMaterial3: true,
-        // ),
-        // theme: ThemeData(
-        //     colorScheme: const ColorScheme.light(
-        //         primary: Color.fromRGBO(72, 74, 126, 1)
-        //     )
-        // ),
-        home: const Practice4());
+            useMaterial3: true,
+            appBarTheme: const AppBarTheme(
+                backgroundColor: Colors.purple,
+                systemOverlayStyle: const SystemUiOverlayStyle(
+                    statusBarColor: Colors.purple,        // 狀態欄背景色
+                    statusBarIconBrightness: Brightness.light,  // 狀態欄圖標顏色（dark=黑色，light=白色）
+                ),
+            ),
+        ),
+        home: ImageScaleTest());
   }
 }
