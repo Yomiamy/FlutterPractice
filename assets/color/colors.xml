@@ -1,3 +1,5 @@
 <resource>
+    <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="green">#1C3822</color>
 </resource>

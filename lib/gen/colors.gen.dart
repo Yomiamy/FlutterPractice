@@ -15,4 +15,10 @@ class ColorName {
 
   /// Color: #000000
   static const Color black = Color(0xFF000000);
+
+  /// Color: #1C3822
+  static const Color green = Color(0xFF1C3822);
+
+  /// Color: #ffffff
+  static const Color white = Color(0xFFFFFFFF);
 }

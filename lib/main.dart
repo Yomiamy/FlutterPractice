@@ -16,6 +16,7 @@ import 'package:flutter_practice/gesture/ImageTapWidget.dart';
 import 'package:flutter_practice/gesture/TapTextWidget.dart';
 import 'package:flutter_practice/homework/Practice_218.dart';
 import 'package:flutter_practice/homework/Practice_227.dart';
+import 'package:flutter_practice/homework/Practice_6.dart';
 import 'package:flutter_practice/image/image_camera_test.dart';
 import 'package:flutter_practice/ink/MaterialRoundInk.dart';
 import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
@@ -55,6 +56,7 @@ import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
 import 'lifecycle/LifecycleMonitor.dart';
 import 'overlay/OverlayTest1.dart';
+import 'package:flutter_practice/column/column_spacer_test1.dart';
 
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -76,16 +78,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        // theme: ThemeData(
+        //     textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
+        //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.transparent),
+        //     useMaterial3: true),
         theme: ThemeData(
-            useMaterial3: true,
-            appBarTheme: const AppBarTheme(
-                backgroundColor: Colors.purple,
-                systemOverlayStyle: const SystemUiOverlayStyle(
-                    statusBarColor: Colors.purple,        // 狀態欄背景色
-                    statusBarIconBrightness: Brightness.light,  // 狀態欄圖標顏色（dark=黑色，light=白色）
-                ),
-            ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
         ),
-        home: ImageScaleTest());
+        // theme: ThemeData(
+        //     colorScheme: const ColorScheme.light(
+        //         primary: Color.fromRGBO(72, 74, 126, 1)
+        //     )
+        // ),
+        home: const Practice6());
   }
 }
