@@ -55,6 +55,7 @@ import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
 import 'lifecycle/LifecycleMonitor.dart';
 import 'overlay/OverlayTest1.dart';
+import 'package:flutter_practice/column/column_spacer_test1.dart';
 
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -77,15 +78,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
-            useMaterial3: true,
-            appBarTheme: const AppBarTheme(
-                backgroundColor: Colors.purple,
-                systemOverlayStyle: const SystemUiOverlayStyle(
-                    statusBarColor: Colors.purple,        // 狀態欄背景色
-                    statusBarIconBrightness: Brightness.light,  // 狀態欄圖標顏色（dark=黑色，light=白色）
-                ),
-            ),
-        ),
-        home: ImageScaleTest());
+            textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.transparent),
+            useMaterial3: true),
+        // theme: ThemeData(
+        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        //   useMaterial3: true,
+        // ),
+        // theme: ThemeData(
+        //     colorScheme: const ColorScheme.light(
+        //         primary: Color.fromRGBO(72, 74, 126, 1)
+        //     )
+        // ),
+        home: const ColumnSpacerTest1());
   }
 }

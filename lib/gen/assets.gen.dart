@@ -12,11 +12,74 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/MOA_logo.png
+  AssetGenImage get mOALogo =>
+      const AssetGenImage('assets/images/MOA_logo.png');
+
+  /// File path: assets/images/MOG_banner.jpg
+  AssetGenImage get mOGBanner =>
+      const AssetGenImage('assets/images/MOG_banner.jpg');
+
   /// File path: assets/images/O.png
   AssetGenImage get o => const AssetGenImage('assets/images/O.png');
 
+  /// File path: assets/images/Profile.jpg
+  AssetGenImage get profile => const AssetGenImage('assets/images/Profile.jpg');
+
   /// File path: assets/images/X.png
   AssetGenImage get x => const AssetGenImage('assets/images/X.png');
+
+  /// File path: assets/images/animal_pic_1.jpg
+  AssetGenImage get animalPic1 =>
+      const AssetGenImage('assets/images/animal_pic_1.jpg');
+
+  /// File path: assets/images/animal_pic_10.webp
+  AssetGenImage get animalPic10 =>
+      const AssetGenImage('assets/images/animal_pic_10.webp');
+
+  /// File path: assets/images/animal_pic_11.jpeg
+  AssetGenImage get animalPic11 =>
+      const AssetGenImage('assets/images/animal_pic_11.jpeg');
+
+  /// File path: assets/images/animal_pic_12.jpg
+  AssetGenImage get animalPic12 =>
+      const AssetGenImage('assets/images/animal_pic_12.jpg');
+
+  /// File path: assets/images/animal_pic_13.jpg
+  AssetGenImage get animalPic13 =>
+      const AssetGenImage('assets/images/animal_pic_13.jpg');
+
+  /// File path: assets/images/animal_pic_2.jpg
+  AssetGenImage get animalPic2 =>
+      const AssetGenImage('assets/images/animal_pic_2.jpg');
+
+  /// File path: assets/images/animal_pic_3.png
+  AssetGenImage get animalPic3 =>
+      const AssetGenImage('assets/images/animal_pic_3.png');
+
+  /// File path: assets/images/animal_pic_4.jpg
+  AssetGenImage get animalPic4 =>
+      const AssetGenImage('assets/images/animal_pic_4.jpg');
+
+  /// File path: assets/images/animal_pic_5.jpg
+  AssetGenImage get animalPic5 =>
+      const AssetGenImage('assets/images/animal_pic_5.jpg');
+
+  /// File path: assets/images/animal_pic_6.jpg
+  AssetGenImage get animalPic6 =>
+      const AssetGenImage('assets/images/animal_pic_6.jpg');
+
+  /// File path: assets/images/animal_pic_7.jpg
+  AssetGenImage get animalPic7 =>
+      const AssetGenImage('assets/images/animal_pic_7.jpg');
+
+  /// File path: assets/images/animal_pic_8.jpg
+  AssetGenImage get animalPic8 =>
+      const AssetGenImage('assets/images/animal_pic_8.jpg');
+
+  /// File path: assets/images/animal_pic_9.jpeg
+  AssetGenImage get animalPic9 =>
+      const AssetGenImage('assets/images/animal_pic_9.jpeg');
 
   /// File path: assets/images/bg_dice_game.png
   AssetGenImage get bgDiceGame =>
@@ -75,6 +138,62 @@ class $AssetsImagesGen {
   AssetGenImage get openlight =>
       const AssetGenImage('assets/images/openlight-.png');
 
+  /// File path: assets/images/plant_pic_1.jpg
+  AssetGenImage get plantPic1 =>
+      const AssetGenImage('assets/images/plant_pic_1.jpg');
+
+  /// File path: assets/images/plant_pic_10.jpg
+  AssetGenImage get plantPic10 =>
+      const AssetGenImage('assets/images/plant_pic_10.jpg');
+
+  /// File path: assets/images/plant_pic_11.jpg
+  AssetGenImage get plantPic11 =>
+      const AssetGenImage('assets/images/plant_pic_11.jpg');
+
+  /// File path: assets/images/plant_pic_12.jpg
+  AssetGenImage get plantPic12 =>
+      const AssetGenImage('assets/images/plant_pic_12.jpg');
+
+  /// File path: assets/images/plant_pic_13.jpg
+  AssetGenImage get plantPic13 =>
+      const AssetGenImage('assets/images/plant_pic_13.jpg');
+
+  /// File path: assets/images/plant_pic_14.jpg
+  AssetGenImage get plantPic14 =>
+      const AssetGenImage('assets/images/plant_pic_14.jpg');
+
+  /// File path: assets/images/plant_pic_2.jpg
+  AssetGenImage get plantPic2 =>
+      const AssetGenImage('assets/images/plant_pic_2.jpg');
+
+  /// File path: assets/images/plant_pic_3.jpg
+  AssetGenImage get plantPic3 =>
+      const AssetGenImage('assets/images/plant_pic_3.jpg');
+
+  /// File path: assets/images/plant_pic_4.jpg
+  AssetGenImage get plantPic4 =>
+      const AssetGenImage('assets/images/plant_pic_4.jpg');
+
+  /// File path: assets/images/plant_pic_5.jpg
+  AssetGenImage get plantPic5 =>
+      const AssetGenImage('assets/images/plant_pic_5.jpg');
+
+  /// File path: assets/images/plant_pic_6.jpg
+  AssetGenImage get plantPic6 =>
+      const AssetGenImage('assets/images/plant_pic_6.jpg');
+
+  /// File path: assets/images/plant_pic_7.jpg
+  AssetGenImage get plantPic7 =>
+      const AssetGenImage('assets/images/plant_pic_7.jpg');
+
+  /// File path: assets/images/plant_pic_8.jpg
+  AssetGenImage get plantPic8 =>
+      const AssetGenImage('assets/images/plant_pic_8.jpg');
+
+  /// File path: assets/images/plant_pic_9.jpg
+  AssetGenImage get plantPic9 =>
+      const AssetGenImage('assets/images/plant_pic_9.jpg');
+
   /// File path: assets/images/search_icon.png
   AssetGenImage get searchIcon =>
       const AssetGenImage('assets/images/search_icon.png');
@@ -124,8 +243,24 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        mOALogo,
+        mOGBanner,
         o,
+        profile,
         x,
+        animalPic1,
+        animalPic10,
+        animalPic11,
+        animalPic12,
+        animalPic13,
+        animalPic2,
+        animalPic3,
+        animalPic4,
+        animalPic5,
+        animalPic6,
+        animalPic7,
+        animalPic8,
+        animalPic9,
         bgDiceGame,
         classroom,
         dice1,
@@ -142,6 +277,20 @@ class $AssetsImagesGen {
         icRadio4,
         image,
         openlight,
+        plantPic1,
+        plantPic10,
+        plantPic11,
+        plantPic12,
+        plantPic13,
+        plantPic14,
+        plantPic2,
+        plantPic3,
+        plantPic4,
+        plantPic5,
+        plantPic6,
+        plantPic7,
+        plantPic8,
+        plantPic9,
         searchIcon,
         threePigPage1,
         threePigPage10,
