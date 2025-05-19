@@ -21,13 +21,13 @@ get:
 
 ## Run app.
 run_dev_debug: 
-	@flutter run --debug --flavor dev --target ./lib/main_dev.dart || (echo "Error in running dev."; exit 99)
+	@flutter run --debug --flavor dev --target ./lib/main.dart || (echo "Error in running dev."; exit 99)
 
 run_dev_profile: 
-	@flutter run --profile --flavor dev --target ./lib/main_dev.dart || (echo "Error in running dev."; exit 99)
+	@flutter run --profile --flavor dev --target ./lib/main.dart || (echo "Error in running dev."; exit 99)
 
 run_dev_prod: 
-	@flutter run --release --flavor dev --target ./lib/main_dev.dart || (echo "Error in running dev."; exit 99)
+	@flutter run --release --flavor dev --target ./lib/main.dart || (echo "Error in running dev."; exit 99)
 
 ## Run build_runner and generate files automatically.
 build_runner: 
