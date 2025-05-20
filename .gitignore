@@ -1,3 +1,17 @@
+# Flutter build
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.dart_tool/
+
+# Android
+android/.gradle/
+android/app/build/
+android/app/.cxx/
+
+
 # Miscellaneous
 *.class
 *.log

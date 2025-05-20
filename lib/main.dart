@@ -20,6 +20,7 @@ import 'package:flutter_practice/homework/Practice_6.dart';
 import 'package:flutter_practice/image/image_camera_test.dart';
 import 'package:flutter_practice/ink/MaterialRoundInk.dart';
 import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
+import 'package:flutter_practice/route/route_page_test1.dart';
 import 'package:flutter_practice/scaffold_messenger/ScaffoldMessengerTrigger.dart';
 import 'package:flutter_practice/shadow/ShadowTextTest1.dart';
 import 'package:flutter_practice/text_field/CursotTextField.dart';
@@ -91,6 +92,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const Practice6());
+        home: const RoutePageTest1());
   }
 }
