@@ -8,12 +8,16 @@ class RoutePageTest1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const String flavorConfig = String.fromEnvironment('FLAVOR', defaultValue: 'None');
     return Scaffold(
         appBar: AppBar(
-          title: const Text('appbarTitle'),
+          title: const Text("RoutePageTest1-$flavorConfig"),
         ),
         body: const Center(
-          child: Text('RoutePageTest1'),
+          child: Text(
+              'RoutePageTest1-$flavorConfig',
+               style: TextStyle(fontSize: 30),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
             onPressed: () async {
