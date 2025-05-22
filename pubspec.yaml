@@ -1,65 +1,64 @@
 name: flutter_practice
-description: A new Flutter project.
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+description: 一個新的 Flutter 專案
+# 以下行防止此套件意外發布到 pub.dev，適用於私有套件。如果需要發布到 pub.dev，請移除此行。
+publish_to: 'none'
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
+# 定義應用的版本和構建號
+# 版本號格式為三段式（例如：1.2.43），可選的構建號用 "+" 分隔（例如：1.2.43+1）
+# Android 上：build-name 用作 versionName，build-number 用作 versionCode
+# iOS 上：build-name 用作 CFBundleShortVersionString，build-number 用作 CFBundleVersion
+# Windows 上：build-name 分別作為產品版本和文件版本的主次版本，而 build-number 作為後綴
 version: 1.0.0+1
 
+# 定義 Dart SDK 的版本範圍
 environment:
   sdk: '>=3.0.2 <4.0.0'
 
+# 項目的依賴項
 dependencies:
   flutter:
     sdk: flutter
 
-  # Cupertino icon
-  cupertino_icons: ^1.0.8
-
-  # Bottom draggable container
+  # 底部可拖動容器
   drag_container: ^2.0.0
 
-  # Bloc
+  # 狀態管理工具包
   bloc: ^8.1.4
   flutter_bloc: ^8.1.5
   bloc_concurrency: ^0.2.5
   rxdart: ^0.27.7
 
-  # Input Form
+  # 表單處理
   equatable: ^2.0.5
   uuid: ^4.4.0
   formz: ^0.7.0
 
-   # Network
+  # 網絡通信相關套件
   dio: ^5.4.3+1
   stream_transform: ^2.1.0
   json_annotation: ^4.9.0
   http: ^1.0.0
   freezed_annotation: ^2.0.0
 
-  # Image & Camera
+  # Retrofit HTTP 客戶端生成器
+  retrofit: ^4.4.1
+  logger: ^2.5.0 # 用於日誌輸出
+
+  # 圖片與相機處理
   camera: ^0.11.0+2
   path_provider: ^2.1.4
   path: ^1.9.0
 
+  # 音頻處理工具
   audioplayers: ^6.1.0
 
-  # retrofit
-  retrofit: ^4.4.1
-  logger: ^2.5.0  # for logging purpose
+  # Url文字樣式顯示
+  flutter_linkify: ^6.0.0
 
+  # 網址啟動支持
+  url_launcher: ^6.2.5
+
+  # 本地存儲套件（使用專案內的 packages）
   local_storage_todos_api:
     path: packages/local_storage_todos_api
   todos_api:
@@ -67,33 +66,35 @@ dependencies:
   todos_repository:
     path: packages/todos_repository
 
+# 開發時依賴的套件
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.2
 
-  # Bloc
+  # Bloc 測試工具
   bloc_test: ^9.1.7
   mocktail: ^1.0.3
   test: ^1.24.9
   mockingjay: ^0.5.0
 
-  # JSON model builder
+  # JSON 模型生成工具
   build_runner: ^2.4.13
-  flutter_gen_runner: any
   json_serializable: ^6.9.0
+  # 圖像, 色碼,
+  flutter_gen_runner: any
 
-  # retrofit
+  # Retrofit 生成器
   retrofit_generator: ^9.1.5
+
+  # Freezed 生成器
   freezed: ^2.0.0
 
-  # url
-  url_launcher: ^6.2.5
-
-  # google font
+  # Google 字體工具
   google_fonts: ^6.2.1
 
+  # 本地存儲和存儲套件（開發工具包路徑）
   local_storage_todos_api:
     path: packages/local_storage_todos_api
   todos_api:
@@ -101,12 +102,12 @@ dev_dependencies:
   todos_repository:
     path: packages/todos_repository
 
-
+# Flutter 自動生成相關的配置
 flutter_gen:
-  output: lib/gen/ # Optional (default: lib/gen/)
-  line_length: 80 # Optional (default: 80)
+  output: lib/gen/ # 自動生成代碼的輸出路徑 (默認為 lib/gen/)
+  line_length: 80 # 每行的最大字符長度 (默認為 80)
 
-  # Optional
+  # 集成多種類型的資源支持 (選填項)
   integrations:
     flutter_svg: true
     flare_flutter: true
@@ -115,49 +116,21 @@ flutter_gen:
 
   colors:
     inputs:
-      - assets/color/colors.xml
+      - assets/color/colors.xml # 定義顏色的 XML 檔案
 
-# The following section is specific to Flutter packages.
+# Flutter 專有的配置項
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  # 引入 Material Design 圖標字體以支持 material Icons 類
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
+  # 資源文件，如圖像，可以在此定義
   assets:
     - assets/images/
 
-#  fonts:
-#    - family: Raleway
-#      fonts:
-#        - asset: assets/fonts/Raleway-Regular.ttf
-#        - asset: assets/fonts/Raleway-Italic.ttf
-#          style: italic
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+  # 字體設定（如需自定義字體，可以取消以下的註解）
   # fonts:
-  #   - family: Schyler
+  #   - family: Raleway
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #       - asset: assets/fonts/Raleway-Regular.ttf
+  #       - asset: assets/fonts/Raleway-Italic.ttf
   #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
