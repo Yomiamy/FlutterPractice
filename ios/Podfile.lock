@@ -4,9 +4,13 @@ PODS:
   - camera_avfoundation (0.0.1):
     - Flutter
   - Flutter (1.0.0)
+  - image_picker_ios (0.0.1):
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - permission_handler_apple (9.3.0):
+    - Flutter
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -17,7 +21,9 @@ DEPENDENCIES:
   - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
   - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - Flutter (from `Flutter`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
@@ -28,8 +34,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/camera_avfoundation/ios"
   Flutter:
     :path: Flutter
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   url_launcher_ios:
@@ -39,10 +49,12 @@ SPEC CHECKSUMS:
   audioplayers_darwin: 877d9a4d06331c5c374595e46e16453ac7eafa40
   camera_avfoundation: adb0207d868b2d873e895371d88448399ab78d87
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
 
-PODFILE CHECKSUM: 881b33c6b6b7cde6fa2b5ca0a141325729bf7f73
+PODFILE CHECKSUM: a313dc1be568aee01795c777df1b4776e3f709f2
 
 COCOAPODS: 1.16.2
