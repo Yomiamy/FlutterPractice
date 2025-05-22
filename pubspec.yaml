@@ -19,9 +19,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Cupertino 圖標庫
-  cupertino_icons: ^1.0.8
-
   # 底部可拖動容器
   drag_container: ^2.0.0
 
@@ -43,6 +40,10 @@ dependencies:
   http: ^1.0.0
   freezed_annotation: ^2.0.0
 
+  # Retrofit HTTP 客戶端生成器
+  retrofit: ^4.4.1
+  logger: ^2.5.0 # 用於日誌輸出
+
   # 圖片與相機處理
   camera: ^0.11.0+2
   path_provider: ^2.1.4
@@ -51,9 +52,11 @@ dependencies:
   # 音頻處理工具
   audioplayers: ^6.1.0
 
-  # Retrofit HTTP 客戶端生成器
-  retrofit: ^4.4.1
-  logger: ^2.5.0 # 用於日誌輸出
+  # Url文字樣式顯示
+  flutter_linkify: ^6.0.0
+
+  # 網址啟動支持
+  url_launcher: ^6.2.5
 
   # 本地存儲套件（使用專案內的 packages）
   local_storage_todos_api:
@@ -78,17 +81,15 @@ dev_dependencies:
 
   # JSON 模型生成工具
   build_runner: ^2.4.13
-  flutter_gen_runner: any
   json_serializable: ^6.9.0
+  # 圖像, 色碼,
+  flutter_gen_runner: any
 
   # Retrofit 生成器
   retrofit_generator: ^9.1.5
 
   # Freezed 生成器
   freezed: ^2.0.0
-
-  # 網址啟動支持
-  url_launcher: ^6.2.5
 
   # Google 字體工具
   google_fonts: ^6.2.1
