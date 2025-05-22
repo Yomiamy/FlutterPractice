@@ -54,9 +54,14 @@ dependencies:
 
   # Url文字樣式顯示
   flutter_linkify: ^6.0.0
-
   # 網址啟動支持
   url_launcher: ^6.2.5
+
+  # 權限要求處理
+  permission_handler: ^12.0.0+1
+  # 照片選擇工具
+  image_picker: ^1.1.2
+
 
   # 本地存儲套件（使用專案內的 packages）
   local_storage_todos_api:
