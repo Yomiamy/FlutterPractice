@@ -23,6 +23,7 @@ import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
 import 'package:flutter_practice/route/route_page_test1.dart';
 import 'package:flutter_practice/scaffold_messenger/ScaffoldMessengerTrigger.dart';
 import 'package:flutter_practice/shadow/ShadowTextTest1.dart';
+import 'package:flutter_practice/layout/stack_test1.dart';
 import 'package:flutter_practice/text_field/CursotTextField.dart';
 import 'package:flutter_practice/text_field/FocusNodeTextField.dart';
 import 'package:flutter_practice/text_field/InputDecorationTextFeild.dart';
@@ -45,8 +46,11 @@ import 'bloc/infinite_list/view/posts_page.dart';
 import 'bloc/timer/bloc/timer_view.dart';
 import 'bottom_app_bar/bottom_app_bar_sample1.dart';
 import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
+import 'column/column_test1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
+import 'layout/align_test1.dart';
+import 'layout/flex_test1.dart';
 import 'homework/Practice_168.dart';
 import 'homework/Practice_220.dart';
 import 'image/ImageScaleTest.dart';
@@ -92,6 +96,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const RoutePageTest1());
+        home: const AlignTest1());
   }
 }
