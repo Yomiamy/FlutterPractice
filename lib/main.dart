@@ -65,6 +65,8 @@ import 'ink/ClickInkWell.dart';
 import 'ink/MaterialBgInkWell.dart';
 import 'ink/MaterialInk.dart';
 import 'lifecycle/LifecycleMonitor.dart';
+import 'lifecycle/inherited_widget_test1.dart';
+import 'lifecycle/will_pop_scope_test1.dart';
 import 'listview/InfiniteListTest.dart';
 import 'listview/ListViewTest1.dart';
 import 'listview/ListViewTest2.dart';
@@ -106,6 +108,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const CustomScrollViewTest());
+        home: const InheritedWidgetTest1());
   }
 }

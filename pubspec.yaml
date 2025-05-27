@@ -62,6 +62,8 @@ dependencies:
   # 照片選擇工具
   image_picker: ^1.1.2
 
+  # Toast提示套件
+  toast: ^0.3.0
 
   # 本地存儲套件（使用專案內的 packages）
   local_storage_todos_api:
