@@ -17,6 +17,7 @@ import 'package:flutter_practice/dialog/general_dialog_test1.dart';
 import 'package:flutter_practice/dialog/simple_dialog_test1.dart';
 import 'package:flutter_practice/draggable_scrollable_sheet/BottomDragWidget.dart';
 import 'package:flutter_practice/draggable_scrollable_sheet/DraggableScrollableSheetPage.dart';
+import 'package:flutter_practice/form/form_field_test1.dart';
 import 'package:flutter_practice/gesture/ImageDoubleTapScaleWidget.dart';
 import 'package:flutter_practice/gesture/ImageTapWidget.dart';
 import 'package:flutter_practice/gesture/TapTextWidget.dart';
@@ -54,6 +55,11 @@ import 'dialog/alert_dialog_test2_loading.dart';
 import 'dialog/modal_bottom_sheet_dialog_test1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
+import 'form/custom_input_form_field.dart';
+import 'form/custom_input_form_field_test1.dart';
+import 'form/form_field_test2.dart';
+import 'form/text_field_test1.dart';
+import 'gesture/gesture_test1.dart';
 import 'layout/align_test1.dart';
 import 'layout/flex_test1.dart';
 import 'homework/Practice_168.dart';
@@ -106,6 +112,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const ProviderTest1());
+        home: const CustomInputFormFieldTest1());
   }
 }
