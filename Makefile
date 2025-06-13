@@ -23,11 +23,11 @@ get:
 run_dev_debug_all:
 	@flutter run --debug --flavor dev -d all
 
-run_beta_debug_all:
-	@flutter run --debug --flavor beta -d all
+run_beta_profile_all:
+	@flutter run --profile --flavor beta -d all
 
-run_prod_debug_all:
-	@flutter run --debug --flavor prod -d all
+run_prod_release_all:
+	@flutter run --release --flavor prod -d all
 
 # run_dev_debug:
 # 	@flutter run --debug --flavor dev --target ./lib/main.dart || (echo "Error in running dev."; exit 99)
