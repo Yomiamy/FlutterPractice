@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/route/DataResult.dart';
 
-class RoutePageWithResultTest3 extends StatelessWidget {
-  const RoutePageWithResultTest3({super.key});
+class RoutePageWithResultTest1 extends StatelessWidget {
+  const RoutePageWithResultTest1({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('RoutePageTest2'),
+          title: const Text('RoutePageWithResultTest1'),
         ),
         body: const Center(
-          child: Text('RoutePageTest2'),
+          child: Text('RoutePageWithResultTest1'),
         ),
         floatingActionButton: FloatingActionButton(
             onPressed: () {

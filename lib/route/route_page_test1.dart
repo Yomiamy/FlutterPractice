@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/route/DataResult.dart';
-import 'package:flutter_practice/route/route_page_test2.dart';
-import 'package:flutter_practice/route/route_page_with_result_test3.dart';
+import 'package:flutter_practice/route/route_page_with_result_test1.dart';
 
 class RoutePageTest1 extends StatelessWidget {
   const RoutePageTest1({super.key});
@@ -24,7 +23,7 @@ class RoutePageTest1 extends StatelessWidget {
               DataResult result = await Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const RoutePageWithResultTest3(),
+                      builder: (context) => const RoutePageWithResultTest1(),
                       fullscreenDialog: true));
 
               debugPrint("Route result is: Age = ${result.age}, name = ${result.name}");
