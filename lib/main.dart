@@ -35,6 +35,7 @@ import 'package:flutter_practice/scaffold_messenger/ScaffoldMessengerTrigger.dar
 import 'package:flutter_practice/scrollable/SingleChildScrollViewTest1.dart';
 import 'package:flutter_practice/shadow/ShadowTextTest1.dart';
 import 'package:flutter_practice/layout/stack_test1.dart';
+import 'package:flutter_practice/tab/favors_page.dart';
 import 'package:flutter_practice/url/LinkifyTest1.dart';
 import 'package:flutter_practice/widget/BlurTest1.dart';
 import 'package:flutter_practice/widget/BlurTest2.dart';
@@ -112,6 +113,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const CustomInputFormFieldTest1());
+        home: const FavorsPage());
   }
 }
