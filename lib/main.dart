@@ -32,6 +32,7 @@ import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
 import 'package:flutter_practice/provider/provider_test1.dart';
 import 'package:flutter_practice/route/route_page_test1.dart';
 import 'package:flutter_practice/route/route_page_test3.dart';
+import 'package:flutter_practice/route/route_page_with_naming_route_test1.dart';
 import 'package:flutter_practice/scaffold_messenger/ScaffoldMessengerTrigger.dart';
 import 'package:flutter_practice/scrollable/SingleChildScrollViewTest1.dart';
 import 'package:flutter_practice/shadow/ShadowTextTest1.dart';
@@ -91,7 +92,7 @@ Future<void> main() async {
   //
   // bootstrap(todosApi: todosApi);
 
-  runApp(const MyApp());
+  runApp(const RoutePageWithNamingRouteTest1());
 }
 
 class MyApp extends StatelessWidget {
