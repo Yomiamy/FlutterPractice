@@ -19,6 +19,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Flutter 的核心庫
+  intl: ^0.20.2
+
+
   # 底部可拖動容器
   drag_container: ^2.0.0
 
@@ -30,7 +34,7 @@ dependencies:
 
   # 表單處理
   equatable: ^2.0.5
-  uuid: ^4.4.0
+  uuid: ^4.5.1
   formz: ^0.7.0
 
   # 網絡通信相關套件
