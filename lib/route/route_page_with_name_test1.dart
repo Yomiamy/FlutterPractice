@@ -15,9 +15,16 @@ class _RoutePageWithNameTest1State extends State<RoutePageWithNameTest1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("RoutePageWithNameTest1"),
-      ),
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(50),
+          child: Container(
+              color: Colors.blue,
+              alignment: Alignment.center,
+              child: const Padding(
+                  padding: EdgeInsets.only(top: 30),
+                  child: Text("RoutePageWithNameTest1", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))
+              )
+          )),
       body: Center(
         child: Column(
           children: <Widget>[

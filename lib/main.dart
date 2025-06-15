@@ -30,6 +30,7 @@ import 'package:flutter_practice/listview/grid_view_test1.dart';
 import 'package:flutter_practice/permission/permission_handle_test1.dart';
 import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
 import 'package:flutter_practice/provider/provider_test1.dart';
+import 'package:flutter_practice/route/page_route_builder_test1.dart';
 import 'package:flutter_practice/route/route_page_test1.dart';
 import 'package:flutter_practice/route/route_page_test3.dart';
 import 'package:flutter_practice/route/route_page_with_naming_route_test1.dart';
@@ -92,7 +93,7 @@ Future<void> main() async {
   //
   // bootstrap(todosApi: todosApi);
 
-  runApp(const RoutePageWithNamingRouteTest1());
+  runApp(const PageRouteBuilderTest1());
 }
 
 class MyApp extends StatelessWidget {
@@ -115,6 +116,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const RoutePageTest1());
+        home: const PageRouteBuilderTest1());
   }
 }
