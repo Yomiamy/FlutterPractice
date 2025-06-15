@@ -11,6 +11,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_practice/tab/favors_page.dart';
 import 'package:intl/intl.dart';
 import 'friend.dart';
 
@@ -37,90 +38,95 @@ class RequestFavorPageState extends State<RequestFavorPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Requesting a favor"),
-        leading: const CloseButton(),
-        actions: <Widget>[
-          Builder(
-            builder: (context) => ElevatedButton(
-              child: const Text("SAVE", style: TextStyle(color: Colors.white)),
-              onPressed: () {
-                RequestFavorPageState.of(context)?.save();
-              },
-            ),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              DropdownButtonFormField<Friend>(
-                value: _selectedFriend,
-                onChanged: (friend) {
-                  setState(() {
-                    _selectedFriend = friend;
-                  });
-                },
-                items: widget.friends
-                    .map(
-                      (f) => DropdownMenuItem<Friend>(
-                        value: f,
-                        child: Text(f.name),
-                      ),
-                    )
-                    .toList(),
-                validator: (friend) {
-                  if (friend == null) {
-                    return "You must select a friend to ask the favor";
-                  }
-                  return null;
-                },
-              ),
-              Container(
-                height: 16.0,
-              ),
-              const Text("Favor description:"),
-              TextFormField(
-                maxLines: 5,
-                inputFormatters: [LengthLimitingTextInputFormatter(200)],
-                validator: (value) {
-                  if (value?.isEmpty ?? true) {
-                    return "You must detail the favor";
-                  }
-                  return null;
-                },
-              ),
-              Container(
-                height: 16.0,
-              ),
-
-
-              const Text("Due Date:"),
-
-              TextFormField(
-                controller: _dateTimeController,
-                readOnly: true,
-                onTap: () => _selectDateTime(context),
-                decoration: const InputDecoration(
-                  labelText: 'Date/Time',
+    return Hero(
+        tag: FavorsPage.FAVORS_PAGE_HERO_TAG,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("Requesting a favor"),
+            leading: const CloseButton(),
+            actions: <Widget>[
+              Builder(
+                builder: (context) => ElevatedButton(
+                  child: const Text("SAVE", style: TextStyle(color: Colors.white)),
+                  onPressed: () {
+                    RequestFavorPageState.of(context)?.save();
+                  },
                 ),
-                validator: (value) {
-                  if (_selectedDateTime == null) {
-                    return "You must select a due date time for the favor";
-                  }
-                  return null;
-                },
-              )
+              ),
             ],
-          ),
-        ),
-      ),
+          ), // AppBar
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    DropdownButtonFormField<Friend>(
+                      value: _selectedFriend,
+                      onChanged: (friend) {
+                        setState(() {
+                          _selectedFriend = friend;
+                        });
+                      },
+                      items: widget.friends
+                          .map(
+                            (f) => DropdownMenuItem<Friend>(
+                          value: f,
+                          child: Text(f.name),
+                        ),
+                      )
+                          .toList(),
+                      validator: (friend) {
+                        if (friend == null) {
+                          return "You must select a friend to ask the favor";
+                        }
+                        return null;
+                      },
+                    ),
+                    Container(
+                      height: 16.0,
+                    ),
+                    const Text("Favor description:"),
+                    TextFormField(
+                      maxLines: 5,
+                      inputFormatters: [LengthLimitingTextInputFormatter(200)],
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return "You must detail the favor";
+                        }
+                        return null;
+                      },
+                    ),
+                    Container(
+                      height: 16.0,
+                    ),
+
+
+                    const Text("Due Date:"),
+
+                    TextFormField(
+                      controller: _dateTimeController,
+                      readOnly: true,
+                      onTap: () => _selectDateTime(context),
+                      decoration: const InputDecoration(
+                        labelText: 'Date/Time',
+                      ),
+                      validator: (value) {
+                        if (_selectedDateTime == null) {
+                          return "You must select a due date time for the favor";
+                        }
+                        return null;
+                      }
+                    )
+                  ]
+                )
+              )
+            )
+          )
+        )
     );
   }
 

@@ -30,11 +30,15 @@ import 'package:flutter_practice/listview/grid_view_test1.dart';
 import 'package:flutter_practice/permission/permission_handle_test1.dart';
 import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
 import 'package:flutter_practice/provider/provider_test1.dart';
+import 'package:flutter_practice/route/page_route_builder_test1.dart';
 import 'package:flutter_practice/route/route_page_test1.dart';
+import 'package:flutter_practice/route/route_page_test3.dart';
+import 'package:flutter_practice/route/route_page_with_naming_route_test1.dart';
 import 'package:flutter_practice/scaffold_messenger/ScaffoldMessengerTrigger.dart';
 import 'package:flutter_practice/scrollable/SingleChildScrollViewTest1.dart';
 import 'package:flutter_practice/shadow/ShadowTextTest1.dart';
 import 'package:flutter_practice/layout/stack_test1.dart';
+import 'package:flutter_practice/tab/favors_list.dart';
 import 'package:flutter_practice/tab/favors_page.dart';
 import 'package:flutter_practice/url/LinkifyTest1.dart';
 import 'package:flutter_practice/widget/BlurTest1.dart';
@@ -113,6 +117,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const FavorsPage());
+        home: FavorsPage());
   }
 }

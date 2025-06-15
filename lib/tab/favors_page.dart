@@ -12,6 +12,9 @@ import 'favor.dart';
 import 'favors_list.dart';
 
 class FavorsPage extends StatefulWidget {
+
+  static const String FAVORS_PAGE_HERO_TAG = "favors_page_hero_tag";
+
   const FavorsPage({super.key});
 
   @override
@@ -62,6 +65,7 @@ class FavorsPageState extends State<FavorsPage> {
               ]
           ),
           floatingActionButton: FloatingActionButton(
+            heroTag: FavorsPage.FAVORS_PAGE_HERO_TAG,
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
