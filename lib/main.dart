@@ -38,6 +38,7 @@ import 'package:flutter_practice/scaffold_messenger/ScaffoldMessengerTrigger.dar
 import 'package:flutter_practice/scrollable/SingleChildScrollViewTest1.dart';
 import 'package:flutter_practice/shadow/ShadowTextTest1.dart';
 import 'package:flutter_practice/layout/stack_test1.dart';
+import 'package:flutter_practice/tab/favors_list.dart';
 import 'package:flutter_practice/tab/favors_page.dart';
 import 'package:flutter_practice/url/LinkifyTest1.dart';
 import 'package:flutter_practice/widget/BlurTest1.dart';
@@ -93,7 +94,7 @@ Future<void> main() async {
   //
   // bootstrap(todosApi: todosApi);
 
-  runApp(const PageRouteBuilderTest1());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -116,6 +117,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const PageRouteBuilderTest1());
+        home: FavorsPage());
   }
 }
