@@ -47,6 +47,7 @@ import 'package:flutter_practice/widget/BorderTest1.dart';
 import 'package:flutter_practice/widget/CircleImageTest1.dart';
 import 'package:flutter_practice/widget/const_widget_test.dart';
 import 'package:flutter_practice/widget/dialog/AlertDialogTest.dart';
+import 'package:flutter_practice/widget/element/element_widget_test1.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
 import 'animation/AnimatedWidget.dart';
@@ -117,6 +118,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: FavorsPage());
+        home: ElementWidgetTest1());
   }
 }
