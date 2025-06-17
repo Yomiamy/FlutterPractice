@@ -18,10 +18,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Flutter 本地化支持
+  flutter_localizations:
+    sdk: flutter
+  # Dart 國際化工具包
+  intl: ^0.20.2 # 用於日期、數字和消息的格式化和本地化
 
-  # Flutter 的核心庫
-  intl: ^0.20.2
-
+  # 本地存儲套件
+  shared_preferences: ^2.5.3
 
   # 底部可拖動容器
   drag_container: ^2.0.0
