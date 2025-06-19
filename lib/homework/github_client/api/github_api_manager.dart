@@ -24,9 +24,9 @@ class GithubApiManager {
     headers: {
       HttpHeaders.acceptHeader: "application/vnd.github.squirrel-girl-preview, application/vnd.github.symmetra-preview"
     },
-    connectTimeout: const Duration(seconds: 10),
-    receiveTimeout: const Duration(seconds: 10),
-    sendTimeout: const Duration(seconds: 10),
+    connectTimeout: const Duration(seconds: 30),
+    receiveTimeout: const Duration(seconds: 30),
+    sendTimeout: const Duration(seconds: 30),
   ));
 
   GithubApiManager._();
@@ -75,8 +75,9 @@ class GithubApiManager {
   }
 
   Future<List<Repo>?> getRepos({
-    required Map<String, dynamic> queryParams,
-    bool refresh = false}) async {
+    Map<String, dynamic> queryParams = const {},
+    bool refresh = false
+  }) async {
     var token = "Bearer <your_personal_access_token>"; // 替換為你的個人訪問令牌
     var r = await _dio.get<List>(
       "/user/repos",
