@@ -67,6 +67,7 @@ import 'form/text_field_test1.dart';
 import 'gesture/gesture_test1.dart';
 import 'homework/github_client/common/global.dart';
 import 'homework/github_client/provider/user_change_notifier.dart';
+import 'homework/github_client/widgets/github_client_app.dart';
 import 'layout/align_test1.dart';
 import 'layout/flex_test1.dart';
 import 'homework/Practice_168.dart';
@@ -96,7 +97,7 @@ Future<void> main() async {
   //
   // bootstrap(todosApi: todosApi);
 
-  Global.instance.init().then((_) => runApp(const MyApp()));
+  Global.instance.init().then((_) => runApp(const GithubClientApp()));
 }
 
 class MyApp extends StatelessWidget {
