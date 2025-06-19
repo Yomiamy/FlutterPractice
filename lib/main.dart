@@ -47,7 +47,6 @@ import 'package:flutter_practice/widget/BorderTest1.dart';
 import 'package:flutter_practice/widget/CircleImageTest1.dart';
 import 'package:flutter_practice/widget/const_widget_test.dart';
 import 'package:flutter_practice/widget/dialog/AlertDialogTest.dart';
-import 'package:flutter_practice/widget/element/element_widget_test1.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
 import 'animation/AnimatedWidget.dart';
@@ -66,6 +65,9 @@ import 'form/custom_input_form_field_test1.dart';
 import 'form/form_field_test2.dart';
 import 'form/text_field_test1.dart';
 import 'gesture/gesture_test1.dart';
+import 'homework/github_client/common/global.dart';
+import 'homework/github_client/provider/user_change_notifier.dart';
+import 'homework/github_client/widgets/github_client_app.dart';
 import 'layout/align_test1.dart';
 import 'layout/flex_test1.dart';
 import 'homework/Practice_168.dart';
@@ -95,7 +97,7 @@ Future<void> main() async {
   //
   // bootstrap(todosApi: todosApi);
 
-  runApp(const MyApp());
+  Global.instance.init().then((_) => runApp(const GithubClientApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -118,6 +120,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: ElementWidgetTest1());
+        home: FavorsPage());
   }
 }

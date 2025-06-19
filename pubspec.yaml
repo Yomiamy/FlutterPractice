@@ -18,19 +18,23 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Flutter 本地化支持
+  flutter_localizations:
+    sdk: flutter
+  # Dart 國際化工具包
+  intl: ^0.20.2 # 用於日期、數字和消息的格式化和本地化
 
-  # Flutter 的核心庫
-  intl: ^0.20.2
-
+  # 本地存儲套件
+  shared_preferences: ^2.5.3
 
   # 底部可拖動容器
   drag_container: ^2.0.0
 
   # 狀態管理工具包
-  bloc: ^8.1.4
-  flutter_bloc: ^8.1.5
-  bloc_concurrency: ^0.2.5
-  rxdart: ^0.27.7
+  rxdart: ^0.28.0
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.1
+  bloc_concurrency: ^0.3.0
 
   # 表單處理
   equatable: ^2.0.5
@@ -38,7 +42,7 @@ dependencies:
   formz: ^0.7.0
 
   # 網絡通信相關套件
-  dio: ^5.4.3+1
+  dio: ^5.8.0+1
   stream_transform: ^2.1.0
   json_annotation: ^4.9.0
   http: ^1.0.0
@@ -85,13 +89,13 @@ dev_dependencies:
   flutter_lints: ^3.0.2
 
   # Bloc 測試工具
-  bloc_test: ^9.1.7
-  mocktail: ^1.0.3
-  test: ^1.24.9
-  mockingjay: ^0.5.0
+  bloc_test: ^10.0.0
+  mocktail: ^1.0.4
+  test: ^1.25.15
+  mockingjay: ^2.0.0
 
   # Provider
-  provider: ^6.1.0
+  provider: ^6.1.5
 
   # JSON 模型生成工具
   build_runner: ^2.4.13
