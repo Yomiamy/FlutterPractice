@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -60,6 +61,9 @@ import 'dialog/alert_dialog_test2_loading.dart';
 import 'dialog/modal_bottom_sheet_dialog_test1.dart';
 import 'dismissable/dismissable_list.dart';
 import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
+import 'firebase/options/firebase_options_beta.dart';
+import 'firebase/options/firebase_options_dev.dart';
+import 'firebase/options/firebase_options_prod.dart';
 import 'form/custom_input_form_field.dart';
 import 'form/custom_input_form_field_test1.dart';
 import 'form/form_field_test2.dart';
@@ -97,7 +101,24 @@ Future<void> main() async {
   //
   // bootstrap(todosApi: todosApi);
 
-  Global.instance.init().then((_) => runApp(const GithubClientApp()));
+  const String env = String.fromEnvironment('FLAVOR');
+  List<Future> fetureList = [];
+
+  fetureList.add(Global.instance.init());
+  FirebaseOptions firebaseOptions;
+  switch (env) {
+    case 'dev':
+      firebaseOptions = DefaultFirebaseOptionsDev.currentPlatform;
+      break;
+    case 'beta':
+      firebaseOptions = DefaultFirebaseOptionsBeta.currentPlatform;
+      break;
+    default: // prod
+      firebaseOptions = DefaultFirebaseOptionsProd.currentPlatform;
+  }
+  fetureList.add(Firebase.initializeApp(options: firebaseOptions));
+
+  Future.wait(fetureList).then((_) => runApp(const GithubClientApp()));
 }
 
 class MyApp extends StatelessWidget {
