@@ -80,6 +80,9 @@ dependencies:
   # 約束佈局套件
   flutter_constraintlayout: ^1.7.0-stable
 
+  # Firebase 核心套件
+  firebase_core: ^3.14.0
+
   # 本地存儲套件（使用專案內的 packages）
   local_storage_todos_api:
     path: packages/local_storage_todos_api
