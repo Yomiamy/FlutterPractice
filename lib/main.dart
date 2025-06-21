@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -61,11 +64,13 @@ Future<void> main() async {
   // bootstrap(todosApi: todosApi);
   // runApp(const MyApp());
 
-  const String env = String.fromEnvironment('FLAVOR');
   List<Future> fetureList = [];
 
   fetureList.add(Global.instance.init());
+
+  const String env = String.fromEnvironment('FLAVOR');
   FirebaseOptions firebaseOptions;
+  // 根據環境變數 'FLAVOR' 設定 Firebase 選項。
   switch (env) {
     case 'dev':
       firebaseOptions = DefaultFirebaseOptionsDev.currentPlatform;
@@ -73,12 +78,23 @@ Future<void> main() async {
     case 'beta':
       firebaseOptions = DefaultFirebaseOptionsBeta.currentPlatform;
       break;
-    default: // prod
+    default:
+    // prod
       firebaseOptions = DefaultFirebaseOptionsProd.currentPlatform;
   }
   fetureList.add(Firebase.initializeApp(options: firebaseOptions));
 
-  Future.wait(fetureList).then((_) => runApp(const GithubClientApp()));
+  Future.wait(fetureList).then((_) {
+    // (要在Firebase.initializeApp後呼叫) 設定 Flutter 錯誤處理，將 Flutter 致命錯誤記錄到 Firebase Crashlytics。
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    // (要在Firebase.initializeApp後呼叫) 設定平台錯誤處理，將平台錯誤記錄到 Firebase Crashlytics，並標記為fatal錯誤。
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
+
+    runApp(const GithubClientApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
