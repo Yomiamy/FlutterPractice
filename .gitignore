@@ -6,6 +6,9 @@ build/
 .pub-cache/
 .dart_tool/
 
+# Firebase CLI log
+firepit-log.txt
+
 # Android
 android/.gradle/
 android/app/build/
