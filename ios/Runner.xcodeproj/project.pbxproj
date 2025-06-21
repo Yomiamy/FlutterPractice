@@ -434,9 +434,9 @@
 				CCD323392DDCE3F8000FF5EE /* Resources */,
 				CCD3233E2DDCE3F8000FF5EE /* Embed Frameworks */,
 				CCD3233F2DDCE3F8000FF5EE /* Thin Binary */,
+				CC331FFD2E068C0300A7B935 /* FlutterFire: "flutterfire upload-crashlytics-symbols" */,
 				149E4A564C340FEB3F27191F /* [CP] Embed Pods Frameworks */,
 				6457E17488164FEF4356F110 /* [CP] Copy Pods Resources */,
-				CC331FFD2E068C0300A7B935 /* FlutterFire: "flutterfire upload-crashlytics-symbols" */,
 			);
 			buildRules = (
 			);
@@ -458,9 +458,9 @@
 				CCD3234F2DDCE3FF000FF5EE /* Resources */,
 				CCD323542DDCE3FF000FF5EE /* Embed Frameworks */,
 				CCD323552DDCE3FF000FF5EE /* Thin Binary */,
+				CC331FFF2E068C4A00A7B935 /* FlutterFire: "flutterfire upload-crashlytics-symbols" */,
 				9A306A8E9427A84E87C6CBB2 /* [CP] Embed Pods Frameworks */,
 				F009ACBCC09AC1BD501DCB94 /* [CP] Copy Pods Resources */,
-				CC331FFF2E068C4A00A7B935 /* FlutterFire: "flutterfire upload-crashlytics-symbols" */,
 			);
 			buildRules = (
 			);
@@ -476,15 +476,15 @@
 			buildConfigurationList = CCD3236D2DDCE402000FF5EE /* Build configuration list for PBXNativeTarget "prod" */;
 			buildPhases = (
 				43147F24FE818024A6094791 /* [CP] Check Pods Manifest.lock */,
-				CCD3235F2DDCE402000FF5EE /* FlutterFire: "flutterfire upload-crashlytics-symbols" */,
+				CC3320002E068C6200A7B935 /* ShellScript */,
 				CCD323602DDCE402000FF5EE /* Sources */,
 				CCD323632DDCE402000FF5EE /* Frameworks */,
 				CCD323652DDCE402000FF5EE /* Resources */,
 				CCD3236A2DDCE402000FF5EE /* Embed Frameworks */,
 				CCD3236B2DDCE402000FF5EE /* Thin Binary */,
+				CCD3235F2DDCE402000FF5EE /* FlutterFire: "flutterfire upload-crashlytics-symbols" */,
 				573617C4ABA2D95C18FCA8C5 /* [CP] Embed Pods Frameworks */,
 				9FB9BA1B9C0D0B983F52234B /* [CP] Copy Pods Resources */,
-				CC3320002E068C6200A7B935 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -890,6 +890,7 @@
 		};
 		CC3320002E068C6200A7B935 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -903,7 +904,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		CCD3233F2DDCE3F8000FF5EE /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
