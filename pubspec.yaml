@@ -88,6 +88,9 @@ dependencies:
   firebase_messaging: ^15.2.7
   # Firebase 穩定度分析套件
   firebase_crashlytics: ^4.3.7
+    # Firebase 身份驗證套件
+  firebase_app_installations: ^0.3.2+7
+
 
   # 本地存儲套件（使用專案內的 packages）
   local_storage_todos_api:
@@ -96,6 +99,7 @@ dependencies:
     path: packages/todos_api
   todos_repository:
     path: packages/todos_repository
+
 
 # 開發時依賴的套件
 dev_dependencies:
