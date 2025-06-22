@@ -428,6 +428,7 @@
 			buildConfigurationList = CCD323412DDCE3F8000FF5EE /* Build configuration list for PBXNativeTarget "dev" */;
 			buildPhases = (
 				69FFE4969DF6D0D205DE6C8E /* [CP] Check Pods Manifest.lock */,
+				CC3320042E082F6200A7B935 /* Modify Firebase.json */,
 				CC331FFC2E068B7000A7B935 /* ShellScript */,
 				CCD323342DDCE3F8000FF5EE /* Sources */,
 				CCD323372DDCE3F8000FF5EE /* Frameworks */,
@@ -452,6 +453,7 @@
 			buildConfigurationList = CCD323572DDCE3FF000FF5EE /* Build configuration list for PBXNativeTarget "beta" */;
 			buildPhases = (
 				E0E2894A250E73A12BA8DE07 /* [CP] Check Pods Manifest.lock */,
+				CC3320052E0831CA00A7B935 /* Modify Firebase.json */,
 				CCD323492DDCE3FF000FF5EE /* Run Script */,
 				CCD3234A2DDCE3FF000FF5EE /* Sources */,
 				CCD3234D2DDCE3FF000FF5EE /* Frameworks */,
@@ -476,6 +478,7 @@
 			buildConfigurationList = CCD3236D2DDCE402000FF5EE /* Build configuration list for PBXNativeTarget "prod" */;
 			buildPhases = (
 				43147F24FE818024A6094791 /* [CP] Check Pods Manifest.lock */,
+				CC3320062E08322500A7B935 /* Modify Firebase.json */,
 				CC3320002E068C6200A7B935 /* ShellScript */,
 				CCD323602DDCE402000FF5EE /* Sources */,
 				CCD323632DDCE402000FF5EE /* Frameworks */,
@@ -905,6 +908,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
+		};
+		CC3320042E082F6200A7B935 /* Modify Firebase.json */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Modify Firebase.json";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nset -e\n\nPARENT_DIR=\"$(dirname \"$PROJECT_DIR\")\"\n\n# 用 jq 調整 firebase.json 的 ios 結構\njq '.flutter.platforms.ios = { \"default\": { \"projectId\": \"flutterpractice-32f76\", \"appId\": \"1:719921143375:ios:2f5a75b2f7da9225f0543a\", \"uploadDebugSymbols\": true, \"fileOutput\": \"ios/Runner/Firebase/Dev/GoogleService-Info.plist\" } }' \"$PARENT_DIR/firebase.json\" > \"$PARENT_DIR/firebase.json.tmp\"\n\nmv \"$PARENT_DIR/firebase.json.tmp\" \"$PARENT_DIR/firebase.json\"\n";
+		};
+		CC3320052E0831CA00A7B935 /* Modify Firebase.json */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Modify Firebase.json";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nset -e\n\nPARENT_DIR=\"$(dirname \"$PROJECT_DIR\")\"\n\n# 用 jq 調整 firebase.json 的 ios 結構\njq '.flutter.platforms.ios = { \"default\": { \"projectId\": \"flutterpractice-32f76\", \"appId\": \"1:719921143375:ios:f2d78ace2e454881f0543a\", \"uploadDebugSymbols\": true, \"fileOutput\": \"ios/Runner/Firebase/Beta/GoogleService-Info.plist\" } }' \"$PARENT_DIR/firebase.json\" > \"$PARENT_DIR/firebase.json.tmp\"\n\nmv \"$PARENT_DIR/firebase.json.tmp\" \"$PARENT_DIR/firebase.json\"\n";
+		};
+		CC3320062E08322500A7B935 /* Modify Firebase.json */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Modify Firebase.json";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nset -e\n\nPARENT_DIR=\"$(dirname \"$PROJECT_DIR\")\"\n\n# 用 jq 調整 firebase.json 的 ios 結構\njq '.flutter.platforms.ios = { \"default\": { \"projectId\": \"flutterpractice-32f76\", \"appId\": \"1:719921143375:ios:84abad67cd4b8794f0543a\", \"uploadDebugSymbols\": true, \"fileOutput\": \"ios/Runner/Firebase/Prod/GoogleService-Info.plist\" } }' \"$PARENT_DIR/firebase.json\" > \"$PARENT_DIR/firebase.json.tmp\"\n\nmv \"$PARENT_DIR/firebase.json.tmp\" \"$PARENT_DIR/firebase.json\"\n";
 		};
 		CCD3233F2DDCE3F8000FF5EE /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
