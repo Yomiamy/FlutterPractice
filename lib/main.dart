@@ -2,97 +2,15 @@ import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_practice/async/future/future_build_test1.dart';
-import 'package:flutter_practice/async/future/stream_build_test1.dart';
-import 'package:flutter_practice/bloc/infinite_list/simple_bloc_observer.dart';
-import 'package:flutter_practice/bloc/login/bloc/authentication_bloc.dart';
-import 'package:flutter_practice/bloc/login/bloc/login_bloc.dart';
-import 'package:flutter_practice/bloc/login/repository/authentication_repository.dart';
-import 'package:flutter_practice/bloc/login/repository/user_repository.dart';
-import 'package:flutter_practice/bloc/login/view/app_view.dart';
-import 'package:flutter_practice/bottom_navigation_bar/bottom_navigation_bar_sample1.dart';
-import 'package:flutter_practice/dialog/alert_dialog_test1.dart';
-import 'package:flutter_practice/dialog/date_picker_dialog_test1.dart';
-import 'package:flutter_practice/dialog/general_dialog_test1.dart';
-import 'package:flutter_practice/dialog/simple_dialog_test1.dart';
-import 'package:flutter_practice/draggable_scrollable_sheet/BottomDragWidget.dart';
-import 'package:flutter_practice/draggable_scrollable_sheet/DraggableScrollableSheetPage.dart';
-import 'package:flutter_practice/form/form_field_test1.dart';
-import 'package:flutter_practice/gesture/ImageDoubleTapScaleWidget.dart';
-import 'package:flutter_practice/gesture/ImageTapWidget.dart';
-import 'package:flutter_practice/gesture/TapTextWidget.dart';
-import 'package:flutter_practice/homework/Practice_218.dart';
-import 'package:flutter_practice/homework/Practice_227.dart';
-import 'package:flutter_practice/homework/Practice_6.dart';
-import 'package:flutter_practice/ink/MaterialRoundInk.dart';
-import 'package:flutter_practice/listview/ScrollControllerTest1.dart';
-import 'package:flutter_practice/listview/grid_view_test1.dart';
-import 'package:flutter_practice/permission/permission_handle_test1.dart';
-import 'package:flutter_practice/pop_menu_button/PopMenuButtonTest1.dart';
-import 'package:flutter_practice/provider/provider_test1.dart';
-import 'package:flutter_practice/route/page_route_builder_test1.dart';
-import 'package:flutter_practice/route/route_page_test1.dart';
-import 'package:flutter_practice/route/route_page_test3.dart';
-import 'package:flutter_practice/route/route_page_with_naming_route_test1.dart';
-import 'package:flutter_practice/scaffold_messenger/ScaffoldMessengerTrigger.dart';
-import 'package:flutter_practice/scrollable/SingleChildScrollViewTest1.dart';
-import 'package:flutter_practice/shadow/ShadowTextTest1.dart';
-import 'package:flutter_practice/layout/stack_test1.dart';
-import 'package:flutter_practice/tab/favors_list.dart';
 import 'package:flutter_practice/tab/favors_page.dart';
-import 'package:flutter_practice/url/LinkifyTest1.dart';
-import 'package:flutter_practice/widget/BlurTest1.dart';
-import 'package:flutter_practice/widget/BlurTest2.dart';
-import 'package:flutter_practice/widget/BorderTest1.dart';
-import 'package:flutter_practice/widget/CircleImageTest1.dart';
-import 'package:flutter_practice/widget/const_widget_test.dart';
-import 'package:flutter_practice/widget/dialog/AlertDialogTest.dart';
-import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 
-import 'animation/AnimatedWidget.dart';
-import 'animation/AnimationTest1.dart';
-import 'animation/TweenAnimationBuilder.dart';
-import 'bloc/infinite_list/view/posts_page.dart';
-import 'bloc/timer/bloc/timer_view.dart';
-import 'bottom_app_bar/bottom_app_bar_sample1.dart';
-import 'bottom_navigation_bar/bottom_navigation_bar_with_page_sample1.dart';
-import 'dialog/alert_dialog_test2_loading.dart';
-import 'dialog/modal_bottom_sheet_dialog_test1.dart';
-import 'dismissable/dismissable_list.dart';
-import 'draggable_scrollable_sheet/BottomDragTabWidget.dart';
 import 'firebase/options/firebase_options_beta.dart';
 import 'firebase/options/firebase_options_dev.dart';
 import 'firebase/options/firebase_options_prod.dart';
-import 'form/custom_input_form_field.dart';
-import 'form/custom_input_form_field_test1.dart';
-import 'form/form_field_test2.dart';
-import 'form/text_field_test1.dart';
-import 'gesture/gesture_test1.dart';
 import 'homework/github_client/common/global.dart';
-import 'homework/github_client/provider/user_change_notifier.dart';
 import 'homework/github_client/widgets/github_client_app.dart';
-import 'layout/align_test1.dart';
-import 'layout/flex_test1.dart';
-import 'homework/Practice_168.dart';
-import 'homework/Practice_220.dart';
-import 'inherited_widget/CounterWidget.dart';
-import 'inherited_widget/MediaQueryWdiget.dart';
-import 'ink/ClickInkWell.dart';
-import 'ink/MaterialBgInkWell.dart';
-import 'ink/MaterialInk.dart';
-import 'lifecycle/LifecycleMonitor.dart';
-import 'lifecycle/inherited_widget_test1.dart';
-import 'lifecycle/will_pop_scope_test1.dart';
-import 'listview/InfiniteListTest.dart';
-import 'listview/ListViewTest1.dart';
-import 'listview/ListViewTest2.dart';
-import 'listview/custom_scroll_view_test.dart';
-import 'listview/notification_listener_test1.dart';
-import 'overlay/OverlayTest1.dart';
 
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -119,22 +37,84 @@ Future<void> main() async {
       firebaseOptions = DefaultFirebaseOptionsBeta.currentPlatform;
       break;
     default:
-    // prod
+      // prod
       firebaseOptions = DefaultFirebaseOptionsProd.currentPlatform;
   }
   fetureList.add(Firebase.initializeApp(options: firebaseOptions));
 
   Future.wait(fetureList).then((_) {
-    // (要在Firebase.initializeApp後呼叫) 設定 Flutter 錯誤處理，將 Flutter 致命錯誤記錄到 Firebase Crashlytics。
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-    // (要在Firebase.initializeApp後呼叫) 設定平台錯誤處理，將平台錯誤記錄到 Firebase Crashlytics，並標記為fatal錯誤。
-    PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-      return true;
-    };
+    _initFirebaseCrashlytics();
+    _initFirebaseCloudMessaging();
 
     runApp(const GithubClientApp());
   });
+}
+
+void _initFirebaseCrashlytics() {
+  // (要在Firebase.initializeApp後呼叫) 設定 Flutter 錯誤處理，將 Flutter 致命錯誤記錄到 Firebase Crashlytics。
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  // (要在Firebase.initializeApp後呼叫) 設定平台錯誤處理，將平台錯誤記錄到 Firebase Crashlytics，並標記為fatal錯誤。
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+}
+
+void _initFirebaseCloudMessaging() {
+  // Register the background message handler
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  // Handle foreground messages
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    debugPrint('Got a message whilst in the foreground!');
+    debugPrint('Message data: ${message.data}');
+
+    if (message.notification != null) {
+      debugPrint(
+          'Message also contained a notification: ${message.notification?.title} / ${message.notification?.body}');
+      // You can display a local notification here if needed
+    }
+  });
+
+  // Handle messages when the app is opened from a terminated state
+  FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) {
+    if (message != null) {
+      debugPrint('App opened from terminated state with message: ${message.data}');
+      // Handle initial message (e.g., navigate to a specific screen)
+    }
+  });
+
+  // Request permission for iOS/Web
+  FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
+
+  // Get FCM token
+  FirebaseMessaging.instance.getToken().then((token) {
+    debugPrint("FCM Token: $token");
+    // You can send this token to your backend server
+  });
+}
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in your background handler,
+  // such as Firestore, make sure you call `initializeApp` before using them.
+  await Firebase.initializeApp(); // Re-initialize for background execution if needed
+  debugPrint("Handling a background message: ${message.messageId}");
+  debugPrint('Message data: ${message.data}');
+
+  if (message.notification != null) {
+    debugPrint(
+        'Message also contained a notification: ${message.notification?.title} / ${message.notification?.body}');
+  }
+  // Implement your background message handling logic here
 }
 
 class MyApp extends StatelessWidget {
