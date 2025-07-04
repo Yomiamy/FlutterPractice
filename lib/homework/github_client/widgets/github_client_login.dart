@@ -45,7 +45,7 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              context.push(GithubClientRepositoryList.ROUTE_NAME);
+              context.push(GithubClientRepositoryList.ROUTE_NAME, extra: snapshot.data);
             });
           } else if (snapshot.hasError && _loginFuture != null) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
