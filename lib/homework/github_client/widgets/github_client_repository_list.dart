@@ -72,28 +72,23 @@ class _GithubClientRepositoryListState extends State<GithubClientRepositoryList>
       """);
     });
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("GithubClientRepositoryList"),
-      ),
-      body: FutureBuilder<List<Repo>?>(
-          future: _fetchRepos(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-              List<Repo> repos = snapshot.data ?? [];
+    return FutureBuilder<List<Repo>?>(
+        future: _fetchRepos(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+            List<Repo> repos = snapshot.data ?? [];
 
-              return ListView.builder(
-                itemCount: repos.length,
-                itemBuilder: (context, index) {
-                  return RepoItem(repo: repos[index]);
-                },
-              );
-            } else if (snapshot.hasError) {
-              return Center(child: Text("Error: ${snapshot.error}"));
-            }
+            return ListView.builder(
+              itemCount: repos.length,
+              itemBuilder: (context, index) {
+                return RepoItem(repo: repos[index]);
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Center(child: Text("Error: ${snapshot.error}"));
+          }
 
-            return const Center(child: CircularProgressIndicator());
-          }),
-    );
+          return const Center(child: CircularProgressIndicator());
+        });
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter_practice/homework/github_client/models/user.dart';
 import 'package:go_router/go_router.dart';
 import 'package:toast/toast.dart';
 
-import 'github_client_repository_list.dart';
+import 'github_client_main_page.dart'; // 新增的導入
 
 part 'github_client_login.g.dart';
 
@@ -55,12 +55,8 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              final name = snapshot.data?.login ?? "Unknown User";
-              final id = snapshot.data?.id ?? 0;
-
-              RepositoryListRoute(id: id, name: name, $extra: snapshot.data).push<void>(context);
-
-              context.push(GithubClientRepositoryList.ROUTE_NAME, extra: snapshot.data);
+              // 修改跳轉邏輯，跳轉到 GithubClientMainPage
+              MainRoute($extra: snapshot.data).push<void>(context);
             });
           } else if (snapshot.hasError && _loginFuture != null) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
