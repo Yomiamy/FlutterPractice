@@ -7,6 +7,16 @@ import 'package:toast/toast.dart';
 
 import 'github_client_repository_list.dart';
 
+part 'github_client_login.g.dart';
+
+@TypedGoRoute<LoginRoute>(path: GithubClientLogin.ROUTE_NAME)
+class LoginRoute extends GoRouteData with _$LoginRoute {
+  const LoginRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const GithubClientLogin();
+}
+
 class GithubClientLogin extends StatefulWidget {
   static const String ROUTE_NAME = "/";
 
@@ -45,6 +55,11 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
+              final name = snapshot.data?.login ?? "Unknown User";
+              final id = snapshot.data?.id ?? 0;
+
+              RepositoryListRoute(id: id, name: name).push<void>(context);
+
               context.push(GithubClientRepositoryList.ROUTE_NAME, extra: snapshot.data);
             });
           } else if (snapshot.hasError && _loginFuture != null) {
