@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/homework/github_client/models/user.dart';
-import 'package:flutter_practice/homework/github_client/widgets/github_client_repository_list.dart';
 import 'package:go_router/go_router.dart';
+
+import '../models/user.dart';
+import 'github_client_repository_detail_page.dart';
+import 'github_client_repository_list.dart';
 
 part 'github_client_main_page.g.dart';
 
-@TypedGoRoute<MainRoute>(path: GithubClientMainPage.ROUTE_NAME)
-class MainRoute extends GoRouteData with _$MainRoute {
-  final User? $extra;
+final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
 
-  const MainRoute({this.$extra});
+@TypedShellRoute<MainShellRoute>(routes: [
+  TypedGoRoute<RepositoryListRoute>(path: GithubClientRepositoryList.ROUTE_NAME, routes: [
+    TypedGoRoute<RepositoryDetailRoute>(path: GithubClientRepositoryDetailPage.ROUTE_NAME)
+  ]),
+])
+class MainShellRoute extends ShellRouteData {
+  static final GlobalKey<NavigatorState> $navigatorKey = shellNavigatorKey;
+
+  const MainShellRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => GithubClientMainPage(user: $extra);
+  Widget builder(BuildContext context, GoRouterState state, Widget navigator) =>
+      const GithubClientMainPage();
 }
 
 class GithubClientMainPage extends StatefulWidget {
   static const String ROUTE_NAME = "/main";
 
-  final User? user;
-
-  const GithubClientMainPage({super.key, this.user});
+  const GithubClientMainPage({super.key});
 
   @override
   State<GithubClientMainPage> createState() => _GithubClientMainPageState();
@@ -55,12 +62,12 @@ class _GithubClientMainPageState extends State<GithubClientMainPage> {
               _selectedIndex = index;
             });
           },
-          children: <Widget>[
+          children: const <Widget>[
             // RepositoryListRoute 需要 id 和 name，這裡先傳入預設值
             // 實際應用中，您會從登入頁面傳遞這些資訊
-            GithubClientRepositoryList(user: widget.user),
-            const Center(child: Text("Notifications Page")),
-            const Center(child: Text("Profile Page")),
+            GithubClientRepositoryList(),
+            Center(child: Text("Notifications Page")),
+            Center(child: Text("Profile Page")),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

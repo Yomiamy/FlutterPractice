@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/gen/assets_config.dart';
-import 'package:flutter_practice/homework/github_client/models/repo.dart';
-import 'package:toast/toast.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../../../gen/assets_config.dart';
+import '../models/repo.dart';
+import 'github_client_repository_detail_page.dart';
 
 class RepoItem extends StatefulWidget {
-
   final Repo repo;
 
   const RepoItem({super.key, required this.repo});
@@ -15,66 +14,55 @@ class RepoItem extends StatefulWidget {
 }
 
 class _RepoItemState extends State<RepoItem> {
-
   String subTitle = "";
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
-        child: GestureDetector(
-          onTap: () {
-            final Uri url = Uri.parse(widget.repo.htmlUrl ?? "");
+      child: GestureDetector(
+        onTap: () {
+          // final Uri url = Uri.parse(widget.repo.htmlUrl ?? "");
+          //
+          // canLaunchUrl(url).then((isCanLaunch) async {
+          //   if (!isCanLaunch) {
+          //     Toast.show("${widget.repo.htmlUrl} can't opened");
+          //   } else {
+          //     launchUrl(url, mode: LaunchMode.externalApplication);
+          //   }
+          // });
 
-            canLaunchUrl(url).then((isCanLaunch) async {
-              if (!isCanLaunch) {
-                Toast.show("${widget.repo.htmlUrl} can't opened");
-              } else {
-                launchUrl(url, mode: LaunchMode.externalApplication);
-              }
-            });
-          },
-          child: Card(
+          RepositoryDetailRoute().push(context);
+        },
+        child: Card(
             color: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
-            child: Column(
-              children: <Widget>[
-                ListTile(
-                    dense: true,
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImageRes.animalPic9.fileProvider,
-                      radius: 20.0,
-                    ),
-                    title: Text(
-                        "Name: ${widget.repo.fullName ?? "No Name"}",
-                        style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis
-                    ),
-                    subtitle: Text(
-                        "Url: ${widget.repo.htmlUrl ?? "No URL"}",
-                        style: const TextStyle(fontSize: 14.0),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis
-
-                    )
-                ),
-
-                Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                        widget.repo.description ?? "No Description",
-                        style: const TextStyle(fontSize: 14.0, color: Colors.grey),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis)),
-
-                _buildBottom()
-              ]
-            )
-          ),
-        ),
+            child: Column(children: <Widget>[
+              ListTile(
+                  dense: true,
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImageRes.animalPic9.fileProvider,
+                    radius: 20.0,
+                  ),
+                  title: Text("Name: ${widget.repo.fullName ?? "No Name"}",
+                      style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis),
+                  subtitle: Text("Url: ${widget.repo.htmlUrl ?? "No URL"}",
+                      style: const TextStyle(fontSize: 14.0),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis)),
+              Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(widget.repo.description ?? "No Description",
+                      style: const TextStyle(fontSize: 14.0, color: Colors.grey),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis)),
+              _buildBottom()
+            ])),
+      ),
     );
   }
 
@@ -96,10 +84,7 @@ class _RepoItemState extends State<RepoItem> {
               ];
 
               if (widget.repo.private == true) {
-                children.addAll(<Widget>[
-                  const Icon(Icons.lock),
-                  Text(" private".padRight(6))
-                ]);
+                children.addAll(<Widget>[const Icon(Icons.lock), Text(" private".padRight(6))]);
               }
 
               return Row(children: children);

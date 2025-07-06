@@ -1,15 +1,16 @@
+// 定义仓库列表页面的路由数据类
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/homework/github_client/models/repo.dart';
+import 'package:flutter_practice/homework/github_client/widgets/repo_item.dart';
 import 'package:go_router/go_router.dart';
 import 'package:toast/toast.dart';
 
 import '../api/github_api_manager.dart';
+import '../common/Global.dart';
+import '../models/repo.dart';
 import '../models/user.dart';
-import 'repo_item.dart';
 
 part 'github_client_repository_list.g.dart';
 
-// 定义仓库列表页面的路由数据类
 @TypedGoRoute<RepositoryListRoute>(path: GithubClientRepositoryList.ROUTE_NAME)
 class RepositoryListRoute extends GoRouteData with _$RepositoryListRoute {
   // 用在route path 中的参数,不能是_前缀開頭, 不然go_router 會無法解析
@@ -22,7 +23,7 @@ class RepositoryListRoute extends GoRouteData with _$RepositoryListRoute {
     return CustomTransitionPage(
         key: state.pageKey,
         transitionDuration: const Duration(seconds: 1), // 指定 transition 的 duration
-        child: GithubClientRepositoryList(user: $extra), // 使用 id 和 name
+        child: const GithubClientRepositoryList(), // 使用 id 和 name
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           // Start from the right, // End at the center
           // Use a curve for smooth transition
@@ -42,15 +43,22 @@ class GithubClientRepositoryList extends StatefulWidget {
   //static const String ROUTE_NAME = "/repository_list/:id/:name";
   static const String ROUTE_NAME = "/repository_list";
 
-  final User? _user;
-
-  const GithubClientRepositoryList({super.key, User? user}) : _user = user;
+  const GithubClientRepositoryList({super.key});
 
   @override
   State<GithubClientRepositoryList> createState() => _GithubClientRepositoryListState();
 }
 
 class _GithubClientRepositoryListState extends State<GithubClientRepositoryList> {
+  User? _user;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _user = Global.instance.user;
+  }
+
   Future<List<Repo>?> _fetchRepos() async {
     return await GithubApiManager.instance.getRepos();
   }
@@ -58,7 +66,7 @@ class _GithubClientRepositoryListState extends State<GithubClientRepositoryList>
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Toast.show("_user.login = ${widget._user?.login}, _user.id = ${widget._user?.id}");
+      Toast.show("_user.login = ${_user?.login}, _user.id = ${_user?.id}");
     });
 
     return FutureBuilder<List<Repo>?>(
