@@ -243,81 +243,77 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
-        mOALogo,
-        mOGBanner,
-        o,
-        profile,
-        x,
-        animalPic1,
-        animalPic10,
-        animalPic11,
-        animalPic12,
-        animalPic13,
-        animalPic2,
-        animalPic3,
-        animalPic4,
-        animalPic5,
-        animalPic6,
-        animalPic7,
-        animalPic8,
-        animalPic9,
-        bgDiceGame,
-        classroom,
-        dice1,
-        dice2,
-        dice3,
-        dice4,
-        dice5,
-        dice6,
-        happylight,
-        heartPng,
-        icRadio1,
-        icRadio2,
-        icRadio3,
-        icRadio4,
-        image,
-        openlight,
-        plantPic1,
-        plantPic10,
-        plantPic11,
-        plantPic12,
-        plantPic13,
-        plantPic14,
-        plantPic2,
-        plantPic3,
-        plantPic4,
-        plantPic5,
-        plantPic6,
-        plantPic7,
-        plantPic8,
-        plantPic9,
-        searchIcon,
-        threePigPage1,
-        threePigPage10,
-        threePigPage2,
-        threePigPage3,
-        threePigPage4,
-        threePigPage5,
-        threePigPage6,
-        threePigPage7,
-        threePigPage8,
-        threePigPage9,
-        wrong
-      ];
+    mOALogo,
+    mOGBanner,
+    o,
+    profile,
+    x,
+    animalPic1,
+    animalPic10,
+    animalPic11,
+    animalPic12,
+    animalPic13,
+    animalPic2,
+    animalPic3,
+    animalPic4,
+    animalPic5,
+    animalPic6,
+    animalPic7,
+    animalPic8,
+    animalPic9,
+    bgDiceGame,
+    classroom,
+    dice1,
+    dice2,
+    dice3,
+    dice4,
+    dice5,
+    dice6,
+    happylight,
+    heartPng,
+    icRadio1,
+    icRadio2,
+    icRadio3,
+    icRadio4,
+    image,
+    openlight,
+    plantPic1,
+    plantPic10,
+    plantPic11,
+    plantPic12,
+    plantPic13,
+    plantPic14,
+    plantPic2,
+    plantPic3,
+    plantPic4,
+    plantPic5,
+    plantPic6,
+    plantPic7,
+    plantPic8,
+    plantPic9,
+    searchIcon,
+    threePigPage1,
+    threePigPage10,
+    threePigPage2,
+    threePigPage3,
+    threePigPage4,
+    threePigPage5,
+    threePigPage6,
+    threePigPage7,
+    threePigPage8,
+    threePigPage9,
+    wrong,
+  ];
 }
 
 class Assets {
-  Assets._();
+  const Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
 
@@ -345,7 +341,7 @@ class AssetGenImage {
     bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -377,15 +373,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;

@@ -100,11 +100,14 @@ dev_dependencies:
   # Provider
   provider: ^6.1.5
 
-  # JSON 模型生成工具
+  # 構建驗證工具，用於檢查代碼生成是否與源代碼同步
   build_runner: ^2.4.13
-  json_serializable: ^6.9.0
+  build_verify: ^3.1.1
   # 圖像, 色碼,
   flutter_gen_runner: any
+
+  # JSON 模型生成工具
+  json_serializable: ^6.9.0
 
   # Go Router 路由代碼生成器
   go_router_builder: ^3.0.1
@@ -126,7 +129,7 @@ flutter_gen:
   # 集成多種類型的資源支持 (選填項)
   integrations:
     flutter_svg: true
-    flare_flutter: true
+    image: true
     rive: true
     lottie: true
 
