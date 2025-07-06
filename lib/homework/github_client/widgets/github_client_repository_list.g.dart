@@ -18,8 +18,6 @@ RouteBase get $repositoryListRoute => GoRouteData.$route(
 mixin _$RepositoryListRoute on GoRouteData {
   static RepositoryListRoute _fromState(GoRouterState state) =>
       RepositoryListRoute(
-        id: int.parse(state.uri.queryParameters['id']!)!,
-        name: state.uri.queryParameters['name']!,
         $extra: state.extra as User?,
       );
 
@@ -28,10 +26,6 @@ mixin _$RepositoryListRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/repository_list',
-        queryParams: {
-          'id': _self.id.toString(),
-          'name': _self.name,
-        },
       );
 
   @override

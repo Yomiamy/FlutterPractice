@@ -58,10 +58,7 @@ class _GithubClientMainPageState extends State<GithubClientMainPage> {
           children: <Widget>[
             // RepositoryListRoute 需要 id 和 name，這裡先傳入預設值
             // 實際應用中，您會從登入頁面傳遞這些資訊
-            GithubClientRepositoryList(
-                id: widget.user?.id ?? 0,
-                name: widget.user?.login ?? "Unknown User",
-                user: widget.user),
+            GithubClientRepositoryList(user: widget.user),
             const Center(child: Text("Notifications Page")),
             const Center(child: Text("Profile Page")),
           ],
