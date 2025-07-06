@@ -20,6 +20,7 @@ mixin _$RepositoryListRoute on GoRouteData {
       RepositoryListRoute(
         id: int.parse(state.uri.queryParameters['id']!)!,
         name: state.uri.queryParameters['name']!,
+        $extra: state.extra as User?,
       );
 
   RepositoryListRoute get _self => this as RepositoryListRoute;
@@ -34,15 +35,17 @@ mixin _$RepositoryListRoute on GoRouteData {
       );
 
   @override
-  void go(BuildContext context) => context.go(location);
+  void go(BuildContext context) => context.go(location, extra: _self.$extra);
 
   @override
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: _self.$extra);
 
   @override
   void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
+      context.pushReplacement(location, extra: _self.$extra);
 
   @override
-  void replace(BuildContext context) => context.replace(location);
+  void replace(BuildContext context) =>
+      context.replace(location, extra: _self.$extra);
 }

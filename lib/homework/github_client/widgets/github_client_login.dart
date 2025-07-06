@@ -58,7 +58,7 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
               final name = snapshot.data?.login ?? "Unknown User";
               final id = snapshot.data?.id ?? 0;
 
-              RepositoryListRoute(id: id, name: name).push<void>(context);
+              RepositoryListRoute(id: id, name: name, $extra: snapshot.data).push<void>(context);
 
               context.push(GithubClientRepositoryList.ROUTE_NAME, extra: snapshot.data);
             });
