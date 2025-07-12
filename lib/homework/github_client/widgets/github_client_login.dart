@@ -47,7 +47,7 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               // 修改跳轉邏輯，跳轉到 GithubClientMainPage
-              RepositoryListRoute($extra: snapshot.data).push<void>(context);
+              const RepositoryListRoute().push<void>(context);
             });
           } else if (snapshot.hasError && _loginFuture != null) {
             WidgetsBinding.instance.addPostFrameCallback((_) {

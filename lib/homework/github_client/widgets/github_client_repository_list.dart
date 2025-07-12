@@ -1,10 +1,7 @@
 part of '../routes/router_config.dart';
 
 class RepositoryListRoute extends GoRouteData with _$RepositoryListRoute {
-  // 用在route path 中的参数,不能是_前缀開頭, 不然go_router 會無法解析
-  final User? $extra;
-
-  const RepositoryListRoute({this.$extra});
+  const RepositoryListRoute();
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
