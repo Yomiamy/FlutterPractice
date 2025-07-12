@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+part of '../routes/router_config.dart';
 
-part 'github_client_repository_detail_page.g.dart';
-
-@TypedGoRoute<RepositoryDetailRoute>(path: GithubClientRepositoryDetailPage.ROUTE_NAME)
 class RepositoryDetailRoute extends GoRouteData with _$RepositoryDetailRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) =>

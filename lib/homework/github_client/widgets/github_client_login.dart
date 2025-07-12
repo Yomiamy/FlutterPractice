@@ -1,13 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_practice/homework/github_client/api/github_api_manager.dart';
-import 'package:flutter_practice/homework/github_client/models/user.dart';
-import 'package:go_router/go_router.dart';
-import 'package:toast/toast.dart';
-
-import 'github_client_repository_list.dart';
-
-part 'github_client_login.g.dart';
+part of '../routes/router_config.dart';
 
 @TypedGoRoute<LoginRoute>(path: GithubClientLogin.ROUTE_NAME)
 class LoginRoute extends GoRouteData with _$LoginRoute {

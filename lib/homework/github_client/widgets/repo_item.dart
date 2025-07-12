@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../gen/assets_config.dart';
 import '../models/repo.dart';
-import 'github_client_repository_detail_page.dart';
+import '../routes/router_config.dart';
 
 class RepoItem extends StatefulWidget {
   final Repo repo;

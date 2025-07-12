@@ -1,17 +1,5 @@
-// 定义仓库列表页面的路由数据类
-import 'package:flutter/material.dart';
-import 'package:flutter_practice/homework/github_client/widgets/repo_item.dart';
-import 'package:go_router/go_router.dart';
-import 'package:toast/toast.dart';
+part of '../routes/router_config.dart';
 
-import '../api/github_api_manager.dart';
-import '../common/Global.dart';
-import '../models/repo.dart';
-import '../models/user.dart';
-
-part 'github_client_repository_list.g.dart';
-
-@TypedGoRoute<RepositoryListRoute>(path: GithubClientRepositoryList.ROUTE_NAME)
 class RepositoryListRoute extends GoRouteData with _$RepositoryListRoute {
   // 用在route path 中的参数,不能是_前缀開頭, 不然go_router 會無法解析
   final User? $extra;

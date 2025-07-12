@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import '../models/user.dart';
-import 'github_client_repository_detail_page.dart';
-import 'github_client_repository_list.dart';
-
-part 'github_client_main_page.g.dart';
+part of '../routes/router_config.dart';
 
 final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
 
