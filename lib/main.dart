@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/route/material_go_shell_route_test1.dart';
 import 'package:flutter_practice/tab/favors_page.dart';
 
 import 'homework/github_client/common/Global.dart';
-import 'homework/github_client/widgets/github_client_app.dart';
 
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -15,7 +15,7 @@ Future<void> main() async {
   // bootstrap(todosApi: todosApi);
   // runApp(const MyApp());
 
-  Global.instance.init().then((_) => runApp(const GithubClientApp()));
+  Global.instance.init().then((_) => runApp(MaterialGoShellRouteTest1()));
 }
 
 class MyApp extends StatelessWidget {
