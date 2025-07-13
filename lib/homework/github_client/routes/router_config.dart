@@ -13,6 +13,8 @@ part '../widgets/github_client_login.dart';
 part '../widgets/github_client_main_page.dart';
 part '../widgets/github_client_repository_detail_page.dart';
 part '../widgets/github_client_repository_list.dart';
+part '../widgets/user_route_data.dart';
+part '../widgets/dialog_page.dart';
 part 'router_config.g.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
