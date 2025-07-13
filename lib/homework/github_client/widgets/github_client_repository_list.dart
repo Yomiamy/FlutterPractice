@@ -1,13 +1,32 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_practice/homework/github_client/models/repo.dart';
+part of '../routes/router_config.dart';
 
-import '../api/github_api_manager.dart';
-import 'repo_item.dart';
-
-class GithubClientRepositoryList extends StatefulWidget {
-
+class RepositoryListRoute extends GoRouteData with _$RepositoryListRoute {
   static const String ROUTE_NAME = "/repository_list";
 
+  const RepositoryListRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return CustomTransitionPage(
+        key: state.pageKey,
+        transitionDuration: const Duration(seconds: 1), // 指定 transition 的 duration
+        child: const GithubClientRepositoryList(), // 使用 id 和 name
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          // Start from the right, // End at the center
+          // Use a curve for smooth transition
+          return SlideTransition(
+            position: Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero)
+                .animate(CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOut,
+            )),
+            child: child,
+          );
+        });
+  }
+}
+
+class GithubClientRepositoryList extends StatefulWidget {
   const GithubClientRepositoryList({super.key});
 
   @override
@@ -15,6 +34,14 @@ class GithubClientRepositoryList extends StatefulWidget {
 }
 
 class _GithubClientRepositoryListState extends State<GithubClientRepositoryList> {
+  User? _user;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _user = Global.instance.user;
+  }
 
   Future<List<Repo>?> _fetchRepos() async {
     return await GithubApiManager.instance.getRepos();
@@ -22,29 +49,31 @@ class _GithubClientRepositoryListState extends State<GithubClientRepositoryList>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("GithubClientRepositoryList"),
-        ),
-        body: FutureBuilder<List<Repo>?>(
-          future: _fetchRepos(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-              List<Repo> repos = snapshot.data ?? [];
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Toast.show("_user.login = ${_user?.login}, _user.id = ${_user?.id}");
+    });
 
-              return ListView.builder(
-                itemCount: repos.length,
-                itemBuilder: (context, index) {
-                  return RepoItem(repo: repos[index]);
-                },
-              );
-            } else if (snapshot.hasError) {
-              return Center(child: Text("Error: ${snapshot.error}"));
-            }
+    return FutureBuilder<List<Repo>?>(
+        future: _fetchRepos(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+            List<Repo> repos = snapshot.data ?? [];
 
-            return const Center(child: CircularProgressIndicator());
+            return ListView.builder(
+              itemCount: repos.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                    onTap: () {
+                      const UsersRouteData().go(context);
+                    },
+                    child: RepoItem(repo: repos[index]));
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Center(child: Text("Error: ${snapshot.error}"));
           }
-      ),
-    );
+
+          return const Center(child: CircularProgressIndicator());
+        });
   }
 }

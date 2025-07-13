@@ -1,14 +1,16 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_practice/homework/github_client/api/github_api_manager.dart';
-import 'package:flutter_practice/homework/github_client/models/user.dart';
-import 'package:toast/toast.dart';
+part of '../routes/router_config.dart';
 
-import 'github_client_repository_list.dart';
-
-class GithubClientLogin extends StatefulWidget {
+@TypedGoRoute<LoginRoute>(path: LoginRoute.ROUTE_NAME)
+class LoginRoute extends GoRouteData with _$LoginRoute {
   static const String ROUTE_NAME = "/";
 
+  const LoginRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const GithubClientLogin();
+}
+
+class GithubClientLogin extends StatefulWidget {
   const GithubClientLogin({super.key});
 
   @override
@@ -44,7 +46,8 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              Navigator.pushNamed(context, GithubClientRepositoryList.ROUTE_NAME);
+              // 修改跳轉邏輯，跳轉到 GithubClientMainPage
+              const RepositoryListRoute().push<void>(context);
             });
           } else if (snapshot.hasError && _loginFuture != null) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -52,7 +55,7 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
 
               if (snapshot.error is DioException) {
                 var response = (snapshot.error as DioException).response;
-                errorMsg = "Login failed: ${response?.statusMessage ?? "Network error"}" ;
+                errorMsg = "Login failed: ${response?.statusMessage ?? "Network error"}";
               } else if (snapshot.error is Exception) {
                 errorMsg = "Login failed: ${snapshot.error}";
               }
@@ -68,14 +71,13 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
                 children: <Widget>[
                   TextFormField(
                     decoration: const InputDecoration(
-                      errorStyle: TextStyle(fontSize: 0.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      labelText: 'Github Account Name',
-                      hintText: "Please input github account name",
-                      prefixIcon: Icon(Icons.person)
-                    ),
+                        errorStyle: TextStyle(fontSize: 0.0),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        labelText: 'Github Account Name',
+                        hintText: "Please input github account name",
+                        prefixIcon: Icon(Icons.person)),
                     validator: (str) {
                       if (str == null || str.isEmpty) {
                         return "";
@@ -86,9 +88,7 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
                       _account = str;
                     },
                   ),
-
                   const SizedBox(height: 30),
-
                   SizedBox(
                     height: 50,
                     width: 200,
@@ -106,9 +106,7 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 30),
-
                   Visibility(
                     visible: snapshot.connectionState == ConnectionState.waiting,
                     child: SizedBox(
