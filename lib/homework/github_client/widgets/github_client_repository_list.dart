@@ -1,6 +1,8 @@
 part of '../routes/router_config.dart';
 
 class RepositoryListRoute extends GoRouteData with _$RepositoryListRoute {
+  static const String ROUTE_NAME = "/repository_list";
+
   const RepositoryListRoute();
 
   @override
@@ -25,9 +27,6 @@ class RepositoryListRoute extends GoRouteData with _$RepositoryListRoute {
 }
 
 class GithubClientRepositoryList extends StatefulWidget {
-  //static const String ROUTE_NAME = "/repository_list/:id/:name";
-  static const String ROUTE_NAME = "/repository_list";
-
   const GithubClientRepositoryList({super.key});
 
   @override
@@ -63,7 +62,11 @@ class _GithubClientRepositoryListState extends State<GithubClientRepositoryList>
             return ListView.builder(
               itemCount: repos.length,
               itemBuilder: (context, index) {
-                return RepoItem(repo: repos[index]);
+                return GestureDetector(
+                    onTap: () {
+                      const UsersRouteData().go(context);
+                    },
+                    child: RepoItem(repo: repos[index]));
               },
             );
           } else if (snapshot.hasError) {

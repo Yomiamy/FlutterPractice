@@ -2,10 +2,16 @@ part of '../routes/router_config.dart';
 
 final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
 
+// TypedGoRoute的第二層開始的TypedGoRoute不能以'/'開頭
 @TypedShellRoute<MainShellRoute>(routes: [
-  TypedGoRoute<RepositoryListRoute>(path: GithubClientRepositoryList.ROUTE_NAME, routes: [
-    TypedGoRoute<RepositoryDetailRoute>(path: GithubClientRepositoryDetailPage.ROUTE_NAME)
+  TypedGoRoute<RepositoryListRoute>(path: RepositoryListRoute.ROUTE_NAME, routes: [
+    TypedGoRoute<UsersRouteData>(
+        path: UsersRouteData.ROUTE_NAME,
+        routes: <TypedGoRoute<UserRouteData>>[
+          TypedGoRoute<UserRouteData>(path: UserRouteData.ROUTE_NAME)
+        ])
   ]),
+  TypedGoRoute<RepositoryDetailRoute>(path: RepositoryDetailRoute.ROUTE_NAME)
 ])
 class MainShellRoute extends ShellRouteData {
   static final GlobalKey<NavigatorState> $navigatorKey = shellNavigatorKey;
@@ -14,13 +20,15 @@ class MainShellRoute extends ShellRouteData {
 
   @override
   Widget builder(BuildContext context, GoRouterState state, Widget navigator) =>
-      const GithubClientMainPage();
+      GithubClientMainPage(child: navigator);
 }
 
 class GithubClientMainPage extends StatefulWidget {
   static const String ROUTE_NAME = "/main";
 
-  const GithubClientMainPage({super.key});
+  final Widget child;
+
+  const GithubClientMainPage({super.key, required this.child});
 
   @override
   State<GithubClientMainPage> createState() => _GithubClientMainPageState();
@@ -46,32 +54,14 @@ class _GithubClientMainPageState extends State<GithubClientMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Github Client"),
+          title: const Text("GithubClientMainPage"),
         ),
-        body: PageView(
-          controller: _pageController,
-          onPageChanged: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          children: const <Widget>[
-            // RepositoryListRoute 需要 id 和 name，這裡先傳入預設值
-            // 實際應用中，您會從登入頁面傳遞這些資訊
-            GithubClientRepositoryList(),
-            Center(child: Text("Notifications Page")),
-            Center(child: Text("Profile Page")),
-          ],
-        ),
+        body: widget.child,
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.code),
               label: 'Repositories',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.notifications),
-              label: 'Notifications',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
@@ -85,9 +75,76 @@ class _GithubClientMainPageState extends State<GithubClientMainPage> {
   }
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      _pageController.jumpToPage(index);
-    });
+    _selectedIndex = index;
+
+    switch (index) {
+      case 0:
+        const RepositoryListRoute().go(context);
+        break;
+      case 1:
+        const RepositoryDetailRoute().go(context);
+        break;
+    }
+  }
+}
+
+class UsersRouteData extends GoRouteData with _$UsersRouteData {
+  static const String ROUTE_NAME = "users";
+
+  const UsersRouteData();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return ListView(
+      children: <Widget>[
+        for (int userID = 1; userID <= 3; userID++)
+          ListTile(
+            title: Text('User $userID'),
+            onTap: () => UserRouteData(id: userID).go(context),
+          ),
+      ],
+    );
+  }
+}
+
+class UserRouteData extends GoRouteData with _$UserRouteData {
+  static const String ROUTE_NAME = "user/:id";
+
+  const UserRouteData({required this.id});
+
+  // Without this static key, the dialog will not cover the navigation rail.
+  static final GlobalKey<NavigatorState> $parentNavigatorKey = rootNavigatorKey;
+
+  final int id;
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return DialogPage(
+      key: state.pageKey,
+      child: Center(
+        child: SizedBox(
+          width: 300,
+          height: 300,
+          child: Card(child: Center(child: Text('User $id'))),
+        ),
+      ),
+    );
+  }
+}
+
+class DialogPage extends Page<void> {
+  /// A page to display a dialog.
+  const DialogPage({required this.child, super.key});
+
+  /// The widget to be displayed which is usually a [Dialog] widget.
+  final Widget child;
+
+  @override
+  Route<void> createRoute(BuildContext context) {
+    return DialogRoute<void>(
+      context: context,
+      settings: this,
+      builder: (BuildContext context) => child,
+    );
   }
 }

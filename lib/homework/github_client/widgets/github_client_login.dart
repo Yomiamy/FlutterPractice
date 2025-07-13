@@ -1,7 +1,9 @@
 part of '../routes/router_config.dart';
 
-@TypedGoRoute<LoginRoute>(path: GithubClientLogin.ROUTE_NAME)
+@TypedGoRoute<LoginRoute>(path: LoginRoute.ROUTE_NAME)
 class LoginRoute extends GoRouteData with _$LoginRoute {
+  static const String ROUTE_NAME = "/";
+
   const LoginRoute();
 
   @override
@@ -9,8 +11,6 @@ class LoginRoute extends GoRouteData with _$LoginRoute {
 }
 
 class GithubClientLogin extends StatefulWidget {
-  static const String ROUTE_NAME = "/";
-
   const GithubClientLogin({super.key});
 
   @override

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../gen/assets_config.dart';
 import '../models/repo.dart';
-import '../routes/router_config.dart';
 
 class RepoItem extends StatefulWidget {
   final Repo repo;
@@ -19,21 +18,7 @@ class _RepoItemState extends State<RepoItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
-      child: GestureDetector(
-        onTap: () {
-          // final Uri url = Uri.parse(widget.repo.htmlUrl ?? "");
-          //
-          // canLaunchUrl(url).then((isCanLaunch) async {
-          //   if (!isCanLaunch) {
-          //     Toast.show("${widget.repo.htmlUrl} can't opened");
-          //   } else {
-          //     launchUrl(url, mode: LaunchMode.externalApplication);
-          //   }
-          // });
-
-          RepositoryDetailRoute().push(context);
-        },
+        padding: const EdgeInsets.only(top: 8.0, left: 16.0, right: 16.0),
         child: Card(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -61,9 +46,7 @@ class _RepoItemState extends State<RepoItem> {
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis)),
               _buildBottom()
-            ])),
-      ),
-    );
+            ])));
   }
 
   Widget _buildBottom() {
