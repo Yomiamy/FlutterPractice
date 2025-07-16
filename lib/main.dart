@@ -101,34 +101,66 @@ void _initFirebaseCrashlytics() {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
-  developer.log('Firebase Crashlytics initialized', name: 'main');
 }
 
 void _initFirebaseCloudMessaging() {
-  // Register the background message handler
+  // 監聽背景訊息
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  // Handle foreground messages
+  // 監聽前景訊息
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    debugPrint('Got a message whilst in the foreground!');
+    debugPrint('onMessage: Got a message whilst in the foreground!');
     debugPrint('Message data: ${message.data}');
 
     if (message.notification != null) {
       debugPrint(
-          'Message also contained a notification: ${message.notification?.title} / ${message.notification?.body}');
-      // You can display a local notification here if needed
+          'onMessage: Message also contained a notification: ${message.notification?.title} / ${message.notification?.body}');
+
+      // 在此處顯示本地通知
+      flutterLocalNotificationsPlugin.show(
+          0,
+          message.notification!.title,
+          message.notification!.body,
+          const NotificationDetails(
+              android: AndroidNotificationDetails(
+                'default_channel_id',
+                '預設頻道',
+                importance: Importance.max,
+                priority: Priority.high,
+              ),
+              iOS: DarwinNotificationDetails(
+                // 當應用程式在前台且顯示通知時，顯示提示 (僅適用於 iOS 10 及更高版本)
+                presentAlert: true,
+                // 當應用程式在前台且顯示通知時，顯示徽章編號 (僅適用於 iOS 10 及更高版本)
+                presentBadge: true,
+                // 當應用程式在前台且顯示通知時，播放聲音 (僅適用於 iOS 10 及更高版本)
+                presentSound: true,
+                // 顯示通知時播放的特定聲音
+                // sound: String?,
+                // 應用程式圖示的徽章編號
+                // badgeNumber: int?,
+                // attachments: List<DarwinNotificationAttachment>?, (僅適用於 iOS 10 及更高版本)
+              )));
     }
   });
 
-  // Handle messages when the app is opened from a terminated state
+  // 處理從終止狀態開啟應用程式時的訊息
   FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) {
+    debugPrint('getInitialMessage: App opened from a notification');
+
     if (message != null) {
-      debugPrint('App opened from terminated state with message: ${message.data}');
-      // Handle initial message (e.g., navigate to a specific screen)
+      debugPrint(
+          'getInitialMessage: App opened from terminated state with message: ${message.data}');
+      // 處理初始訊息 (例如，導航到特定螢幕)
     }
   });
 
-  // Request permission for iOS/Web
+  // 處理從背景狀態開啟應用程式時的訊息
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    debugPrint('onMessageOpenedApp: App opened from a notification: ${message.data}');
+  });
+
+  // 要求 Android/iOS/Web 的權限
   FirebaseMessaging.instance.requestPermission(
     alert: true,
     announcement: false,
@@ -139,26 +171,27 @@ void _initFirebaseCloudMessaging() {
     sound: true,
   );
 
-  // Get FCM token
+  // 取得 FCM 權杖
   FirebaseMessaging.instance.getToken().then((token) {
     debugPrint("FCM Token: $token");
-    // You can send this token to your backend server
+    // 你可以將此權杖傳送到你的後端伺服器
   });
 }
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // If you're going to use other Firebase services in your background handler,
-  // such as Firestore, make sure you call `initializeApp` before using them.
-  await Firebase.initializeApp(); // Re-initialize for background execution if needed
-  debugPrint("Handling a background message: ${message.messageId}");
+  // 如果您將在後台處理程序中使用其他 Firebase 服務，
+  // 例如 Firestore，請確保在使用它們之前調用 `initializeApp`。
+  await Firebase.initializeApp(); // 如果需要，重新初始化以進行後台執行
+  debugPrint("MessagingBackgroundHandler: Handling a background message: ${message.messageId}");
   debugPrint('Message data: ${message.data}');
 
   if (message.notification != null) {
     debugPrint(
         'Message also contained a notification: ${message.notification?.title} / ${message.notification?.body}');
   }
-  // Implement your background message handling logic here
+  // 在此處實現您的後台消息處理邏輯
+}
 
 Future<void> _initLocalNotification() async {
   const AndroidInitializationSettings initializationSettingsAndroid =
