@@ -88,8 +88,10 @@ dependencies:
   firebase_messaging: ^15.2.7
   # Firebase 穩定度分析套件
   firebase_crashlytics: ^4.3.7
-    # Firebase 身份驗證套件
+  # Firebase 應用安裝套件, 提供應用程式實例的唯一標識符
   firebase_app_installations: ^0.3.2+7
+  # 本地通知套件, 用於在應用程式本地顯示通知
+  flutter_local_notifications: ^19.3.0
 
   # 本地存儲套件（使用專案內的 packages）
   local_storage_todos_api:
