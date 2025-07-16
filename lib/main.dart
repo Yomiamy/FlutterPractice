@@ -1,3 +1,5 @@
+import 'dart:developer' as developer;
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -6,20 +8,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_practice/constraint_layout/constraint_layout_test_with_constraint_grid.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_practice/homework/github_client/widgets/github_client_app.dart';
 import 'package:flutter_practice/tab/favors_page.dart';
 
 import 'firebase/options/firebase_options_beta.dart';
 import 'firebase/options/firebase_options_dev.dart';
 import 'firebase/options/firebase_options_prod.dart';
-import 'form/custom_input_form_field.dart';
-import 'form/custom_input_form_field_test1.dart';
-import 'form/form_field_test2.dart';
-import 'form/text_field_test1.dart';
-import 'gesture/gesture_test1.dart';
-import 'homework/Practice_168.dart';
-import 'homework/Practice_220.dart';
-import 'homework/github_client/common/Global.dart';
 import 'homework/github_client/common/global.dart';
 import 'homework/github_client/widgets/github_client_app.dart';
 import 'inherited_widget/CounterWidget.dart';
@@ -41,6 +36,10 @@ import 'listview/notification_listener_test1.dart';
 import 'locale/locale_string_test1.dart';
 import 'overlay/OverlayTest1.dart';
 
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,9 +51,28 @@ Future<void> main() async {
   // bootstrap(todosApi: todosApi);
   // runApp(const MyApp());
 
-  List<Future> fetureList = [];
+  List<Future> futureList = [
+    Global.instance.init(),
+    _initializeFirebaseApp(),
+    _initLocalNotification()
+  ];
+  Future.wait(futureList).then((_) {
+    Timeline.startSync('_initFirebaseCrashlytics');
+    _initFirebaseCrashlytics();
+    Timeline.finishSync();
 
-  fetureList.add(Global.instance.init());
+    Timeline.startSync('_initFirebaseCloudMessaging');
+    _initFirebaseCloudMessaging();
+    Timeline.finishSync();
+
+    Timeline.startSync('runApp(const GithubClientApp())');
+    runApp(const GithubClientApp());
+    Timeline.finishSync();
+  });
+}
+
+Future<void> _initializeFirebaseApp() async {
+  Timeline.startSync('_initializeFirebaseApp');
 
   const String env = String.fromEnvironment('FLAVOR');
   FirebaseOptions firebaseOptions;
@@ -70,14 +88,9 @@ Future<void> main() async {
       // prod
       firebaseOptions = DefaultFirebaseOptionsProd.currentPlatform;
   }
-  fetureList.add(Firebase.initializeApp(options: firebaseOptions));
 
-  Future.wait(fetureList).then((_) {
-    _initFirebaseCrashlytics();
-    _initFirebaseCloudMessaging();
-
-    runApp(const GithubClientApp());
-  });
+  await Firebase.initializeApp(options: firebaseOptions);
+  Timeline.finishSync();
 }
 
 void _initFirebaseCrashlytics() {
@@ -88,6 +101,7 @@ void _initFirebaseCrashlytics() {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
+  developer.log('Firebase Crashlytics initialized', name: 'main');
 }
 
 void _initFirebaseCloudMessaging() {
@@ -145,6 +159,21 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
         'Message also contained a notification: ${message.notification?.title} / ${message.notification?.body}');
   }
   // Implement your background message handling logic here
+
+Future<void> _initLocalNotification() async {
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+  // 新增ios的settings
+  const DarwinInitializationSettings initializationSettingsIOS = DarwinInitializationSettings(
+    requestAlertPermission: true,
+    requestBadgePermission: true,
+    requestSoundPermission: true,
+  );
+  const InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+    iOS: initializationSettingsIOS,
+  );
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 }
 
 class MyApp extends StatelessWidget {
