@@ -36,19 +36,6 @@ class GithubClientMainPage extends StatefulWidget {
 
 class _GithubClientMainPageState extends State<GithubClientMainPage> {
   int _selectedIndex = 0;
-  late PageController _pageController;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +51,8 @@ class _GithubClientMainPageState extends State<GithubClientMainPage> {
               label: 'Repositories',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
+              icon: Icon(Icons.message),
+              label: 'Robot',
             ),
           ],
           currentIndex: _selectedIndex,
