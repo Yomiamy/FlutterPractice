@@ -1,4 +1,3 @@
-import 'dart:developer' as developer;
 import 'dart:developer';
 import 'dart:ui';
 
@@ -194,14 +193,25 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 }
 
 Future<void> _initLocalNotification() async {
+  // 新增android的settings
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'default_channel_id', // 這裡要與顯示通知時一致
+    '預設頻道',
+    importance: Importance.max,
+  );
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('@mipmap/ic_launcher');
+
   // 新增ios的settings
   const DarwinInitializationSettings initializationSettingsIOS = DarwinInitializationSettings(
     requestAlertPermission: true,
     requestBadgePermission: true,
     requestSoundPermission: true,
   );
+
   const InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
     iOS: initializationSettingsIOS,
