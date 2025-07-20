@@ -6,36 +6,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_practice/constraint_layout/constraint_layout_test_with_constraint_grid.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_practice/homework/github_client/widgets/github_client_app.dart';
-import 'package:flutter_practice/tab/favors_page.dart';
 
 import 'firebase/options/firebase_options_beta.dart';
 import 'firebase/options/firebase_options_dev.dart';
 import 'firebase/options/firebase_options_prod.dart';
+import 'gen/assets_config.dart';
 import 'homework/github_client/common/global.dart';
-import 'homework/github_client/widgets/github_client_app.dart';
-import 'inherited_widget/CounterWidget.dart';
-import 'inherited_widget/MediaQueryWdiget.dart';
-import 'ink/ClickInkWell.dart';
-import 'ink/MaterialBgInkWell.dart';
-import 'ink/MaterialInk.dart';
 import 'l10n/generated/l10n.dart';
-import 'layout/align_test1.dart';
-import 'layout/flex_test1.dart';
-import 'lifecycle/LifecycleMonitor.dart';
-import 'lifecycle/inherited_widget_test1.dart';
-import 'lifecycle/will_pop_scope_test1.dart';
-import 'listview/InfiniteListTest.dart';
-import 'listview/ListViewTest1.dart';
-import 'listview/ListViewTest2.dart';
-import 'listview/custom_scroll_view_test.dart';
-import 'listview/notification_listener_test1.dart';
 import 'locale/locale_string_test1.dart';
-import 'overlay/OverlayTest1.dart';
-
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -241,9 +223,23 @@ Future<void> _initFirebaseAiLogic() async {
   final model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
   // Provide a prompt that contains text
-  const prompt = '以Dart寫一個Hello World程式';
+  //const prompt = '以Dart寫一個Hello World程式';
+  const prompt = "請用中文描述這個影片的內容?";
+  // final promptTextPart = TextPart("請用中文描述這個影片的內容?");
+
+  // Prepare video for input
+  ByteData videoBytes = await rootBundle.load(AssetVideoRes.animals);
+  // Provide the video as `Data` with the appropriate mimetype
+  // final videoPart = InlineDataPart('video/mp4', videoBytes.buffer.asUint8List());
+
   // To generate text output, call generateContent with the text input
-  final response = await model.generateContent([Content.text(prompt)]);
+  // final response = await model.generateContent([Content.text(prompt)]);
+  // final response = await model.generateContent([
+  //   Content.multi([promptTextPart, videoPart])
+  // ]);
+  final response = await model.generateContent(
+      [Content.text(prompt), Content.inlineData('video/mp4', videoBytes.buffer.asUint8List())]);
+
   debugPrint("Gemini Response:\n${response.text}");
 }
 

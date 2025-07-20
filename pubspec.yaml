@@ -179,6 +179,7 @@ flutter:
   # 資源文件，如圖像，可以在此定義
   assets:
     - assets/images/
+    - assets/video/
 
   # 字體設定（如需自定義字體，可以取消以下的註解）
   # fonts:

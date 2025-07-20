@@ -306,10 +306,21 @@ class $AssetsImagesGen {
   ];
 }
 
+class $AssetsVideoGen {
+  const $AssetsVideoGen();
+
+  /// File path: assets/video/animals.mp4
+  String get animals => 'assets/video/animals.mp4';
+
+  /// List of all assets
+  List<String> get values => [animals];
+}
+
 class Assets {
   const Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsVideoGen video = $AssetsVideoGen();
 }
 
 class AssetGenImage {
