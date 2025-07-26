@@ -139,7 +139,8 @@ void _initFirebaseCloudMessaging() {
                 // 應用程式圖示的徽章編號
                 // badgeNumber: int?,
                 // attachments: List<DarwinNotificationAttachment>?, (僅適用於 iOS 10 及更高版本)
-              )));
+              )),
+          payload: message.data.toString());
     }
   });
 
