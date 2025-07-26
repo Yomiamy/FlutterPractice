@@ -103,10 +103,10 @@ void _initFirebaseCrashlytics() {
 }
 
 void _initFirebaseCloudMessaging() {
-  // 監聽背景訊息
+  // 監聽背景訊息(Notification Message)
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  // 監聽前景訊息
+  // 監聽前景訊息(Notification Message)
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     debugPrint('onMessage: Got a message whilst in the foreground!');
     debugPrint('Message data: ${message.data}');
@@ -144,7 +144,7 @@ void _initFirebaseCloudMessaging() {
     }
   });
 
-  // 處理從終止狀態開啟應用程式時的訊息
+  // 處理從終止狀態開啟應用程式時的訊息(Notification Message)
   FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) {
     debugPrint('getInitialMessage: App opened from a notification');
 
@@ -155,7 +155,7 @@ void _initFirebaseCloudMessaging() {
     }
   });
 
-  // 處理從背景狀態開啟應用程式時的訊息
+  // 處理從背景狀態開啟應用程式時的訊息(Notification Message)
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
     debugPrint('onMessageOpenedApp: App opened from a notification: ${message.data}');
   });
@@ -193,6 +193,12 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // 在此處實現您的後台消息處理邏輯
 }
 
+@pragma('vm:entry-point')
+void _localNotificationTapBackgroundHandler(NotificationResponse response) {
+  // // 當應用程式在後台時，顯示通知點擊後在此處處理通知點擊事件(Data Message)
+  debugPrint('NotificationTapBackgroundHandler: Notification tapped: ${response.payload}');
+}
+
 Future<void> _initLocalNotification() async {
   // 新增android的settings
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
@@ -217,7 +223,15 @@ Future<void> _initLocalNotification() async {
     android: initializationSettingsAndroid,
     iOS: initializationSettingsIOS,
   );
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  await flutterLocalNotificationsPlugin.initialize(
+    initializationSettings,
+    onDidReceiveBackgroundNotificationResponse: _localNotificationTapBackgroundHandler,
+    onDidReceiveNotificationResponse: (NotificationResponse response) {
+      // 當應用程式在前台時，顯示通知點擊後(Data Message)
+      debugPrint('onDidReceiveNotificationResponse: ${response.payload}');
+      // 在此處處理通知點擊事件
+    },
+  );
 }
 
 class MyApp extends StatelessWidget {
