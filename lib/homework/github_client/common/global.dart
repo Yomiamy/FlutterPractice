@@ -34,6 +34,7 @@ class Global {
   Global._();
 
   Future<void> init() async {
+    Timeline.startSync('Global.init()');
     _prefs = await SharedPreferences.getInstance();
 
     String? userJson = _prefs.getString(_SP_EXTRA_KEY);
@@ -42,6 +43,7 @@ class Global {
     }
 
     GithubApiManager.instance.init();
+    Timeline.finishSync();
   }
 
   void saveProfile() =>
