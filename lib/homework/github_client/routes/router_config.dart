@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_practice/homework/github_client/bloc/gemini_api_event.dart';
 import 'package:go_router/go_router.dart';
 import 'package:toast/toast.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../api/github_api_manager.dart';
 import '../bloc/gemini_api_bloc.dart';

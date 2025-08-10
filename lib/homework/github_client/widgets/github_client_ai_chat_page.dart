@@ -62,7 +62,18 @@ class GithubClientAiChatPage extends StatelessWidget {
             child: Text(isAIReplay ? 'AI' : 'User'), // 可以替換為AI的頭像
           ),
           title: Text(isAIReplay ? 'AI 回答' : '用戶 提示詞'),
-          subtitle: Text(msg),
+          subtitle: MarkdownBody(
+            data: msg,
+            selectable: true, // 讓文字可以被選取
+            styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(
+              p: const TextStyle(fontSize: 14),
+            ),
+            onTapLink: (text, href, title) {
+              if (href != null) {
+                launchUrl(Uri.parse(href)); // 可用 url_launcher 開啟連結
+              }
+            },
+          ),
           onTap: () {
             // 點擊聊天記錄後的處理
             debugPrint('Tapped on AI response $index');

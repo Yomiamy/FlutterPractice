@@ -92,8 +92,11 @@ dependencies:
   firebase_app_installations: ^0.3.2+7
   # 本地通知套件, 用於在應用程式本地顯示通知
   flutter_local_notifications: ^19.3.0
-    # Firebase AI 套件, 用於集成 Firebase 的 AI 功能
+  # Firebase AI 套件, 用於集成 Firebase 的 AI 功能
   firebase_ai: ^2.2.1 # Firebase AI 套件
+
+  # Markdown 渲染套件
+  flutter_markdown: ^0.7.7+1
 
   # 本地存儲套件（使用專案內的 packages）
   local_storage_todos_api:
