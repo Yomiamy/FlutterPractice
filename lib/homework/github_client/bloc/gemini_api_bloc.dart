@@ -33,7 +33,10 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
 
     emit(state.copyWith(status: Status.queryLoading));
 
-    final response = await _aiModel.generateContent([Content.text(prompt)]);
+    final response = await _aiModel.generateContent([
+      Content.text(prompt),
+    ]);
+
     if (response.text != null) {
       _chatList.insert(0, "AI reply: ${response.text ?? ""}");
     }
@@ -45,7 +48,7 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     // Initialize the Gemini Developer API backend service
     // Create a `GenerativeModel` instance with a model that supports your use case
     _aiModel = FirebaseAI.googleAI()
-        .generativeModel(model: 'gemini-2.5-flash', systemInstruction: Content.system("以中文回答問題"));
+        .generativeModel(model: 'gemini-2.5-flash', systemInstruction: Content.system("以繁體中文回答問題"));
 
     //model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 
@@ -74,5 +77,15 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     // await for (final chunk in response) {
     //   debugPrint(chunk.text);
     // }
+
+    // Prepare image for input
+    // ByteData imageBytes = await rootBundle.load(AssetImageRes.animalPic1.path);
+    // // Provide the video as `Data` with the appropriate mimetype
+    // final imageDatas = imageBytes.buffer.asUint8List();
+    //
+    // final response = await _aiModel.generateContent([
+    //   Content.text(prompt),
+    //   Content.inlineData('image/jpeg', imageDatas),
+    // ]);
   }
 }
