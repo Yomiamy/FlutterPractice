@@ -81,19 +81,19 @@ dependencies:
   flutter_constraintlayout: ^1.7.0-stable
 
   # Firebase 核心套件
-  firebase_core: ^3.14.0
+  firebase_core: ^4.0.0
   # Firebase 分析套件
-  firebase_analytics: ^11.5.0
+  firebase_analytics: ^12.0.0
   # Firebase 推播通知套件
-  firebase_messaging: ^15.2.7
+  firebase_messaging: ^16.0.0
   # Firebase 穩定度分析套件
-  firebase_crashlytics: ^4.3.7
+  firebase_crashlytics: ^5.0.0
   # Firebase 應用安裝套件, 提供應用程式實例的唯一標識符
-  firebase_app_installations: ^0.3.2+7
+  firebase_app_installations: ^0.4.0
   # 本地通知套件, 用於在應用程式本地顯示通知
   flutter_local_notifications: ^19.3.0
   # Firebase AI 套件, 用於集成 Firebase 的 AI 功能
-  firebase_ai: ^2.2.1 # Firebase AI 套件
+  firebase_ai: ^3.1.0 # Firebase AI 套件
 
   # Markdown 渲染套件
   flutter_markdown: ^0.7.7+1
