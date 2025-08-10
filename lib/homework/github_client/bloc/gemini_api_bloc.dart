@@ -44,7 +44,8 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
   Future<void> _initFirebaseAiLogic() async {
     // Initialize the Gemini Developer API backend service
     // Create a `GenerativeModel` instance with a model that supports your use case
-    _aiModel = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
+    _aiModel = FirebaseAI.googleAI()
+        .generativeModel(model: 'gemini-2.5-flash', systemInstruction: Content.system("以中文回答問題"));
 
     //model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
 

@@ -59,7 +59,7 @@ class GithubClientAiChatPage extends StatelessWidget {
         return ListTile(
           titleAlignment: ListTileTitleAlignment.top,
           leading: CircleAvatar(
-            child: Text(isAIReplay ? 'AI' : 'Prompt'), // 可以替換為AI的頭像
+            child: Text(isAIReplay ? 'AI' : 'User'), // 可以替換為AI的頭像
           ),
           title: Text(isAIReplay ? 'AI 回答' : '用戶 提示詞'),
           subtitle: Text(msg),
