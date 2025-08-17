@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_ai/firebase_ai.dart';
@@ -34,30 +35,51 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     emit(state.copyWith(status: Status.queryLoading));
 
     final response = await _aiModel.generateContent([
-      Content.text(prompt),
+      Content.text("$prompt (請用繁體中文回答問題)"),
     ]);
 
-    if (response.text != null) {
-      _chatList.insert(0, "AI reply: ${response.text ?? ""}");
+    final parts = response.candidates.firstOrNull?.content.parts ?? [];
+
+    if (parts.isNotEmpty) {
+      StringBuffer markdownBuffer = StringBuffer();
+
+      for (final part in parts) {
+        if (part is TextPart) {
+          markdownBuffer.writeln(part.text);
+        } else if (part is InlineDataPart) {
+          // Process image
+          final imageBytesBase64 = base64Encode(part.bytes);
+          markdownBuffer.writeln('![image](data:image/jpeg;base64,$imageBytesBase64)');
+        }
+      }
+
+      if (markdownBuffer.isNotEmpty) {
+        _chatList.insert(0, "AI reply: ${markdownBuffer.toString()}");
+      }
     }
 
     emit(state.copyWith(status: Status.querySuccess, chatList: _chatList));
   }
 
   Future<void> _initFirebaseAiLogic() async {
-    // Initialize the Gemini Developer API backend service
-    // Create a `GenerativeModel` instance with a model that supports your use case
-    _aiModel = FirebaseAI.googleAI()
-        .generativeModel(model: 'gemini-2.5-flash', systemInstruction: Content.system("以繁體中文回答問題"));
+    // 不支援systemInstruction
+    _aiModel = FirebaseAI.googleAI().generativeModel(
+      model: 'gemini-2.0-flash-preview-image-generation',
+      generationConfig:
+          GenerationConfig(responseModalities: [ResponseModalities.text, ResponseModalities.image]),
+    );
 
-    //model = FirebaseAI.googleAI().generativeModel(model: 'gemini-2.5-flash');
+    // _aiModel = FirebaseAI.googleAI().generativeModel(
+    //   model: 'gemini-2.5-flash',
+    //   systemInstruction: Content.system("以繁體中文回答問題"),
+    // );
 
     // Provide a prompt that contains text
     // const prompt = '以Dart寫一個Hello World程式';
     // const prompt = "請用中文描述這個影片的內容?";
     // final promptTextPart = TextPart("請用中文描述這個影片的內容?");
 
-    // Prepare video for input
+    // [Prepare video for input]
     // ByteData videoBytes = await rootBundle.load(AssetVideoRes.animals);
     // Provide the video as `Data` with the appropriate mimetype
     // final videoPart = InlineDataPart('video/mp4', videoBytes.buffer.asUint8List());
@@ -78,7 +100,7 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     //   debugPrint(chunk.text);
     // }
 
-    // Prepare image for input
+    // [Prepare image for input]
     // ByteData imageBytes = await rootBundle.load(AssetImageRes.animalPic1.path);
     // // Provide the video as `Data` with the appropriate mimetype
     // final imageDatas = imageBytes.buffer.asUint8List();
