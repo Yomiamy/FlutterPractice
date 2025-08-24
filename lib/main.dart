@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/constraint_layout/constraint_layout_test_with_horizontal_list.dart';
+import 'package:flutter_practice/constraint_layout/constraint_layout_test_with_constraint_grid.dart';
 
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -35,6 +35,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: const ConstraintLayoutTestWithHorizontalList());
+        home: ConstraintLayoutTestWithConstraintGrid());
   }
 }
