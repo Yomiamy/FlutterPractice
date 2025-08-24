@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/homework/github_client/widgets/github_client_app.dart';
-import 'package:flutter_practice/tab/favors_page.dart';
-
-import 'homework/github_client/common/Global.dart';
+import 'package:flutter_practice/constraint_layout/constraint_layout_test_with_constraint_grid.dart';
 
 Future<void> main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -13,9 +10,9 @@ Future<void> main() async {
   // );
   //
   // bootstrap(todosApi: todosApi);
-  // runApp(const MyApp());
+  runApp(const MyApp());
 
-  Global.instance.init().then((_) => runApp(const GithubClientApp()));
+  // Global.instance.init().then((_) => runApp(const GithubClientApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -38,6 +35,6 @@ class MyApp extends StatelessWidget {
         //         primary: Color.fromRGBO(72, 74, 126, 1)
         //     )
         // ),
-        home: FavorsPage());
+        home: ConstraintLayoutTestWithConstraintGrid());
   }
 }
