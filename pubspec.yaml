@@ -24,6 +24,7 @@ dependencies:
   # Dart 國際化工具包
   intl: ^0.20.2 # 用於日期、數字和消息的格式化和本地化
 
+
   # 本地存儲套件
   shared_preferences: ^2.5.3
 
@@ -92,6 +93,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  # 國際化工具
+  intl_translation: ^0.20.1
+  intl_utils: ^2.8.2
+
+  # Flutter Lint規則
   flutter_lints: ^3.0.2
 
   # Bloc 測試工具
@@ -140,8 +146,17 @@ flutter_gen:
     inputs:
       - assets/color/colors.xml # 定義顏色的 XML 檔案
 
+flutter_intl:
+  enabled: true
+  arb-dir: lib/l10n
+  output_dir: lib/l10n/generated
+  main_locale: zh
+
 # Flutter 專有的配置項
 flutter:
+    # 啟用自動生成代碼的功能
+  generate: false
+
   # 引入 Material Design 圖標字體以支持 material Icons 類
   uses-material-design: true
 
