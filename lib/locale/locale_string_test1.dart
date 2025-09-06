@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/l10n/generated/app_localizations.dart';
+
+import '../l10n/generated/l10n.dart';
 
 class LocaleStringTest1 extends StatelessWidget {
   const LocaleStringTest1({super.key});
@@ -10,7 +11,7 @@ class LocaleStringTest1 extends StatelessWidget {
       appBar: AppBar(
         title: const Text('appbarTitle'),
       ),
-      body: Text(AppLocalizations.of(context)?.locale_string_test2 ?? ''),
+      body: Text(S.current.locale_string_test2),
     );
   }
 }

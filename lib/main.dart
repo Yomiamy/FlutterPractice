@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'l10n/generated/app_localizations.dart';
+import 'l10n/generated/l10n.dart';
 import 'locale/locale_string_test1.dart';
 
 Future<void> main() async {
@@ -37,12 +38,14 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        locale: const Locale('zh', 'TW'),
-        supportedLocales: const [
-          Locale('en', 'US'),
-          Locale('zh', 'TW'),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
         ],
+        locale: const Locale('zh', 'TW'),
+        supportedLocales: S.delegate.supportedLocales,
         home: const LocaleStringTest1());
   }
 }
