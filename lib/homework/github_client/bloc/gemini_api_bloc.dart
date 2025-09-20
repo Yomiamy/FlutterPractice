@@ -3,8 +3,10 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_ai/firebase_ai.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_practice/homework/github_client/bloc/status.dart';
 
+import '../../../gen/assets_config.dart';
 import 'gemini_api_event.dart';
 import 'gemini_api_state.dart';
 
@@ -35,9 +37,21 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
 
     emit(state.copyWith(status: Status.queryLoading));
 
-    /** [Response flow for gemini-2.5-flash & gemini-2.0-flash-preview-image-generation] */
+    /** [Response flow for gemini-2.5-flash] */
+    // final response = await _aiModel.generateContent([
+    //   Content.text("$prompt"),
+    // ]);
+
+    /** [Response flow for gemini-2.0-flash-preview-image-generation] */
+    // final response = await _aiModel.generateContent([
+    //   Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
+    // ]);
+
+    ByteData audioBytes = await rootBundle.load(AssetAudioRes.pixel);
+    // Provide the audio as `Data` with the appropriate audio MIME type
     final response = await _aiModel.generateContent([
-      Content.text("$prompt (請用繁體中文回答問題)"),
+      Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
+      Content.inlineData('audio/mpeg', audioBytes.buffer.asUint8List()),
     ]);
 
     final parts = response.candidates.firstOrNull?.content.parts ?? [];
@@ -49,9 +63,15 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
         if (part is TextPart) {
           markdownBuffer.writeln(part.text);
         } else if (part is InlineDataPart) {
+          final mimeType = part.mimeType;
+          // Use regular expression to check for image mime types
+          if (!RegExp(r'image/(jpeg|png|webp)').hasMatch(mimeType) ||
+              !RegExp(r'audio/(mpeg)').hasMatch(mimeType)) {
+            continue;
+          }
           // Process image
           final imageBytesBase64 = base64Encode(part.bytes);
-          markdownBuffer.writeln('![image](data:image/jpeg;base64,$imageBytesBase64)');
+          markdownBuffer.writeln('![image](data:$mimeType;base64,$imageBytesBase64)');
         }
       }
 
@@ -82,17 +102,22 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
   }
 
   Future<void> _initFirebaseAiLogic() async {
-    /** [imagen generation model] */
-    _imagenModel = FirebaseAI.googleAI().imagenModel(
-      model: 'imagen-3.0-generate-002',
+    /**
+     * [Gemini image - 2.0-flash-preview-image-generation]
+     * 不支援systemInstruction
+     * */
+    _aiModel = FirebaseAI.googleAI().generativeModel(
+      model: 'gemini-2.0-flash-preview-image-generation',
+      generationConfig:
+          GenerationConfig(responseModalities: [ResponseModalities.text, ResponseModalities.image]),
     );
 
-    /** [Gemini image generation model] */
-    // 不支援systemInstruction
-    // _aiModel = FirebaseAI.googleAI().generativeModel(
-    //   model: 'gemini-2.0-flash-preview-image-generation',
-    //   generationConfig:
-    //       GenerationConfig(responseModalities: [ResponseModalities.text, ResponseModalities.image]),
+    /**
+     *  [Gemini imagen - imagen-3.0-generate-002]
+     *  不支援systemInstruction, Imagen API is only accessible to billed users
+     * */
+    // _imagenModel = FirebaseAI.googleAI().imagenModel(
+    //   model: 'imagen-3.0-generate-002',
     // );
 
     /** [Gemini text model] */

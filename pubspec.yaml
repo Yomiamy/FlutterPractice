@@ -183,6 +183,7 @@ flutter:
   assets:
     - assets/images/
     - assets/video/
+    - assets/audio/
 
   # 字體設定（如需自定義字體，可以取消以下的註解）
   # fonts:
