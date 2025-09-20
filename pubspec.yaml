@@ -113,7 +113,7 @@ dev_dependencies:
     sdk: flutter
 
   # 國際化工具
-  intl_translation: ^0.20.1
+  # intl_translation: ^0.20.1
   intl_utils: ^2.8.2
 
   # Flutter Lint規則
