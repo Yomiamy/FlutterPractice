@@ -3,12 +3,12 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_ai/firebase_ai.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_practice/homework/github_client/bloc/status.dart';
 
-import '../../../gen/assets_config.dart';
 import 'gemini_api_event.dart';
 import 'gemini_api_state.dart';
+import 'gemini_function_call/fetch_weather_call_declaration.dart';
+import 'gemini_function_call/fetch_weather_call_impl.dart';
 
 class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
   late GenerativeModel _aiModel;
@@ -37,21 +37,46 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
 
     emit(state.copyWith(status: Status.queryLoading));
     /** [Response flow for gemini-2.0-flash-preview-image-generation] */
+    final response = await _aiModel.generateContentStream([
+      Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
+    ]);
+
+    // ByteData fileBytes = await rootBundle.load(AssetFileRes.androidVendorsIntro);
+    // // Provide the pdf as `Data` with the appropriate audio MIME type
     // final response = await _aiModel.generateContent([
     //   Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
+    //   Content.inlineData('application/pdf', fileBytes.buffer.asUint8List()),
     // ]);
-
-    ByteData fileBytes = await rootBundle.load(AssetFileRes.androidVendorsIntro);
-    // Provide the audio as `Data` with the appropriate audio MIME type
-    final response = _aiModel.generateContentStream([
-      Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
-      Content.inlineData('application/pdf', fileBytes.buffer.asUint8List()),
-    ]);
-    //final parts = response.candidates.firstOrNull?.content.parts ?? [];
+    // final parts = response.candidates.firstOrNull?.content.parts ?? [];
 
     await for (final chunk in response) {
-      final parts = chunk.candidates.firstOrNull?.content.parts ?? [];
+      /** Handle the function call **/
+      final functionCall = chunk.functionCalls.firstOrNull;
+      if (functionCall != null) {
+        // Check if the function call is for fetching weather
+        if (functionCall.name == fetchWeatherTool.name) {
+          final args = functionCall.args;
+          final location = args['location'] as Map<String, dynamic>;
+          final date = args['date'] as String;
 
+          // Call the fetchWeather implementation to get the weather data
+          final weatherData = await fetchWeather(
+            LocationParams(city: location['city'], state: location['state']),
+            date,
+          );
+
+          // Provide the weather data back to the model
+          final weatherResponse = await _aiModel
+              .generateContent([Content.functionResponse(functionCall.name, weatherData)]);
+
+          // Append the weather response to the chat list
+          _chatList.insert(0, "AI reply: ${weatherResponse.text}");
+        }
+        emit(state.copyWith(status: Status.querySuccess, chatList: _chatList));
+      }
+
+      /** Handle the normal model response **/
+      final parts = chunk.candidates.firstOrNull?.content.parts ?? [];
       if (parts.isNotEmpty) {
         StringBuffer markdownBuffer = StringBuffer();
 
@@ -100,9 +125,8 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
           }
           _chatList.insert(0, aiReply.toString());
         }
+        emit(state.copyWith(status: Status.querySuccess, chatList: _chatList));
       }
-
-      emit(state.copyWith(status: Status.querySuccess, chatList: _chatList));
     }
 
     /**
@@ -130,12 +154,11 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
      * [Gemini image - 2.0-flash-preview-image-generation]
      * 不支援systemInstruction
      * */
-    _aiModel = FirebaseAI.googleAI().generativeModel(
-      model: 'gemini-2.0-flash-preview-image-generation',
-      generationConfig:
-          GenerationConfig(responseModalities: [ResponseModalities.text, ResponseModalities.image]),
-    );
-
+    // _aiModel = FirebaseAI.googleAI().generativeModel(
+    //     model: 'gemini-2.0-flash-preview-image-generation',
+    //     generationConfig: GenerationConfig(
+    //         responseModalities: [ResponseModalities.text, ResponseModalities.image]),
+    //     );
     /**
      *  [Gemini imagen - imagen-3.0-generate-002]
      *  不支援systemInstruction, Imagen API is only accessible to billed users
@@ -145,10 +168,19 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     // );
 
     /** [Gemini text model] */
-    // _aiModel = FirebaseAI.googleAI().generativeModel(
-    //   model: 'gemini-2.5-flash',
-    //   systemInstruction: Content.system("以繁體中文回答問題"),
-    // );
+    _aiModel = FirebaseAI.googleAI().generativeModel(
+        model: 'gemini-2.5-flash',
+        systemInstruction: Content.system("以繁體中文回答問題"),
+        toolConfig: ToolConfig(
+          functionCallingConfig: FunctionCallingConfig.any(
+            {
+              fetchWeatherTool.name,
+            },
+          ),
+        ),
+        tools: [
+          Tool.functionDeclarations([fetchWeatherTool])
+        ]);
 
     // Provide a prompt that contains text
     // const prompt = '以Dart寫一個Hello World程式';
