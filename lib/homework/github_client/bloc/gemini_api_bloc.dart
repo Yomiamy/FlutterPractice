@@ -36,7 +36,6 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     emit(state.copyWith(status: Status.newPrompt, chatList: _chatList));
 
     emit(state.copyWith(status: Status.queryLoading));
-
     /** [Response flow for gemini-2.0-flash-preview-image-generation] */
     // final response = await _aiModel.generateContent([
     //   Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
@@ -44,44 +43,60 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
 
     ByteData audioBytes = await rootBundle.load(AssetAudioRes.pixel);
     // Provide the audio as `Data` with the appropriate audio MIME type
-    final response = await _aiModel.generateContent([
+    final response = _aiModel.generateContentStream([
       Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
       Content.inlineData('audio/mpeg', audioBytes.buffer.asUint8List()),
     ]);
+    //final parts = response.candidates.firstOrNull?.content.parts ?? [];
 
-    final parts = response.candidates.firstOrNull?.content.parts ?? [];
-    if (parts.isNotEmpty) {
-      StringBuffer markdownBuffer = StringBuffer();
+    await for (final chunk in response) {
+      final parts = chunk.candidates.firstOrNull?.content.parts ?? [];
 
-      for (final part in parts) {
-        if (part is TextPart) {
-          markdownBuffer.writeln(part.text);
-          continue;
-        }
+      if (parts.isNotEmpty) {
+        StringBuffer markdownBuffer = StringBuffer();
 
-        if (part is InlineDataPart) {
-          // Use regular expression to check for image mime types
-          final mimeType = part.mimeType;
-          final isImage = RegExp(r'image/(jpeg|png|webp)').hasMatch(mimeType);
-          final isAudio = RegExp(r'audio/(mpeg)').hasMatch(mimeType);
-
-          if (isImage) {
-            // Process image
-            final imageBytesBase64 = base64Encode(part.bytes);
-            markdownBuffer.writeln('![image](data:$mimeType;base64,$imageBytesBase64)');
+        for (final part in parts) {
+          if (part is TextPart) {
+            markdownBuffer.writeln(part.text);
             continue;
           }
 
-          if (isAudio) {
-            // Process audio
-            // TODO: Not implemented yet
+          if (part is InlineDataPart) {
+            // Use regular expression to check for image mime types
+            final mimeType = part.mimeType;
+            final isImage = RegExp(r'image/(jpeg|png|webp)').hasMatch(mimeType);
+            final isAudio = RegExp(r'audio/(mpeg)').hasMatch(mimeType);
+
+            if (isImage) {
+              // Process image
+              final imageBytesBase64 = base64Encode(part.bytes);
+              markdownBuffer.writeln('![image](data:$mimeType;base64,$imageBytesBase64)');
+              continue;
+            }
+
+            if (isAudio) {
+              // Process audio
+              // TODO: Not implemented yet
+            }
           }
+        }
+
+        if (markdownBuffer.isNotEmpty) {
+          final aiReply = StringBuffer();
+
+          if (_chatList.firstOrNull?.startsWith('AI reply: ') ?? false) {
+            // Remove the previous AI reply if it exists
+            aiReply
+              ..write(_chatList.removeAt(0))
+              ..write(' ${markdownBuffer.toString()}');
+          } else {
+            aiReply.write('AI reply: ${markdownBuffer.toString()}');
+          }
+          _chatList.insert(0, aiReply.toString());
         }
       }
 
-      if (markdownBuffer.isNotEmpty) {
-        _chatList.insert(0, "AI reply: ${markdownBuffer.toString()}");
-      }
+      emit(state.copyWith(status: Status.querySuccess, chatList: _chatList));
     }
 
     /**
@@ -101,8 +116,7 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     //     _chatList.insert(0, "AI reply: ${markdownBuffer.toString()}");
     //   }
     // }
-
-    emit(state.copyWith(status: Status.querySuccess, chatList: _chatList));
+    // emit(state.copyWith(status: Status.querySuccess, chatList: _chatList));
   }
 
   Future<void> _initFirebaseAiLogic() async {
