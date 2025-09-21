@@ -37,11 +37,6 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
 
     emit(state.copyWith(status: Status.queryLoading));
 
-    /** [Response flow for gemini-2.5-flash] */
-    // final response = await _aiModel.generateContent([
-    //   Content.text("$prompt"),
-    // ]);
-
     /** [Response flow for gemini-2.0-flash-preview-image-generation] */
     // final response = await _aiModel.generateContent([
     //   Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
