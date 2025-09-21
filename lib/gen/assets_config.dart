@@ -11,6 +11,8 @@ $AssetsVideoGen AssetVideoRes = Assets.video;
 
 $AssetsAudioGen AssetAudioRes = Assets.audio;
 
+$AssetsFileGen AssetFileRes = Assets.file;
+
 extension AssetGenImageExtension on AssetGenImage {
   Image get imageFile => image(fit: BoxFit.cover);
 

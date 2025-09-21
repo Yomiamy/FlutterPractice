@@ -41,11 +41,11 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     //   Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
     // ]);
 
-    ByteData audioBytes = await rootBundle.load(AssetAudioRes.pixel);
+    ByteData fileBytes = await rootBundle.load(AssetFileRes.androidVendorsIntro);
     // Provide the audio as `Data` with the appropriate audio MIME type
     final response = _aiModel.generateContentStream([
       Content.text("$prompt (請用繁體中文回答並以markdown格式輸出)"),
-      Content.inlineData('audio/mpeg', audioBytes.buffer.asUint8List()),
+      Content.inlineData('application/pdf', fileBytes.buffer.asUint8List()),
     ]);
     //final parts = response.candidates.firstOrNull?.content.parts ?? [];
 
@@ -66,16 +66,22 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
             final mimeType = part.mimeType;
             final isImage = RegExp(r'image/(jpeg|png|webp)').hasMatch(mimeType);
             final isAudio = RegExp(r'audio/(mpeg)').hasMatch(mimeType);
+            final isFile = RegExp(r'application/pdf').hasMatch(mimeType);
 
             if (isImage) {
-              // Process image
+              // Process image output
               final imageBytesBase64 = base64Encode(part.bytes);
               markdownBuffer.writeln('![image](data:$mimeType;base64,$imageBytesBase64)');
               continue;
             }
 
+            if (isFile) {
+              // Process file output
+              continue;
+            }
+
             if (isAudio) {
-              // Process audio
+              // Process audio output
               // TODO: Not implemented yet
             }
           }

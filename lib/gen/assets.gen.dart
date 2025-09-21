@@ -21,6 +21,16 @@ class $AssetsAudioGen {
   List<String> get values => [pixel];
 }
 
+class $AssetsFileGen {
+  const $AssetsFileGen();
+
+  /// File path: assets/file/android_vendors_intro.pdf
+  String get androidVendorsIntro => 'assets/file/android_vendors_intro.pdf';
+
+  /// List of all assets
+  List<String> get values => [androidVendorsIntro];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -332,6 +342,7 @@ class Assets {
   const Assets._();
 
   static const $AssetsAudioGen audio = $AssetsAudioGen();
+  static const $AssetsFileGen file = $AssetsFileGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsVideoGen video = $AssetsVideoGen();
 }
