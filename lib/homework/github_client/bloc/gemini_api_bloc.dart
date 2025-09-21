@@ -50,23 +50,32 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     ]);
 
     final parts = response.candidates.firstOrNull?.content.parts ?? [];
-
     if (parts.isNotEmpty) {
       StringBuffer markdownBuffer = StringBuffer();
 
       for (final part in parts) {
         if (part is TextPart) {
           markdownBuffer.writeln(part.text);
-        } else if (part is InlineDataPart) {
-          final mimeType = part.mimeType;
+          continue;
+        }
+
+        if (part is InlineDataPart) {
           // Use regular expression to check for image mime types
-          if (!RegExp(r'image/(jpeg|png|webp)').hasMatch(mimeType) ||
-              !RegExp(r'audio/(mpeg)').hasMatch(mimeType)) {
+          final mimeType = part.mimeType;
+          final isImage = RegExp(r'image/(jpeg|png|webp)').hasMatch(mimeType);
+          final isAudio = RegExp(r'audio/(mpeg)').hasMatch(mimeType);
+
+          if (isImage) {
+            // Process image
+            final imageBytesBase64 = base64Encode(part.bytes);
+            markdownBuffer.writeln('![image](data:$mimeType;base64,$imageBytesBase64)');
             continue;
           }
-          // Process image
-          final imageBytesBase64 = base64Encode(part.bytes);
-          markdownBuffer.writeln('![image](data:$mimeType;base64,$imageBytesBase64)');
+
+          if (isAudio) {
+            // Process audio
+            // TODO: Not implemented yet
+          }
         }
       }
 
