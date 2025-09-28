@@ -69,6 +69,24 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
             continue;
           }
 
+          /// Execute code part
+          if (part is ExecutableCodePart) {
+            // markdownBuffer.writeln('Executable Code:');
+            // markdownBuffer.writeln('Language: ${part.language}');
+            // markdownBuffer.writeln('Code:');
+            markdownBuffer.writeln(part.code);
+            continue;
+          }
+
+          /// Execute code result part
+          if (part is CodeExecutionResultPart) {
+            // markdownBuffer.writeln('Code Execution Result:');
+            // markdownBuffer.writeln('Outcome: ${part.outcome}');
+            // markdownBuffer.writeln('Output:');
+            markdownBuffer.writeln(part.output);
+            continue;
+          }
+
           if (part is InlineDataPart) {
             // Use regular expression to check for image mime types
             final mimeType = part.mimeType;
@@ -136,12 +154,17 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     /**
      * [Gemini image - 2.0-flash-preview-image-generation]
      * 不支援systemInstruction
+     * 不支援Code execution
      * */
-    _aiModel = FirebaseAI.googleAI().generativeModel(
-      model: 'gemini-2.0-flash-preview-image-generation',
-      generationConfig:
-          GenerationConfig(responseModalities: [ResponseModalities.text, ResponseModalities.image]),
-    );
+    // _aiModel = FirebaseAI.googleAI().generativeModel(
+    //   model: 'gemini-2.0-flash-preview-image-generation',
+    //   generationConfig: GenerationConfig(responseModalities: [
+    //     ResponseModalities.text,
+    //     ResponseModalities.image,
+    //   ]),
+    //   tools: [Tool.googleSearch(), Tool.codeExecution()],
+    // );
+
     /**
      *  [Gemini imagen - imagen-3.0-generate-002]
      *  不支援systemInstruction, Imagen API is only accessible to billed users
@@ -151,6 +174,14 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
     // );
 
     /** [Gemini text model] */
+    _aiModel = FirebaseAI.googleAI().generativeModel(
+      model: 'gemini-2.5-pro',
+      generationConfig: GenerationConfig(responseModalities: [
+        ResponseModalities.text,
+      ]),
+      tools: [Tool.googleSearch(), Tool.codeExecution()],
+    );
+
     // _aiModel = FirebaseAI.googleAI().generativeModel(
     //   model: 'gemini-2.5-flash',
     //   systemInstruction: Content.system("以繁體中文回答問題"),
