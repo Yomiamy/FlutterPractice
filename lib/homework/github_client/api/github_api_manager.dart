@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_practice/homework/github_client/cache/net_cache.dart';
 import 'package:flutter_practice/homework/github_client/models/repo.dart';
 
 import '../common/Global.dart';
@@ -22,7 +20,8 @@ class GithubApiManager {
   final Dio _dio = Dio(BaseOptions(
     baseUrl: baseUrl,
     headers: {
-      HttpHeaders.acceptHeader: "application/vnd.github.squirrel-girl-preview, application/vnd.github.symmetra-preview"
+      HttpHeaders.acceptHeader:
+          "application/vnd.github.squirrel-girl-preview, application/vnd.github.symmetra-preview"
     },
     connectTimeout: const Duration(seconds: 30),
     receiveTimeout: const Duration(seconds: 30),
@@ -63,9 +62,9 @@ class GithubApiManager {
     // 登入成功後更新公用的Header欄位authorization，此後的所有請求都會帶上使用者身份資訊
     // _dio.options.headers[HttpHeaders.authorizationHeader] = basic;
 
-    if(r.statusCode != HttpStatus.ok) {
+    if (r.statusCode != HttpStatus.ok) {
       return Future.error("Login failed: ${r.statusMessage}");
-    } else if(r.data == null) {
+    } else if (r.data == null) {
       return Future.error("Login failed: User '$account' does not exist or an error occurred.");
     }
 
@@ -74,23 +73,19 @@ class GithubApiManager {
     return Global.instance.user!;
   }
 
-  Future<List<Repo>?> getRepos({
-    Map<String, dynamic> queryParams = const {},
-    bool refresh = false
-  }) async {
-    var token = "Bearer <your_personal_access_token>"; // 替換為你的個人訪問令牌
-    var r = await _dio.get<List>(
-      "/user/repos",
-      queryParameters: queryParams,
-      options: _options.copyWith(headers: {
-        HttpHeaders.authorizationHeader: token,
-      }, extra: {
-        "noCache": false, // 快取
-        "refresh": true, // 是否刷新快取
-      })
-    );
+  Future<List<Repo>?> getRepos(
+      {Map<String, dynamic> queryParams = const {}, bool refresh = false}) async {
+    var token = "Bearer ${Global.GITHUB_TOKEN}"; // 從 Global 類中獲取個人訪問令牌
+    var r = await _dio.get<List>("/user/repos",
+        queryParameters: queryParams,
+        options: _options.copyWith(headers: {
+          HttpHeaders.authorizationHeader: token,
+        }, extra: {
+          "noCache": false, // 快取
+          "refresh": true, // 是否刷新快取
+        }));
 
-    if(r.data == null) {
+    if (r.data == null) {
       return null;
     }
 

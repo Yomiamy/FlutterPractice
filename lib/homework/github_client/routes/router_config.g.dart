@@ -60,8 +60,14 @@ RouteBase get $mainShellRoute => ShellRouteData.$route(
           ],
         ),
         GoRouteData.$route(
-          path: '/detail',
-          factory: _$RepositoryDetailRoute._fromState,
+          path: '/ai_list',
+          factory: _$GithubClientAiChatRoute._fromState,
+          routes: [
+            GoRouteData.$route(
+              path: '/detail',
+              factory: _$RepositoryDetailRoute._fromState,
+            ),
+          ],
         ),
       ],
     );
@@ -127,6 +133,29 @@ mixin _$UserRouteData on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/repository_list/users/user/${Uri.encodeComponent(_self.id.toString())}',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin _$GithubClientAiChatRoute on GoRouteData {
+  static GithubClientAiChatRoute _fromState(GoRouterState state) =>
+      const GithubClientAiChatRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/ai_list',
       );
 
   @override

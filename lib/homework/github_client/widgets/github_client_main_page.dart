@@ -11,7 +11,11 @@ final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
           TypedGoRoute<UserRouteData>(path: UserRouteData.ROUTE_NAME)
         ])
   ]),
-  TypedGoRoute<RepositoryDetailRoute>(path: RepositoryDetailRoute.ROUTE_NAME)
+  TypedGoRoute<GithubClientAiChatRoute>(
+      path: GithubClientAiChatRoute.ROUTE_NAME,
+      routes: <TypedGoRoute<RepositoryDetailRoute>>[
+        TypedGoRoute<RepositoryDetailRoute>(path: RepositoryDetailRoute.ROUTE_NAME)
+      ])
 ])
 class MainShellRoute extends ShellRouteData {
   static final GlobalKey<NavigatorState> $navigatorKey = shellNavigatorKey;
@@ -36,19 +40,6 @@ class GithubClientMainPage extends StatefulWidget {
 
 class _GithubClientMainPageState extends State<GithubClientMainPage> {
   int _selectedIndex = 0;
-  late PageController _pageController;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +55,8 @@ class _GithubClientMainPageState extends State<GithubClientMainPage> {
               label: 'Repositories',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
+              icon: Icon(Icons.message),
+              label: 'Robot',
             ),
           ],
           currentIndex: _selectedIndex,
@@ -82,7 +73,7 @@ class _GithubClientMainPageState extends State<GithubClientMainPage> {
         const RepositoryListRoute().go(context);
         break;
       case 1:
-        const RepositoryDetailRoute().go(context);
+        const GithubClientAiChatRoute().go(context);
         break;
     }
   }

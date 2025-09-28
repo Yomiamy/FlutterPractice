@@ -1,5 +1,7 @@
 plugins {
     id "com.android.application"
+    id "com.google.gms.google-services"
+    id 'com.google.firebase.crashlytics'
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
@@ -33,15 +35,14 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.flutter.test.flutter_practice"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 35 // Changed from flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
-
     
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_20
         targetCompatibility JavaVersion.VERSION_20
+        coreLibraryDesugaringEnabled true
     }
-
     
     kotlinOptions {
         jvmTarget = '20'
@@ -55,9 +56,9 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.flutter.test.flutter_practice"
         // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build_configuration.
+        minSdkVersion 23
+        targetSdkVersion 35 // Added this line
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -95,4 +96,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
 }
