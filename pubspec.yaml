@@ -24,7 +24,8 @@ dependencies:
   # Dart 國際化工具包
   intl: ^0.20.2 # 用於日期、數字和消息的格式化和本地化
 
-  # 本地存儲套件
+  # 安全存儲
+  flutter_secure_storage: ^9.2.4
   # 鍵值對本地存儲
   shared_preferences: ^2.5.3
   # 本地數據庫
