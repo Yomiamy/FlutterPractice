@@ -1,7 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_practice/homework/github_client/common/shared_pref_manager.dart';
 
 import '../api/github_api_manager.dart';
 import '../models/user.dart';
@@ -9,7 +10,8 @@ import '../models/user.dart';
 const _themes = <MaterialColor>[Colors.blue, Colors.cyan, Colors.teal, Colors.green, Colors.red];
 
 class Global {
-  static const _SP_EXTRA_KEY = "user";
+  static const SP_EXTRA_KEY = "user";
+  static const SP_EXTRA_KEY_USER_NAME = "user_name";
   static const _ENV_FLAVOR_KEY = "FLAVOR";
   static const _ENV_DEV = "dev";
   static const _ENV_BETA = "beta";
@@ -26,18 +28,15 @@ class Global {
   }
 
   User? user;
-  late SharedPreferences _prefs;
-
-  bool get isProd =>
-      const String.fromEnvironment(_ENV_FLAVOR_KEY, defaultValue: _ENV_DEV) == _ENV_PROD;
 
   Global._();
 
   Future<void> init() async {
     Timeline.startSync('Global.init()');
-    _prefs = await SharedPreferences.getInstance();
 
-    String? userJson = _prefs.getString(_SP_EXTRA_KEY);
+    await SharedPrefManager.instance.init();
+
+    String? userJson = SharedPrefManager.instance.getString(SP_EXTRA_KEY);
     if (userJson != null && userJson.isNotEmpty) {
       user = User.fromJson(jsonDecode(userJson));
     }
@@ -45,7 +44,18 @@ class Global {
     GithubApiManager.instance.init();
     Timeline.finishSync();
   }
+}
 
-  void saveProfile() =>
-      _prefs.setString(_SP_EXTRA_KEY, user != null ? jsonEncode(user?.toJson()) : "");
+extension GlobalX on Global {
+  bool get isProd =>
+      const String.fromEnvironment(Global._ENV_FLAVOR_KEY, defaultValue: Global._ENV_DEV) ==
+      Global._ENV_PROD;
+
+  void saveProfile() => SharedPrefManager.instance
+      .setString(Global.SP_EXTRA_KEY, user != null ? jsonEncode(user?.toJson()) : "");
+
+  String get userName => SharedPrefManager.instance.getString(Global.SP_EXTRA_KEY_USER_NAME) ?? '';
+
+  set userName(String userName) =>
+      SharedPrefManager.instance.setString(Global.SP_EXTRA_KEY_USER_NAME, userName);
 }

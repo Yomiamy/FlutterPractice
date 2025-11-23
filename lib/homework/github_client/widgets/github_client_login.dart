@@ -19,8 +19,16 @@ class GithubClientLogin extends StatefulWidget {
 
 class _GithubClientLoginState extends State<GithubClientLogin> {
   final _loginFormKey = GlobalKey<FormState>();
-  String _account = "";
   Future<User?>? _loginFuture;
+  String _account = "";
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _account = Global.instance.userName;
+    _controller.text = _account;
+  }
 
   Future<void> _login(String account) async {
     if (account.isEmpty) {
@@ -29,6 +37,7 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
       });
       return;
     }
+    Global.instance.userName = account;
     setState(() {
       _loginFuture = GithubApiManager.instance.login(account: account, passwd: "");
     });
@@ -70,6 +79,7 @@ class _GithubClientLoginState extends State<GithubClientLogin> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                    controller: _controller,
                     decoration: const InputDecoration(
                         errorStyle: TextStyle(fontSize: 0.0),
                         border: OutlineInputBorder(
