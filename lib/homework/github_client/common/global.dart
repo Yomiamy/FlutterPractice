@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/homework/github_client/common/shared_pref_manager.dart';
+import 'package:flutter_practice/homework/github_client/common/sqlite_manager.dart';
 
 import '../api/github_api_manager.dart';
 import '../models/user.dart';
@@ -35,6 +36,16 @@ class Global {
     Timeline.startSync('Global.init()');
 
     await SharedPrefManager.instance.init();
+    await SQLiteManager.instance.init(onCreate: (db, version) async {
+      await db.execute('''
+      create table Test (
+        id integer primary key autoincrement,
+        name text,
+        value integer,
+        num real
+      )
+      ''');
+    });
 
     String? userJson = SharedPrefManager.instance.getString(SP_EXTRA_KEY);
     if (userJson != null && userJson.isNotEmpty) {
