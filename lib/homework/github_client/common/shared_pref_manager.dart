@@ -13,7 +13,7 @@ class SharedPrefManager {
     return _instance!;
   }
 
-  late SharedPreferences _prefs;
+  late SharedPreferencesWithCache _prefs;
   bool _initialized = false;
 
   SharedPrefManager._();
@@ -22,7 +22,11 @@ class SharedPrefManager {
   /// 必须在使用前调用
   Future<void> init() async {
     if (!_initialized) {
-      _prefs = await SharedPreferences.getInstance();
+      _prefs = await SharedPreferencesWithCache.create(
+        cacheOptions: const SharedPreferencesWithCacheOptions(
+          allowList: null,
+        ),
+      );
       _initialized = true;
     }
   }
@@ -37,7 +41,7 @@ class SharedPrefManager {
   // ==================== String 操作 ====================
 
   /// 保存字符串
-  Future<bool> setString(String key, String value) {
+  Future<void> setString(String key, String value) {
     _checkInitialized();
     return _prefs.setString(key, value);
   }
@@ -51,7 +55,7 @@ class SharedPrefManager {
   // ==================== Int 操作 ====================
 
   /// 保存整数
-  Future<bool> setInt(String key, int value) {
+  Future<void> setInt(String key, int value) {
     _checkInitialized();
     return _prefs.setInt(key, value);
   }
@@ -65,7 +69,7 @@ class SharedPrefManager {
   // ==================== Bool 操作 ====================
 
   /// 保存布尔值
-  Future<bool> setBool(String key, bool value) {
+  Future<void> setBool(String key, bool value) {
     _checkInitialized();
     return _prefs.setBool(key, value);
   }
@@ -79,7 +83,7 @@ class SharedPrefManager {
   // ==================== Double 操作 ====================
 
   /// 保存浮点数
-  Future<bool> setDouble(String key, double value) {
+  Future<void> setDouble(String key, double value) {
     _checkInitialized();
     return _prefs.setDouble(key, value);
   }
@@ -93,7 +97,7 @@ class SharedPrefManager {
   // ==================== List<String> 操作 ====================
 
   /// 保存字符串列表
-  Future<bool> setStringList(String key, List<String> value) {
+  Future<void> setStringList(String key, List<String> value) {
     _checkInitialized();
     return _prefs.setStringList(key, value);
   }
@@ -107,7 +111,7 @@ class SharedPrefManager {
   // ==================== JSON 对象操作 ====================
 
   /// 保存 JSON 对象（Map）
-  Future<bool> setJson(String key, Map<String, dynamic> value) {
+  Future<void> setJson(String key, Map<String, dynamic> value) {
     _checkInitialized();
     try {
       final jsonString = jsonEncode(value);
@@ -132,7 +136,7 @@ class SharedPrefManager {
   }
 
   /// 保存 JSON 列表
-  Future<bool> setJsonList(String key, List<Map<String, dynamic>> value) {
+  Future<void> setJsonList(String key, List<Map<String, dynamic>> value) {
     _checkInitialized();
     try {
       final jsonString = jsonEncode(value);
@@ -166,26 +170,14 @@ class SharedPrefManager {
   }
 
   /// 删除指定 key
-  Future<bool> remove(String key) {
+  Future<void> remove(String key) {
     _checkInitialized();
     return _prefs.remove(key);
   }
 
   /// 清除所有数据
-  Future<bool> clear() {
+  Future<void> clear() {
     _checkInitialized();
     return _prefs.clear();
-  }
-
-  /// 获取所有 keys
-  Set<String> getKeys() {
-    _checkInitialized();
-    return _prefs.getKeys();
-  }
-
-  /// 重新加载数据（从磁盘）
-  Future<void> reload() {
-    _checkInitialized();
-    return _prefs.reload();
   }
 }
