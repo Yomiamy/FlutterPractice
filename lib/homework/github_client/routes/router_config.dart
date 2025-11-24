@@ -12,6 +12,7 @@ import '../bloc/gemini_api_bloc.dart';
 import '../bloc/gemini_api_state.dart';
 import '../bloc/status.dart';
 import '../common/Global.dart';
+import '../common/shared_pref_manager.dart';
 import '../models/repo.dart';
 import '../models/user.dart';
 import '../widgets/repo_item.dart';

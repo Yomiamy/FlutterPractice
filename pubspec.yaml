@@ -24,9 +24,12 @@ dependencies:
   # Dart 國際化工具包
   intl: ^0.20.2 # 用於日期、數字和消息的格式化和本地化
 
-
-  # 本地存儲套件
+  # 安全存儲
+  flutter_secure_storage: ^9.2.4
+  # 鍵值對本地存儲
   shared_preferences: ^2.5.3
+  # 本地數據庫
+  sqflite: ^2.4.2
 
   # 底部可拖動容器
   drag_container: ^2.0.0
@@ -55,8 +58,8 @@ dependencies:
 
   # 圖片與相機處理
   camera: ^0.11.0+2
-  path_provider: ^2.1.4
-  path: ^1.9.0
+  path_provider: ^2.1.5
+  path: ^1.9.1
 
   # 音頻處理工具
   audioplayers: ^6.1.0

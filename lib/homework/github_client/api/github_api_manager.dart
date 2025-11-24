@@ -70,7 +70,7 @@ class GithubApiManager {
 
     Global.instance.user = User.fromJson(r.data!);
 
-    return Global.instance.user!;
+    return Global.instance.user;
   }
 
   Future<List<Repo>?> getRepos(
