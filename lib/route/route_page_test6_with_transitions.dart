@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class RoutePageTest6 extends StatelessWidget {
@@ -32,14 +33,21 @@ class RoutePageTest6 extends StatelessWidget {
 
                   return AnimatedBuilder(
                       animation: tweenAnim,
-                      builder: (context, child) {
-                        final rotateY = tweenAnim.value * 3.14;
+                      child: child,
+                      builder: (context, builderChild) {
+                        final rotateY = tweenAnim.value * math.pi;
                         return Transform(
                           transform: Matrix4.identity()
                             ..setEntry(3, 2, 0.001)
                             ..rotateY(rotateY),
                           alignment: Alignment.center,
-                          child: child,
+                          child: tweenAnim.value > 0.5
+                              ? Transform(
+                                  alignment: Alignment.center,
+                                  transform: Matrix4.identity()..rotateY(math.pi),
+                                  child: builderChild,
+                                )
+                              : builderChild,
                         );
                       });
                 },
