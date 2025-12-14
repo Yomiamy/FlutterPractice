@@ -4,7 +4,10 @@
 
 // ignore_for_file: public_member_api_docs, unreachable_from_main
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/route/router_refresh_notifier.dart';
 import 'package:go_router/go_router.dart';
 
 part 'material_go_shell_route_test1.g.dart';
@@ -15,16 +18,25 @@ final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
 class MaterialGoShellRouteTest1 extends StatelessWidget {
   MaterialGoShellRouteTest1({super.key});
 
-  @override
-  Widget build(BuildContext context) => MaterialApp.router(
-        routerConfig: _router,
-      );
+  final controller = StreamController<String>();
 
-  final GoRouter _router = GoRouter(
-    routes: $appRoutes,
-    initialLocation: '/home',
-    navigatorKey: rootNavigatorKey,
-  );
+  @override
+  Widget build(BuildContext context) {
+    final GoRouter router = GoRouter(
+        routes: $appRoutes,
+        initialLocation: '/home',
+        navigatorKey: rootNavigatorKey,
+        refreshListenable: RouterRefreshNotifier(controller.stream));
+
+    Future.delayed(const Duration(seconds: 2), () {
+      controller.add("Event 1");
+      controller.add("Event 2");
+      controller.add("Event 3");
+    });
+    return MaterialApp.router(
+      routerConfig: router,
+    );
+  }
 }
 
 @TypedShellRoute<MyShellRouteData>(
