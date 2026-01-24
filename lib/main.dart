@@ -12,7 +12,7 @@ import 'firebase/options/firebase_options_beta.dart';
 import 'firebase/options/firebase_options_dev.dart';
 import 'firebase/options/firebase_options_prod.dart';
 import 'l10n/generated/l10n.dart';
-import 'layout/stack_test1.dart';
+import 'listview/grid_view_test2.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -242,6 +242,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const StackTest1());
+        home: const GridViewTest2());
   }
 }
