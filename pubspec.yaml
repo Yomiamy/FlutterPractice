@@ -40,6 +40,9 @@ dependencies:
   flutter_bloc: ^9.1.1
   bloc_concurrency: ^0.3.0
 
+  # 狀態管理（Riverpod）
+  flutter_riverpod: ^2.3.6
+
   # 表單處理
   equatable: ^2.0.5
   uuid: ^4.5.1
@@ -176,7 +179,7 @@ flutter_intl:
 
 # Flutter 專有的配置項
 flutter:
-    # 啟用自動生成代碼的功能
+  # 啟用自動生成代碼的功能
   generate: false
 
   # 引入 Material Design 圖標字體以支持 material Icons 類
