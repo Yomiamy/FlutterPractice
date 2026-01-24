@@ -7,12 +7,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_practice/layout/flex_test2.dart';
 
 import 'firebase/options/firebase_options_beta.dart';
 import 'firebase/options/firebase_options_dev.dart';
 import 'firebase/options/firebase_options_prod.dart';
 import 'l10n/generated/l10n.dart';
+import 'layout/stack_test1.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -242,6 +242,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const FlexTest2());
+        home: const StackTest1());
   }
 }
