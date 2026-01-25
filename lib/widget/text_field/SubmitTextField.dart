@@ -18,7 +18,7 @@ class _SubmitTextFieldState extends State<SubmitTextField> {
         ),
         body: Column(
           children: <Widget>[
-            Text("$_inputStr"),
+            Text(_inputStr),
             TextField(
               onSubmitted: (value) {
                 setState(() {

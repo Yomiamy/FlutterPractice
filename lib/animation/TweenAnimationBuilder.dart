@@ -23,7 +23,7 @@ class _AnimationTest3State extends State<AnimationTest3> {
               return UnconstrainedBox(child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(color: tween, borderRadius: BorderRadius.circular(20.0)),
-                child: Text("ABCDEFG"),
+                child: const Text("ABCDEFG"),
               ));
             })
     );

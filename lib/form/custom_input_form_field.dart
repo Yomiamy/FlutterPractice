@@ -17,10 +17,10 @@ class CustomInputFormField extends StatefulWidget {
       required ValueChanged<String> onChanged,
       required TextEditingController controller,
         bool isPassword = false})
-      : this._labelText = labelText,
-        this._onChanged = onChanged,
-        this._controller = controller,
-        this._isPassword = isPassword;
+      : _labelText = labelText,
+        _onChanged = onChanged,
+        _controller = controller,
+        _isPassword = isPassword;
 
   @override
   State<CustomInputFormField> createState() => _CustomInputFormFieldState();

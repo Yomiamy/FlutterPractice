@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/inherited_widget/InheritedAppData.dart';
@@ -22,7 +21,7 @@ class _CounterWidgetState extends State<CounterWidget> {
             countData: 0,
             child: Column(
               children: <Widget>[
-                ChildWidget(),
+                const ChildWidget(),
                 ElevatedButton(
                     onPressed: () {
                       InheritedAppData.of(context)?.countData += 1;
@@ -34,6 +33,8 @@ class _CounterWidgetState extends State<CounterWidget> {
 }
 
 class ChildWidget extends StatelessWidget {
+  const ChildWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     // 使用 CounterInheritedWidget.of 来获取当前的计数器值

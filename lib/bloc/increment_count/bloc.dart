@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:stream_transform/stream_transform.dart';
 import 'event.dart';
 import 'state.dart';
 import 'package:flutter/material.dart';

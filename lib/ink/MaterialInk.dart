@@ -15,7 +15,7 @@ class MaterialInk extends StatelessWidget {
             width: 300,
             height: 50,
             // decoration: BoxDecoration(),
-            padding: EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2),
             child: InkWell(
               onTap: () {},
               child: Container(

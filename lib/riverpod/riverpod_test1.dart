@@ -34,7 +34,7 @@ class _RiverpodTest1State extends State<RiverpodTest1> {
 }
 
 class _Body extends ConsumerWidget {
-  const _Body({super.key});
+  const _Body();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

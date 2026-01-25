@@ -71,7 +71,7 @@ class _GeneralDialogTest1State extends State<GeneralDialogTest1> {
             .of(context)
             .modalBarrierDismissLabel,
         barrierColor: Colors.black87,
-        transitionDuration: Duration(microseconds: 100),
+        transitionDuration: const Duration(microseconds: 100),
         transitionBuilder:_buildMaterialDialogTransitions,
     );
   }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/gen/assets_config.dart';
-import 'package:flutter_practice/gen/colors.gen.dart';
 
-import '../gen/assets.gen.dart';
 
 class Practice239 extends StatefulWidget {
   const Practice239({super.key});

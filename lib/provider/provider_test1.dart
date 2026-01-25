@@ -25,7 +25,7 @@ class _ProviderTest1State extends State<ProviderTest1> {
               final counterModel = context.watch<CounterModel>();
 
               return Column(children: <Widget>[
-                Text("Count: ${counterModel.count}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                Text("Count: ${counterModel.count}", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                 ElevatedButton(
                     onPressed: () {
                       counterModel.increment();

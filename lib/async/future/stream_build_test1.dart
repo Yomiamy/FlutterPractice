@@ -10,7 +10,7 @@ class StreamBuildTest1 extends StatefulWidget {
 class _StreamBuildTest1State extends State<StreamBuildTest1> {
 
   Stream<String> mockFetchData() {
-    return Stream.periodic(Duration(seconds: 2), (i) {
+    return Stream.periodic(const Duration(seconds: 2), (i) {
       if (i >= 5) {
         throw "Stream completed manually.";
       }

@@ -2,7 +2,6 @@
 //
 //     final welcome = welcomeFromJson(jsonString);
 
-import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'Quiz.g.dart';

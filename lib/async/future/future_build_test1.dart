@@ -33,7 +33,7 @@ class _FutureBuildTest1State extends State<FutureBuildTest1> {
               } else {
                 return Container(
                   alignment: Alignment.center,
-                  child: CircularProgressIndicator(),
+                  child: const CircularProgressIndicator(),
                 );
               }
             }

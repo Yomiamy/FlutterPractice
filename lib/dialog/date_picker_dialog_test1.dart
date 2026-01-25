@@ -20,7 +20,7 @@ class _DatePickerDialogTest1State extends State<DatePickerDialogTest1> {
               showDatePicker(
                   context: context,
                   firstDate: selectedDate,
-                  lastDate: selectedDate.add(Duration(days: 30)
+                  lastDate: selectedDate.add(const Duration(days: 30)
                   )
               );
             },

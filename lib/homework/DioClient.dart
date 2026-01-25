@@ -16,7 +16,7 @@ class DioClient {
       return options;
     }();
 
-    this.dio = () {
+    dio = () {
       Dio dio = Dio(options);
 
       if (isLogEnabled) {

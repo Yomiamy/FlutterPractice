@@ -30,7 +30,7 @@ class _ScaffoldMessengerTriggerState extends State<ScaffoldMessengerTrigger> {
                 ),
               ));
           },
-          child: Icon(Icons.message),
+          child: const Icon(Icons.message),
         ));
   }
 }
