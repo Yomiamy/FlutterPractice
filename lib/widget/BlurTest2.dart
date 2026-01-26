@@ -1,10 +1,6 @@
-import 'dart:convert';
-import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/gen/assets.gen.dart';
-import 'package:flutter_practice/gen/colors.gen.dart';
 
 import '../gen/assets_config.dart';
 

@@ -11,8 +11,8 @@ class FocusNodeTextField extends StatefulWidget {
 class _FocusNodeTextFieldState extends State<FocusNodeTextField> {
 
   String _inputStr = "";
-  FocusNode _userNameFocusNode = FocusNode();
-  FocusNode _passwdFocusNode = FocusNode();
+  final FocusNode _userNameFocusNode = FocusNode();
+  final FocusNode _passwdFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {

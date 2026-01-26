@@ -63,19 +63,15 @@ class SearchStaticBar extends StatelessWidget {
   );
 
   _buildHeroWidget(BuildContext context) {
-    if(heroTag == null) {
-      return _buildContainer(context);
-    } else {
-      return Hero(
-        tag: heroTag,
-        child: _buildContainer(context)
-      );
+    return Hero(
+      tag: heroTag,
+      child: _buildContainer(context)
+    );
     }
-  }
 
   _buildContainer(BuildContext context) => Container(
     width: MediaQuery.of(context).size.width,
-    alignment: Alignment(-1, 0),
+    alignment: const Alignment(-1, 0),
     padding: padding,
     child: _buildRow(),
   );

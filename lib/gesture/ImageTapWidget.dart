@@ -10,7 +10,7 @@ class ImageTapWidget extends StatelessWidget {
           title: const Text('圖片點擊'),
         ),
         body: GestureDetector(
-          child: Container(
+          child: SizedBox(
             width: 200,
             height: 200,
             child: Image.asset("images/image.jpg")

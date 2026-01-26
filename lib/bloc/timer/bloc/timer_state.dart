@@ -12,7 +12,7 @@ sealed class TimerState extends Equatable {
 
 //如果状态是TimerInitial用户可以开始倒计时。
 final class TimerInitial extends TimerState {
-  const TimerInitial(int duration):super(duration);
+  const TimerInitial(super.duration);
 
   @override
   String toString() => 'TimerInitial { duration: $duration }';

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ElementWidgetTest1 extends Widget {
+  const ElementWidgetTest1({super.key});
+
   @override
   Element createElement() => ElementTest1(widget: this);
 }

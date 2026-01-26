@@ -12,9 +12,17 @@ class StackTest1 extends StatelessWidget {
         body: Stack(
           alignment: AlignmentDirectional.center,
           children: [
-            Positioned(child: Container(child: const Text('Hello World3'), color: Colors.blue), bottom: 20),
-            Positioned(child: Container(child: const Text('Hello World'), color: Colors.red), top: 18, left: 20),
-            Positioned(child: Container(child: const Text('Hello World2'), color: Colors.green), top: 18, right: 20),
+            Positioned(
+                bottom: 300,
+                child: Container(color: Colors.blue, child: const Text('Hello World3'))),
+            Positioned(
+                top: 18,
+                left: 20,
+                child: Container(color: Colors.red, child: const Text('Hello World'))),
+            Positioned(
+                top: 18,
+                right: 20,
+                child: Container(color: Colors.green, child: const Text('Hello World2'))),
           ],
         ));
   }

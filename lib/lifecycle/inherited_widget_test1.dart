@@ -54,7 +54,7 @@ class SharedDataWidget extends InheritedWidget {
 }
 
 class _TestWidget extends StatefulWidget {
-  const _TestWidget({super.key});
+  const _TestWidget();
 
   @override
   State<_TestWidget> createState() => _TestWidgetState();

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/gen/assets_config.dart';
@@ -38,7 +37,7 @@ class _Practice227State extends State<Practice227> {
                       child: const Text('START'),
                       onPressed: () {
                         Navigator.of(context).push(CupertinoPageRoute(
-                            builder: (context) => QuizPage()));
+                            builder: (context) => const QuizPage()));
                       })
                 ]))));
   }
@@ -88,7 +87,7 @@ class _QuizPageState extends State<QuizPage> {
                               image: AssetImageRes.classroom.provider(),
                               fit: BoxFit.fill)),
                       child: Column(children: [
-                        Text("Q - ${_quizIndex}",
+                        Text("Q - $_quizIndex",
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: CupertinoColors.white,

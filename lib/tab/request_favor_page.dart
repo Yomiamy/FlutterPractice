@@ -1,13 +1,12 @@
-/**
- * 檔案：/lib/tab/request_favor_page.dart
- *
- * 功能：此檔案定義了一個請求幫忙的頁面 (RequestFavorPage)。
- *
- * 它允許使用者：
- * - 從朋友列表中選擇一位朋友。
- * - 描述請求的內容。
- * - 設定請求的截止日期和時間。
- */
+/// 檔案：/lib/tab/request_favor_page.dart
+///
+/// 功能：此檔案定義了一個請求幫忙的頁面 (RequestFavorPage)。
+///
+/// 它允許使用者：
+/// - 從朋友列表中選擇一位朋友。
+/// - 描述請求的內容。
+/// - 設定請求的截止日期和時間。
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,7 +21,7 @@ class RequestFavorPage extends StatefulWidget {
 
   @override
   RequestFavorPageState createState() {
-    return new RequestFavorPageState();
+    return RequestFavorPageState();
   }
 }
 
@@ -65,7 +64,7 @@ class RequestFavorPageState extends State<RequestFavorPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     DropdownButtonFormField<Friend>(
-                      value: _selectedFriend,
+                      initialValue: _selectedFriend,
                       onChanged: (friend) {
                         setState(() {
                           _selectedFriend = friend;

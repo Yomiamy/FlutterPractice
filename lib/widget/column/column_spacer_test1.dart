@@ -9,9 +9,9 @@ class ColumnSpacerTest1 extends StatelessWidget {
       appBar: AppBar(
         title: const Text('ColumnSpacerTest1'),
       ),
-      body: Container(
+      body: const SizedBox(
         width: double.infinity,
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           spacing: 20,
           children: [
