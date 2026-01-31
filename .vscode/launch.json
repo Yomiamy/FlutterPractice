@@ -5,21 +5,56 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "FlutterPractice",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "FlutterPractice (profile mode)",
+            "name": "FlutterPractice (Dev)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "args": [
+                "--dart-define=FLAVOR=dev",
+                "--flavor",
+                "dev"
+            ]
         },
         {
-            "name": "FlutterPractice (release mode)",
+            "name": "FlutterPractice (Beta)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "args": [
+                "--dart-define=FLAVOR=beta",
+                "--flavor",
+                "beta"
+            ]
+        },
+        {
+            "name": "FlutterPractice (Prod)",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--dart-define=FLAVOR=prod",
+                "--flavor",
+                "prod"
+            ]
+        },
+        {
+            "name": "FlutterPractice (Dev - Profile)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--dart-define=FLAVOR=dev",
+                "--flavor",
+                "dev"
+            ]
+        },
+        {
+            "name": "FlutterPractice (Prod - Release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--dart-define=FLAVOR=prod",
+                "--flavor",
+                "prod"
+            ]
         },
         {
             "name": "local_storage_todos_api",

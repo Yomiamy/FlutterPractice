@@ -9,6 +9,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'bottom_sheet/bottom_sheet_test1.dart';
+import 'widget/custom_scrollview/custom_scrollview_test2.dart';
 import 'firebase/options/firebase_options_beta.dart';
 import 'firebase/options/firebase_options_dev.dart';
 import 'firebase/options/firebase_options_prod.dart';
@@ -137,7 +138,8 @@ void _initFirebaseCloudMessaging() {
 
   // 處理從背景狀態開啟應用程式時的訊息(Notification Message)
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    debugPrint('onMessageOpenedApp: App opened from a notification: ${message.data}');
+    debugPrint(
+        'onMessageOpenedApp: App opened from a notification: ${message.data}');
   });
 
   // 要求 Android/iOS/Web 的權限
@@ -163,7 +165,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // 如果您將在後台處理程序中使用其他 Firebase 服務，
   // 例如 Firestore，請確保在使用它們之前調用 `initializeApp`。
   await Firebase.initializeApp(); // 如果需要，重新初始化以進行後台執行
-  debugPrint("MessagingBackgroundHandler: Handling a background message: ${message.messageId}");
+  debugPrint(
+      "MessagingBackgroundHandler: Handling a background message: ${message.messageId}");
   debugPrint('Message data: ${message.data}');
 
   if (message.notification != null) {
@@ -176,7 +179,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 @pragma('vm:entry-point')
 void _localNotificationTapBackgroundHandler(NotificationResponse response) {
   // // 當應用程式在後台時，顯示通知點擊後在此處處理通知點擊事件(Data Message)
-  debugPrint('NotificationTapBackgroundHandler: Notification tapped: ${response.payload}');
+  debugPrint(
+      'NotificationTapBackgroundHandler: Notification tapped: ${response.payload}');
 }
 
 Future<void> _initLocalNotification() async {
@@ -187,13 +191,15 @@ Future<void> _initLocalNotification() async {
     importance: Importance.max,
   );
   await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
   const AndroidInitializationSettings initializationSettingsAndroid =
       AndroidInitializationSettings('@mipmap/ic_launcher');
 
   // 新增ios的settings
-  const DarwinInitializationSettings initializationSettingsIOS = DarwinInitializationSettings(
+  const DarwinInitializationSettings initializationSettingsIOS =
+      DarwinInitializationSettings(
     requestAlertPermission: true,
     requestBadgePermission: true,
     requestSoundPermission: true,
@@ -205,7 +211,8 @@ Future<void> _initLocalNotification() async {
   );
   await flutterLocalNotificationsPlugin.initialize(
     initializationSettings,
-    onDidReceiveBackgroundNotificationResponse: _localNotificationTapBackgroundHandler,
+    onDidReceiveBackgroundNotificationResponse:
+        _localNotificationTapBackgroundHandler,
     onDidReceiveNotificationResponse: (NotificationResponse response) {
       // 當應用程式在前台時，顯示通知點擊後(Data Message)
       debugPrint('onDidReceiveNotificationResponse: ${response.payload}');
@@ -242,6 +249,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const BottomSheetTest1());
+        home: const CustomScrollviewTest2());
   }
 }
