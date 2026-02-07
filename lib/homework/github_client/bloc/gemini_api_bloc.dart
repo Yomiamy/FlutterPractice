@@ -175,7 +175,7 @@ class GeminiApiBloc extends Bloc<GeminiApiEvent, GeminiApiState> {
 
     /** [Gemini text model] */
     _aiModel = FirebaseAI.googleAI().generativeModel(
-      model: 'gemini-2.5-pro',
+      model: 'gemini-2.5-flash',
       generationConfig: GenerationConfig(responseModalities: [
         ResponseModalities.text,
       ]),
