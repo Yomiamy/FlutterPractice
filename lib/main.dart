@@ -7,6 +7,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_practice/animation/TweenAnimationBuilder.dart';
+import 'package:flutter_practice/animation/animated_widget_test1.dart';
+import 'package:flutter_practice/animation/animation_test2.dart';
+import 'package:flutter_practice/animation/curve_animation_test1.dart';
+import 'package:flutter_practice/animation/slide_animation_test1.dart';
+import 'package:flutter_practice/animation/tween_test1.dart';
 
 import 'bottom_sheet/bottom_sheet_test1.dart';
 import 'widget/custom_scrollview/custom_scrollview_test2.dart';
@@ -249,6 +255,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const CustomScrollviewTest2());
+        home: const AnimatedWidgetTest1());
   }
 }
