@@ -55,7 +55,7 @@ class _LifecycleMonitorState extends State<LifecycleMonitor>
     _lifecycleListener.dispose();
 
     super.dispose();
-  }
+  }/
 
   // ==== AppLifecycleListener ====
   void _handleStateChange(AppLifecycleState state) {

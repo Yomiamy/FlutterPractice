@@ -64,7 +64,7 @@ class RequestFavorPageState extends State<RequestFavorPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     DropdownButtonFormField<Friend>(
-                      initialValue: _selectedFriend,
+                      value: _selectedFriend,
                       onChanged: (friend) {
                         setState(() {
                           _selectedFriend = friend;
