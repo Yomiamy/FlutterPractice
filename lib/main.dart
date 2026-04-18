@@ -13,6 +13,7 @@ import 'package:flutter_practice/animation/animation_test2.dart';
 import 'package:flutter_practice/animation/curve_animation_test1.dart';
 import 'package:flutter_practice/animation/slide_animation_test1.dart';
 import 'package:flutter_practice/animation/tween_test1.dart';
+import 'package:flutter_practice/lifecycle/LifecycleMonitor.dart';
 
 import 'bottom_sheet/bottom_sheet_test1.dart';
 import 'widget/custom_scrollview/custom_scrollview_test2.dart';
@@ -192,7 +193,7 @@ void _localNotificationTapBackgroundHandler(NotificationResponse response) {
 Future<void> _initLocalNotification() async {
   // 新增android的settings
   const AndroidNotificationChannel channel = AndroidNotificationChannel(
-    'default_channel_id', // 這裡要與顯示通知時一致
+    'dexult_channel_id', // 這裡要與顯示通知時一致
     '預設頻道',
     importance: Importance.max,
   );
@@ -255,6 +256,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const AnimatedWidgetTest1());
+        home: const LifecycleMonitor());
   }
 }
