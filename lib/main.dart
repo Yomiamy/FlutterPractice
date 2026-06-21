@@ -14,6 +14,7 @@ import 'package:flutter_practice/animation/curve_animation_test1.dart';
 import 'package:flutter_practice/animation/slide_animation_test1.dart';
 import 'package:flutter_practice/animation/tween_test1.dart';
 import 'package:flutter_practice/lifecycle/app_lifecycle_monitor.dart';
+import 'package:flutter_practice/network/http_test_1.dart';
 
 import 'bottom_sheet/bottom_sheet_test1.dart';
 import 'widget/custom_scrollview/custom_scrollview_test2.dart';
@@ -256,6 +257,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const LifecycleMonitor());
+        home: const HttpTest1());
   }
 }
