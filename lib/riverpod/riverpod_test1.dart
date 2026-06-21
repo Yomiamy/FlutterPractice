@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final counterProvider = StateNotifierProvider<CounterNotifier, int>((ref) => CounterNotifier());
+final counterProvider = NotifierProvider<CounterNotifier, int>(CounterNotifier.new);
 
-class CounterNotifier extends StateNotifier<int> {
-  CounterNotifier() : super(0);
+class CounterNotifier extends Notifier<int> {
+  @override
+  int build() => 0;
 
   void increment() => state++;
 

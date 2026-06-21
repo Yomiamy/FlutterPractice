@@ -110,7 +110,7 @@ class MyShellRouteScreen extends StatelessWidget {
   }
 }
 
-class HomeRouteData extends GoRouteData with _$HomeRouteData {
+class HomeRouteData extends GoRouteData with $HomeRouteData {
   const HomeRouteData();
 
   @override
@@ -119,7 +119,7 @@ class HomeRouteData extends GoRouteData with _$HomeRouteData {
   }
 }
 
-class UsersRouteData extends GoRouteData with _$UsersRouteData {
+class UsersRouteData extends GoRouteData with $UsersRouteData {
   const UsersRouteData();
 
   @override
@@ -153,7 +153,7 @@ class DialogPage extends Page<void> {
   }
 }
 
-class UserRouteData extends GoRouteData with _$UserRouteData {
+class UserRouteData extends GoRouteData with $UserRouteData {
   const UserRouteData({required this.id});
 
   // Without this static key, the dialog will not cover the navigation rail.

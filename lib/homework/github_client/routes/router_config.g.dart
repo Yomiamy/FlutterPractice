@@ -13,10 +13,10 @@ List<RouteBase> get $appRoutes => [
 
 RouteBase get $loginRoute => GoRouteData.$route(
       path: '/',
-      factory: _$LoginRoute._fromState,
+      factory: $LoginRoute._fromState,
     );
 
-mixin _$LoginRoute on GoRouteData {
+mixin $LoginRoute on GoRouteData {
   static LoginRoute _fromState(GoRouterState state) => const LoginRoute();
 
   @override
@@ -44,16 +44,16 @@ RouteBase get $mainShellRoute => ShellRouteData.$route(
       routes: [
         GoRouteData.$route(
           path: '/repository_list',
-          factory: _$RepositoryListRoute._fromState,
+          factory: $RepositoryListRoute._fromState,
           routes: [
             GoRouteData.$route(
               path: 'users',
-              factory: _$UsersRouteData._fromState,
+              factory: $UsersRouteData._fromState,
               routes: [
                 GoRouteData.$route(
                   path: 'user/:id',
                   parentNavigatorKey: UserRouteData.$parentNavigatorKey,
-                  factory: _$UserRouteData._fromState,
+                  factory: $UserRouteData._fromState,
                 ),
               ],
             ),
@@ -61,11 +61,11 @@ RouteBase get $mainShellRoute => ShellRouteData.$route(
         ),
         GoRouteData.$route(
           path: '/ai_list',
-          factory: _$GithubClientAiChatRoute._fromState,
+          factory: $GithubClientAiChatRoute._fromState,
           routes: [
             GoRouteData.$route(
               path: '/detail',
-              factory: _$RepositoryDetailRoute._fromState,
+              factory: $RepositoryDetailRoute._fromState,
             ),
           ],
         ),
@@ -77,7 +77,7 @@ extension $MainShellRouteExtension on MainShellRoute {
       const MainShellRoute();
 }
 
-mixin _$RepositoryListRoute on GoRouteData {
+mixin $RepositoryListRoute on GoRouteData {
   static RepositoryListRoute _fromState(GoRouterState state) =>
       const RepositoryListRoute();
 
@@ -100,7 +100,7 @@ mixin _$RepositoryListRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin _$UsersRouteData on GoRouteData {
+mixin $UsersRouteData on GoRouteData {
   static UsersRouteData _fromState(GoRouterState state) =>
       const UsersRouteData();
 
@@ -123,9 +123,9 @@ mixin _$UsersRouteData on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin _$UserRouteData on GoRouteData {
+mixin $UserRouteData on GoRouteData {
   static UserRouteData _fromState(GoRouterState state) => UserRouteData(
-        id: int.parse(state.pathParameters['id']!)!,
+        id: int.parse(state.pathParameters['id']!),
       );
 
   UserRouteData get _self => this as UserRouteData;
@@ -149,7 +149,7 @@ mixin _$UserRouteData on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin _$GithubClientAiChatRoute on GoRouteData {
+mixin $GithubClientAiChatRoute on GoRouteData {
   static GithubClientAiChatRoute _fromState(GoRouterState state) =>
       const GithubClientAiChatRoute();
 
@@ -172,7 +172,7 @@ mixin _$GithubClientAiChatRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin _$RepositoryDetailRoute on GoRouteData {
+mixin $RepositoryDetailRoute on GoRouteData {
   static RepositoryDetailRoute _fromState(GoRouterState state) =>
       const RepositoryDetailRoute();
 

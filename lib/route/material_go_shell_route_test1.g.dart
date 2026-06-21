@@ -16,16 +16,16 @@ RouteBase get $myShellRouteData => ShellRouteData.$route(
       routes: [
         GoRouteData.$route(
           path: '/home',
-          factory: _$HomeRouteData._fromState,
+          factory: $HomeRouteData._fromState,
         ),
         GoRouteData.$route(
           path: '/users',
-          factory: _$UsersRouteData._fromState,
+          factory: $UsersRouteData._fromState,
           routes: [
             GoRouteData.$route(
               path: ':id',
               parentNavigatorKey: UserRouteData.$parentNavigatorKey,
-              factory: _$UserRouteData._fromState,
+              factory: $UserRouteData._fromState,
             ),
           ],
         ),
@@ -37,7 +37,7 @@ extension $MyShellRouteDataExtension on MyShellRouteData {
       const MyShellRouteData();
 }
 
-mixin _$HomeRouteData on GoRouteData {
+mixin $HomeRouteData on GoRouteData {
   static HomeRouteData _fromState(GoRouterState state) => const HomeRouteData();
 
   @override
@@ -59,7 +59,7 @@ mixin _$HomeRouteData on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin _$UsersRouteData on GoRouteData {
+mixin $UsersRouteData on GoRouteData {
   static UsersRouteData _fromState(GoRouterState state) =>
       const UsersRouteData();
 
@@ -82,9 +82,9 @@ mixin _$UsersRouteData on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
-mixin _$UserRouteData on GoRouteData {
+mixin $UserRouteData on GoRouteData {
   static UserRouteData _fromState(GoRouterState state) => UserRouteData(
-        id: int.parse(state.pathParameters['id']!)!,
+        id: int.parse(state.pathParameters['id']!),
       );
 
   UserRouteData get _self => this as UserRouteData;
