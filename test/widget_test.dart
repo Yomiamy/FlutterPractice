@@ -1,30 +1,20 @@
-// This is a basic Flutter widget test.
+// 基本的 Flutter widget 冒煙測試。
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// 驗證 App 根節點 MyApp 能正常啟動，並渲染出首頁 LifecycleMonitor 畫面。
+// （App 首頁已由預設的計數器範本改為 LifecycleMonitor，故測試對應實際首頁。）
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_practice/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('App 啟動並顯示 LifecycleMonitor 首頁', (WidgetTester tester) async {
+    // 建立 App 並觸發一次 frame。
     await tester.pumpWidget(const MyApp());
+    // 等待本地化等非同步資源載入完成。
+    await tester.pumpAndSettle();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // 驗證首頁 LifecycleMonitor 的標題與內容文字皆已渲染。
+    expect(find.text('LifecycleMonitor'), findsWidgets);
   });
 }
