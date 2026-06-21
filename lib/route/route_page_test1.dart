@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/route/DataResult.dart';
+import 'package:flutter_practice/route/data_result_model.dart';
 import 'package:flutter_practice/route/route_page_with_result_test1.dart';
 
 class RoutePageTest1 extends StatelessWidget {
