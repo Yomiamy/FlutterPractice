@@ -50,6 +50,7 @@ dependencies:
 
   # 網絡通信相關套件
   dio: ^5.8.0+1
+  dio_cache_interceptor: ^4.0.6
   stream_transform: ^2.1.0
   json_annotation: ^4.9.0
   http: ^1.0.0
