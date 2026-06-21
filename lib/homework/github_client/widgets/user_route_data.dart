@@ -1,6 +1,6 @@
 part of '../routes/router_config.dart';
 
-class UserRouteData extends GoRouteData with _$UserRouteData {
+class UserRouteData extends GoRouteData with $UserRouteData {
   static const String ROUTE_NAME = "user/:id";
 
   const UserRouteData({required this.id});

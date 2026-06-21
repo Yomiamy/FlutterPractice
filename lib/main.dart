@@ -7,13 +7,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_practice/animation/TweenAnimationBuilder.dart';
+import 'package:flutter_practice/animation/tween_animation_builder_demo.dart';
 import 'package:flutter_practice/animation/animated_widget_test1.dart';
 import 'package:flutter_practice/animation/animation_test2.dart';
 import 'package:flutter_practice/animation/curve_animation_test1.dart';
 import 'package:flutter_practice/animation/slide_animation_test1.dart';
 import 'package:flutter_practice/animation/tween_test1.dart';
-import 'package:flutter_practice/lifecycle/LifecycleMonitor.dart';
+import 'package:flutter_practice/lifecycle/app_lifecycle_monitor.dart';
 
 import 'bottom_sheet/bottom_sheet_test1.dart';
 import 'widget/custom_scrollview/custom_scrollview_test2.dart';
@@ -105,10 +105,10 @@ void _initFirebaseCloudMessaging() {
 
       // 在此處顯示本地通知
       flutterLocalNotificationsPlugin.show(
-          0,
-          message.notification!.title,
-          message.notification!.body,
-          const NotificationDetails(
+          id: 0,
+          title: message.notification!.title,
+          body: message.notification!.body,
+          notificationDetails: const NotificationDetails(
               android: AndroidNotificationDetails(
                 'default_channel_id',
                 '預設頻道',
@@ -217,7 +217,7 @@ Future<void> _initLocalNotification() async {
     iOS: initializationSettingsIOS,
   );
   await flutterLocalNotificationsPlugin.initialize(
-    initializationSettings,
+    settings: initializationSettings,
     onDidReceiveBackgroundNotificationResponse:
         _localNotificationTapBackgroundHandler,
     onDidReceiveNotificationResponse: (NotificationResponse response) {

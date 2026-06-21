@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/route/DataResult.dart';
+import 'package:flutter_practice/route/data_result_model.dart';
 
 class RoutePageWithResultTest1 extends StatelessWidget {
   const RoutePageWithResultTest1({super.key});

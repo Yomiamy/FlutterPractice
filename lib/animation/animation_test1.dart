@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/animation/TypingTween.dart';
+import 'package:flutter_practice/animation/typing_string_tween.dart';
 
 class Animationtest1 extends StatefulWidget {
   const Animationtest1({super.key});

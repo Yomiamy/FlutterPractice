@@ -79,7 +79,7 @@ class _GithubClientMainPageState extends State<GithubClientMainPage> {
   }
 }
 
-class UsersRouteData extends GoRouteData with _$UsersRouteData {
+class UsersRouteData extends GoRouteData with $UsersRouteData {
   static const String ROUTE_NAME = "users";
 
   const UsersRouteData();

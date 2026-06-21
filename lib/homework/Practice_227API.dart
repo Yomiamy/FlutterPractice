@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
-import 'DioClient.dart';
-import 'Quiz.dart';
+import 'dio_client.dart';
+import 'quiz_model.dart';
 
 part 'Practice_227API.g.dart';
 

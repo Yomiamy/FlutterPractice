@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'CounterModel.dart';
+import 'counter_change_notifier_model.dart';
 
 class ProviderTest1 extends StatefulWidget {
   const ProviderTest1({super.key});

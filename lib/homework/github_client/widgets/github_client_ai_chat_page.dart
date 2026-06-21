@@ -1,6 +1,6 @@
 part of '../routes/router_config.dart';
 
-class GithubClientAiChatRoute extends GoRouteData with _$GithubClientAiChatRoute {
+class GithubClientAiChatRoute extends GoRouteData with $GithubClientAiChatRoute {
   static const String ROUTE_NAME = "/ai_list";
 
   const GithubClientAiChatRoute();

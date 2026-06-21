@@ -1,7 +1,7 @@
 part of '../routes/router_config.dart';
 
 @TypedGoRoute<LoginRoute>(path: LoginRoute.ROUTE_NAME)
-class LoginRoute extends GoRouteData with _$LoginRoute {
+class LoginRoute extends GoRouteData with $LoginRoute {
   static const String ROUTE_NAME = "/";
 
   const LoginRoute();

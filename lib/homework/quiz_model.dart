@@ -4,7 +4,7 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Quiz.g.dart';
+part 'quiz_model.g.dart';
 
 @JsonSerializable()
 class Quiz {

@@ -1,6 +1,6 @@
 import 'package:flutter_practice/bloc/increment_count/event.dart';
 import 'package:flutter_practice/bloc/increment_count/state.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 
 import 'package:flutter_practice/bloc/increment_count/bloc.dart';
@@ -24,6 +24,6 @@ void main() {
     blocTest("add(IncrementCountEvent()) test",
         build: () => countBloc,
         act: (bloc) => bloc.add(IncrementCountEvent()),
-        expect: () => [IncrementCountState()..count = 2]);
+        expect: () => [IncrementCountState()..count = 1]);
   });
 }

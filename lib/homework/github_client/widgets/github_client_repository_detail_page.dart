@@ -1,6 +1,6 @@
 part of '../routes/router_config.dart';
 
-class RepositoryDetailRoute extends GoRouteData with _$RepositoryDetailRoute {
+class RepositoryDetailRoute extends GoRouteData with $RepositoryDetailRoute {
   static const String ROUTE_NAME = "/detail";
 
   const RepositoryDetailRoute();

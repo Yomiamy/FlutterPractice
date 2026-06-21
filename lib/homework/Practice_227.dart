@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/gen/assets_config.dart';
 import 'package:flutter_practice/homework/Practice_227API.dart';
-import 'package:flutter_practice/homework/Quiz.dart';
+import 'package:flutter_practice/homework/quiz_model.dart';
 
 class Practice227 extends StatefulWidget {
   const Practice227({super.key});

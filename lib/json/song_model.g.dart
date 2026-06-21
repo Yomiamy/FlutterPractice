@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Song.dart';
+part of 'song_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
