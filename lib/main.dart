@@ -13,6 +13,8 @@ import 'package:flutter_practice/animation/animation_test2.dart';
 import 'package:flutter_practice/animation/curve_animation_test1.dart';
 import 'package:flutter_practice/animation/slide_animation_test1.dart';
 import 'package:flutter_practice/animation/tween_test1.dart';
+import 'package:flutter_practice/isolate/isolate_test1.dart';
+import 'package:flutter_practice/isolate/isolate_test2.dart';
 import 'package:flutter_practice/lifecycle/app_lifecycle_monitor.dart';
 import 'package:flutter_practice/network/dio_test_1.dart';
 import 'package:flutter_practice/network/http_test_1.dart';
@@ -258,6 +260,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const AudioInfoPage());
+        home: const IsolateTest2());
   }
 }
