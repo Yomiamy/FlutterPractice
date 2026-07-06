@@ -18,6 +18,7 @@ import 'package:flutter_practice/isolate/isolate_test2.dart';
 import 'package:flutter_practice/lifecycle/app_lifecycle_monitor.dart';
 import 'package:flutter_practice/network/dio_test_1.dart';
 import 'package:flutter_practice/network/http_test_1.dart';
+import 'package:flutter_practice/platform_channel/method_channel_test1.dart';
 
 import 'bottom_sheet/bottom_sheet_test1.dart';
 import 'widget/custom_scrollview/custom_scrollview_test2.dart';
@@ -260,6 +261,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const IsolateTest2());
+        home: const MethodChannelTest1());
   }
 }
