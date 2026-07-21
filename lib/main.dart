@@ -21,6 +21,8 @@ import 'package:flutter_practice/network/dio_test_1.dart';
 import 'package:flutter_practice/network/http_test_1.dart';
 import 'package:flutter_practice/platform_channel/method_channel_test1.dart';
 import 'package:flutter_practice/route/page_route_builder_test2.dart';
+import 'package:flutter_practice/text/rich_text_test1.dart';
+import 'package:flutter_practice/text/text_tag_widget_test.dart';
 
 import 'bottom_sheet/bottom_sheet_test1.dart';
 import 'widget/custom_scrollview/custom_scrollview_test2.dart';
@@ -253,13 +255,13 @@ class MyApp extends StatelessWidget {
         // ),
         theme: ThemeData(
           colorScheme: Theme.of(context).colorScheme.copyWith(
-            primary: Colors.deepPurple,
-            secondary: Colors.white,
-          ),
+                primary: Colors.deepPurple,
+                secondary: Colors.white,
+              ),
           appBarTheme: Theme.of(context).appBarTheme.copyWith(
-            backgroundColor: Colors.white,
-            surfaceTintColor: Colors.white,
-          ),
+                backgroundColor: Colors.white,
+                surfaceTintColor: Colors.white,
+              ),
           useMaterial3: true,
         ),
         localizationsDelegates: const [
@@ -270,6 +272,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const PageRouteBuilderTest2());
+        home: const MethodChannelTest1());
   }
 }

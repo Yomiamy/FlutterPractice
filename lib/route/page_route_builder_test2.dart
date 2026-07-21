@@ -24,9 +24,12 @@ class _PageRouteBuilderTest2State extends State<PageRouteBuilderTest2> {
                   ),
                   transitionsBuilder:
                       (context, animation, secondaryAnimation, child) {
-                    return FadeTransition(
-                      opacity: Tween<double>(begin: 0, end: 1).animate(animation),
-                      child: child,
+                    return SlideTransition(
+                      position: Tween<Offset>(begin: Offset(-1, 0), end: Offset.zero).animate(animation),
+                      child: FadeTransition(
+                        opacity: Tween<double>(begin: 0.0, end: 1.0).animate(animation),
+                        child: child,
+                      ),
                     );
                   },
                 ),
