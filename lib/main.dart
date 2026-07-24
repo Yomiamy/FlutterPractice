@@ -21,6 +21,7 @@ import 'package:flutter_practice/network/dio_test_1.dart';
 import 'package:flutter_practice/network/http_test_1.dart';
 import 'package:flutter_practice/platform_channel/method_channel_test1.dart';
 import 'package:flutter_practice/route/page_route_builder_test2.dart';
+import 'package:flutter_practice/tab/favors_page.dart';
 import 'package:flutter_practice/text/rich_text_test1.dart';
 import 'package:flutter_practice/text/text_tag_widget_test.dart';
 
@@ -272,6 +273,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const MethodChannelTest1());
+        home: const FavorsPage());
   }
 }
