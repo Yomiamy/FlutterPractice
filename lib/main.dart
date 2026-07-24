@@ -14,6 +14,7 @@ import 'package:flutter_practice/animation/curve_animation_test1.dart';
 import 'package:flutter_practice/animation/slide_animation_test1.dart';
 import 'package:flutter_practice/animation/tween_test1.dart';
 import 'package:flutter_practice/bloc/login/view/app_view.dart';
+import 'package:flutter_practice/configuration/screen_info_test1.dart';
 import 'package:flutter_practice/isolate/isolate_test1.dart';
 import 'package:flutter_practice/isolate/isolate_test2.dart';
 import 'package:flutter_practice/lifecycle/app_lifecycle_monitor.dart';
@@ -273,6 +274,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const FavorsPage());
+        home: const ScreenInfoTest1());
   }
 }
