@@ -12,7 +12,6 @@ import 'favor.dart';
 import 'favors_list.dart';
 
 class FavorsPage extends StatefulWidget {
-
   static const String FAVORS_PAGE_HERO_TAG = "favors_page_hero_tag";
 
   const FavorsPage({super.key});
@@ -22,7 +21,6 @@ class FavorsPage extends StatefulWidget {
 }
 
 class FavorsPageState extends State<FavorsPage> {
-
   final List<Favor> _pendingAnswerFavors = <Favor>[];
   final List<Favor> _acceptedFavors = <Favor>[];
   final List<Favor> _completedFavors = <Favor>[];
@@ -41,50 +39,56 @@ class FavorsPageState extends State<FavorsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4, // Number of tabs
-      child: Scaffold(
-          appBar: AppBar(
-            title: const Text("FavorsPage"),
-            bottom: TabBar(
-              isScrollable: true,
-              tabs: <Widget>[
-                _buildCategoryTab("Requests"),
-                _buildCategoryTab("Doing"),
-                _buildCategoryTab("Completed"),
-                _buildCategoryTab("Refused")
-              ]
-            )
-          ),
-          body: TabBarView(
-              children: [
-                FavorsList(title: "Pending Requests", favors: _pendingAnswerFavors),
+    return Theme(
+      data: Theme.of(context).copyWith(
+          
+          colorScheme: Theme.of(context).colorScheme.copyWith(
+                secondary: Colors.green,
+                onSecondary: Colors.green,
+                
+              ),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.amber,
+            foregroundColor: Colors.white,
+          ),),
+      child: DefaultTabController(
+          length: 4, // Number of tabs
+          child: Scaffold(
+              appBar: AppBar(
+                  title: const Text("FavorsPage"),
+                  bottom: TabBar(isScrollable: true, tabs: <Widget>[
+                    _buildCategoryTab("Requests"),
+                    _buildCategoryTab("Doing"),
+                    _buildCategoryTab("Completed"),
+                    _buildCategoryTab("Refused")
+                  ])),
+              body: TabBarView(children: [
+                FavorsList(
+                    title: "Pending Requests", favors: _pendingAnswerFavors),
                 FavorsList(title: "Doing", favors: _acceptedFavors),
                 FavorsList(title: "Completed", favors: _completedFavors),
                 FavorsList(title: "Refused", favors: _refusedFavors),
-              ]
-          ),
-          floatingActionButton: FloatingActionButton(
-            heroTag: FavorsPage.FAVORS_PAGE_HERO_TAG,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => RequestFavorPage(
-                    friends: mockFriends,
-                  ),
-                ),
-              );
-            },
-            tooltip: 'Ask a favor',
-            child: const Icon(Icons.add),
-          )
-      )
+              ]),
+              floatingActionButton: FloatingActionButton(
+                heroTag: FavorsPage.FAVORS_PAGE_HERO_TAG,
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => RequestFavorPage(
+                        friends: mockFriends,
+                      ),
+                    ),
+                  );
+                },
+                tooltip: 'Ask a favor',
+                child: const Icon(Icons.add),
+              ))),
     );
   }
 
   Widget _buildCategoryTab(String title) => Tab(
-    child: Text(title),
-  );
+        child: Text(title),
+      );
 
   void loadFavors() {
     _pendingAnswerFavors.addAll(mockPendingFavors);
@@ -113,7 +117,9 @@ class FavorsPageState extends State<FavorsPage> {
     setState(() {
       _acceptedFavors.remove(favor);
 
-      _refusedFavors.add(favor.copyWith(accepted: false,));
+      _refusedFavors.add(favor.copyWith(
+        accepted: false,
+      ));
     });
   }
 

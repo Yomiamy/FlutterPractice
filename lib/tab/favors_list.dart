@@ -28,27 +28,26 @@ class FavorsList extends StatelessWidget {
           title: Text(_title),
         ),
         body: ListView.builder(
-          itemCount: _favors.length,
-          itemBuilder: (BuildContext context, int index) {
-            final Favor favor = _favors[index];
+            itemCount: _favors.length,
+            itemBuilder: (BuildContext context, int index) {
+              final Favor favor = _favors[index];
 
-            return InkWell(
-              onTap: () {
-                Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (_,__,___) {
+              return InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(PageRouteBuilder(pageBuilder: (_, __, ___) {
                     return FavorDetailsPage(favor: favor);
-                  }
-                ));
-              },
-              child: FavorCardItem(favor: favor),
-            );
-          }
-        ));
+                  }));
+                },
+                child: FavorCardItem(favor: favor),
+              );
+            }));
   }
 }
 
 class FavorCardItem extends StatelessWidget {
-  static const String CARD_ITEM_DESCRIPT_HERO_TAG = "card_item_descript_hero_tag";
+  static const String CARD_ITEM_DESCRIPT_HERO_TAG =
+      "card_item_descript_hero_tag";
   static const String CARD_ITEM_AVATAR_HERO_TAG = "card_item_avatar_hero_tag";
 
   final Favor _favor;
@@ -66,8 +65,7 @@ class FavorCardItem extends StatelessWidget {
             _itemHeader(_favor),
             Hero(
                 tag: "${CARD_ITEM_DESCRIPT_HERO_TAG}_${_favor.uuid}",
-                child: Text(_favor.description)
-            ),
+                child: Text(_favor.description)),
             _itemFooter(context, _favor),
           ]),
         ));
@@ -81,7 +79,8 @@ class FavorCardItem extends StatelessWidget {
         margin: const EdgeInsets.only(top: 8.0),
         alignment: Alignment.centerRight,
         child: Chip(
-          label: Text("Completed at: ${format.format(favor.completed ?? DateTime.now())}"),
+          label: Text(
+              "Completed at: ${format.format(favor.completed ?? DateTime.now())}"),
         ),
       );
     }
@@ -135,8 +134,7 @@ class FavorCardItem extends StatelessWidget {
             child: CircleAvatar(
               backgroundImage: NetworkImage(favor.friend.photoURL),
               radius: 20.0,
-            )
-        ),
+            )),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(left: 8.0),
