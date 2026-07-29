@@ -5,8 +5,8 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/tab/mock_values.dart';
-import 'package:flutter_practice/tab/request_favor_page.dart';
+import 'package:flutter_practice/widget/tab/mock_values.dart';
+import 'package:flutter_practice/widget/tab/request_favor_page.dart';
 
 import 'favor.dart';
 import 'favors_list.dart';

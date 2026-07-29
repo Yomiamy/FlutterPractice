@@ -10,7 +10,7 @@ library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_practice/tab/favors_page.dart';
+import 'package:flutter_practice/widget/tab/favors_page.dart';
 import 'package:intl/intl.dart';
 import 'friend.dart';
 
