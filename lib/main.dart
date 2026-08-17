@@ -7,6 +7,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_practice/path_provider/path_provider_test1.dart';
 import 'package:flutter_practice/widget/animation/tween_animation_builder_demo.dart';
 import 'package:flutter_practice/widget/animation/animated_widget_test1.dart';
 import 'package:flutter_practice/widget/animation/animation_test2.dart';
@@ -274,6 +275,6 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale('zh', 'TW'),
         supportedLocales: S.delegate.supportedLocales,
-        home: const ScreenInfoTest1());
+        home: const PathProviderTest1());
   }
 }
